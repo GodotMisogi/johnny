@@ -5,7 +5,7 @@ draft: false
 # math:true
 description: I have problems with fluids and snakes.
 slug: cfd-python
-image: images/2DCavityStreamStud.svg
+image: images/2DPoissonSurfStud.svg
 categories: 
     - Computational Fluid Dynamics
     - Programming

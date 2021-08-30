@@ -12,7 +12,7 @@ E-mail: [`ajseth AT ust DOT hk`](mailto:ajseth@ust.hk)
 | --------- | ------ | ------ | -------- |
 | Hong Kong University of Science and Technology | MPhil Mechanical Engineering | 2018-2020 | Hong Kong |
 | Manipal Institute of Technology | B.Tech. Aeronautical Engineering | 2014-2018 | Manipal, Karnataka, India |
-| Symbiosis International School | International Baccalaureate Diploma Programme | 2011-2013 | Pune, Maharastra, India |
+| Symbiosis International School | International Baccalaureate Diploma Programme | 2011-2013 | Pune, Maharashtra, India |
 
 ## Publications
 
