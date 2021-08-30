@@ -1,6 +1,6 @@
 ---
 date: "2021-02-24T22:55:27+08:00"
-title: Aerodynamics - Viscous-Inviscid Panel Methods
+title: Aerodynamics — Viscous-Inviscid Panel Methods
 draft: true
 description: The holy grail of fast and accurate aerodynamic analyses over airfoils.
 image: images/aeropython.jpg

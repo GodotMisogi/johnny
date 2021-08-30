@@ -1,6 +1,6 @@
 ---
 date: "2017-01-17T22:55:27+05:30"
-title: Observation - Indian Classical Music
+title: Observation — Indian Classical Music
 draft: false
 slug: indian-classical
 description: A small study of the differences between Indian classical and western music.

@@ -1,6 +1,6 @@
 ---
 date: "2017-07-10T22:55:50+05:30"
-title: Meshing Techniques - Cambered Airfoil
+title: Meshing Techniques — Cambered Airfoil
 draft: false
 # math:true
 description: A misguided post of what I thought was cool in computational fluid dynamics as an undergraduate.
@@ -52,4 +52,5 @@ The blocking process in ICEM CFD used the same aspect ratios for element sizing 
 
 These meshes will require refinement before they're ready to be analysed and produce accurate results, which I'll be working on as a project. Hopefully I'll be able to complete it soon and post it with all the details regarding the meshing procedure.
 
+**UPDATE:** These procedures are arduous and time-consuming. The [MACH-Aero](https://github.com/mdolab/MACH-Aero) framework developed by the MDOLab at University of Michigan — Ann Arbor provides a much nicer and faster way of generating meshes for airfoils and wings with powerful solvers for CFD analyses and optimisations.
 

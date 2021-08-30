@@ -1,8 +1,7 @@
 ---
 date: "2018-05-05T16:54:58+05:30"
-title: "Computational Fluid Dynamics - CFDPython"
+title: "Computational Fluid Dynamics — CFDPython"
 draft: false
-# math:true
 description: I have problems with fluids and snakes.
 slug: cfd-python
 image: images/2DPoissonSurfStud.svg

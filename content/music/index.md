@@ -1,6 +1,6 @@
 ---
 date: "2017-07-11T03:00:50+05:30"
-title: "Music - Compositions and Production"
+title: "Music — Compositions and Production"
 draft: false
 categories: 
     - Music
