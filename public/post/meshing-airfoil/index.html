@@ -3,16 +3,16 @@
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='A misguided post of what I thought was cool in computational fluid dynamics as an undergraduate.'><title>Meshing Techniques - Cambered Airfoil</title>
 
-<link rel='canonical' href='https://godot-bloggy.xyz/post/meshing-airfoil/'>
+<link rel='canonical' href='https://godotmisogi.github.io/blog-public/post/meshing-airfoil/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Meshing Techniques - Cambered Airfoil'>
+<link rel="stylesheet" href="/blog-public/scss/style.min.css"><meta property='og:title' content='Meshing Techniques - Cambered Airfoil'>
 <meta property='og:description' content='A misguided post of what I thought was cool in computational fluid dynamics as an undergraduate.'>
-<meta property='og:url' content='https://godot-bloggy.xyz/post/meshing-airfoil/'>
+<meta property='og:url' content='https://godotmisogi.github.io/blog-public/post/meshing-airfoil/'>
 <meta property='og:site_name' content='｢ALL FICTION｣'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2017-07-10T22:55:50&#43;05:30'/><meta property='article:modified_time' content='2017-07-10T22:55:50&#43;05:30'/><meta property='og:image' content='https://godot-bloggy.xyz/post/meshing-airfoil/images/CFD3.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2017-07-10T22:55:50&#43;05:30'/><meta property='article:modified_time' content='2017-07-10T22:55:50&#43;05:30'/><meta property='og:image' content='https://godotmisogi.github.io/blog-public/post/meshing-airfoil/images/CFD3.jpg' />
 <meta name="twitter:site" content="GodotMisogi"><meta name="twitter:title" content="Meshing Techniques - Cambered Airfoil">
 <meta name="twitter:description" content="A misguided post of what I thought was cool in computational fluid dynamics as an undergraduate."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://godot-bloggy.xyz/post/meshing-airfoil/images/CFD3.jpg' />
+    <meta name="twitter:image" content='https://godotmisogi.github.io/blog-public/post/meshing-airfoil/images/CFD3.jpg' />
     <link rel="shortcut icon" href="/punpun1.jpg" />
 
 <script type="application/javascript">
@@ -65,7 +65,7 @@ if (!doNotTrack) {
                     
                     
                         
-                        <img src="/img/punpun1_huab25ab071e0e366f9d0ed5a1d3b49099_44920_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/blog-public/img/punpun1_huab25ab071e0e366f9d0ed5a1d3b49099_44920_300x0_resize_q75_box.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -75,7 +75,7 @@ if (!doNotTrack) {
                 
             </figure>
         
-        <h1 class="site-name"><a href="https://godot-bloggy.xyz/">｢ALL FICTION｣</a></h1>
+        <h1 class="site-name"><a href="https://godotmisogi.github.io/blog-public">｢ALL FICTION｣</a></h1>
         <h2 class="site-description">Arjit Seth</h2>
     </header>
 
@@ -85,7 +85,7 @@ if (!doNotTrack) {
         
 
         <li >
-            <a href='/'>
+            <a href='/blog-public/'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -104,7 +104,7 @@ if (!doNotTrack) {
         
 
         <li >
-            <a href='/about'>
+            <a href='/blog-public/about'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -122,7 +122,7 @@ if (!doNotTrack) {
         
 
         <li >
-            <a href='/project'>
+            <a href='/blog-public/project'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -138,7 +138,7 @@ if (!doNotTrack) {
         
 
         <li >
-            <a href='/music'>
+            <a href='/blog-public/music'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-headphones" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -154,7 +154,7 @@ if (!doNotTrack) {
         
 
         <li >
-            <a href='/cv'>
+            <a href='/blog-public/cv'>
                 
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
@@ -210,7 +210,7 @@ if (!doNotTrack) {
 
             <main class="main full-width">
     <div id="article-toolbar">
-        <a href="https://godot-bloggy.xyz/" class="back-home">
+        <a href="https://godotmisogi.github.io/blog-public" class="back-home">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <polyline points="15 6 9 12 15 18" />
@@ -225,9 +225,9 @@ if (!doNotTrack) {
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/post/meshing-airfoil/">
-                <img src="/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_800x0_resize_q75_box.jpg"
-                        srcset="/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_800x0_resize_q75_box.jpg 800w, /post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_1600x0_resize_q75_box.jpg 1600w"
+            <a href="/blog-public/post/meshing-airfoil/">
+                <img src="/blog-public/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_800x0_resize_q75_box.jpg"
+                        srcset="/blog-public/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_800x0_resize_q75_box.jpg 800w, /blog-public/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_1600x0_resize_q75_box.jpg 1600w"
                         width="800" 
                         height="416" 
                         loading="lazy"
@@ -241,11 +241,11 @@ if (!doNotTrack) {
     
     <header class="article-category">
         
-            <a href="/categories/aerodynamics/" >
+            <a href="/blog-public/categories/aerodynamics/" >
                 Aerodynamics
             </a>
         
-            <a href="/categories/computational-fluid-dynamics/" >
+            <a href="/blog-public/categories/computational-fluid-dynamics/" >
                 Computational Fluid Dynamics
             </a>
         
@@ -253,7 +253,7 @@ if (!doNotTrack) {
     
 
     <h2 class="article-title">
-        <a href="/post/meshing-airfoil/">Meshing Techniques - Cambered Airfoil</a>
+        <a href="/blog-public/post/meshing-airfoil/">Meshing Techniques - Cambered Airfoil</a>
     </h2>
 
     
@@ -287,8 +287,8 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
 <p><strong>C-Grid:</strong></p>
 </blockquote>
 <p><figure style="flex-grow: 136; flex-basis: 327px">
-		<a href="/post/meshing-airfoil/images/C-Grid.png" data-size="2212x1620"><img src="/post/meshing-airfoil/images/C-Grid.png"
-				srcset="/post/meshing-airfoil/images/C-Grid_hu3aa8a81d3578fda3f5dcf88ea72e179c_1224764_480x0_resize_box_2.png 480w, /post/meshing-airfoil/images/C-Grid_hu3aa8a81d3578fda3f5dcf88ea72e179c_1224764_1024x0_resize_box_2.png 1024w"
+		<a href="/blog-public/post/meshing-airfoil/images/C-Grid.png" data-size="2212x1620"><img src="/blog-public/post/meshing-airfoil/images/C-Grid.png"
+				srcset="/blog-public/post/meshing-airfoil/images/C-Grid_hu3aa8a81d3578fda3f5dcf88ea72e179c_1224764_480x0_resize_box_2.png 480w, /blog-public/post/meshing-airfoil/images/C-Grid_hu3aa8a81d3578fda3f5dcf88ea72e179c_1224764_1024x0_resize_box_2.png 1024w"
 				width="2212"
 				height="1620"
 				loading="lazy"
@@ -297,8 +297,8 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
 		
 	</figure>
 <figure style="flex-grow: 192; flex-basis: 462px">
-		<a href="/post/meshing-airfoil/images/C-GridBound.png" data-size="3036x1574"><img src="/post/meshing-airfoil/images/C-GridBound.png"
-				srcset="/post/meshing-airfoil/images/C-GridBound_hu5708e700d16a4af14a28d934e633156b_671250_480x0_resize_box_2.png 480w, /post/meshing-airfoil/images/C-GridBound_hu5708e700d16a4af14a28d934e633156b_671250_1024x0_resize_box_2.png 1024w"
+		<a href="/blog-public/post/meshing-airfoil/images/C-GridBound.png" data-size="3036x1574"><img src="/blog-public/post/meshing-airfoil/images/C-GridBound.png"
+				srcset="/blog-public/post/meshing-airfoil/images/C-GridBound_hu5708e700d16a4af14a28d934e633156b_671250_480x0_resize_box_2.png 480w, /blog-public/post/meshing-airfoil/images/C-GridBound_hu5708e700d16a4af14a28d934e633156b_671250_1024x0_resize_box_2.png 1024w"
 				width="3036"
 				height="1574"
 				loading="lazy"
@@ -307,8 +307,8 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
 		
 	</figure>
 <figure style="flex-grow: 194; flex-basis: 466px">
-		<a href="/post/meshing-airfoil/images/C-GridLE.png" data-size="3071x1579"><img src="/post/meshing-airfoil/images/C-GridLE.png"
-				srcset="/post/meshing-airfoil/images/C-GridLE_hu93cda4ce8e7802ccdb7fc2b640934f54_478830_480x0_resize_box_2.png 480w, /post/meshing-airfoil/images/C-GridLE_hu93cda4ce8e7802ccdb7fc2b640934f54_478830_1024x0_resize_box_2.png 1024w"
+		<a href="/blog-public/post/meshing-airfoil/images/C-GridLE.png" data-size="3071x1579"><img src="/blog-public/post/meshing-airfoil/images/C-GridLE.png"
+				srcset="/blog-public/post/meshing-airfoil/images/C-GridLE_hu93cda4ce8e7802ccdb7fc2b640934f54_478830_480x0_resize_box_2.png 480w, /blog-public/post/meshing-airfoil/images/C-GridLE_hu93cda4ce8e7802ccdb7fc2b640934f54_478830_1024x0_resize_box_2.png 1024w"
 				width="3071"
 				height="1579"
 				loading="lazy"
@@ -321,8 +321,8 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
 <p><strong>O-Grid:</strong></p>
 </blockquote>
 <p><figure style="flex-grow: 163; flex-basis: 391px">
-		<a href="/post/meshing-airfoil/images/O-Grid.png" data-size="2435x1491"><img src="/post/meshing-airfoil/images/O-Grid.png"
-				srcset="/post/meshing-airfoil/images/O-Grid_hu9286bb32c6a4183f6bdeeaf501e8943c_503926_480x0_resize_box_2.png 480w, /post/meshing-airfoil/images/O-Grid_hu9286bb32c6a4183f6bdeeaf501e8943c_503926_1024x0_resize_box_2.png 1024w"
+		<a href="/blog-public/post/meshing-airfoil/images/O-Grid.png" data-size="2435x1491"><img src="/blog-public/post/meshing-airfoil/images/O-Grid.png"
+				srcset="/blog-public/post/meshing-airfoil/images/O-Grid_hu9286bb32c6a4183f6bdeeaf501e8943c_503926_480x0_resize_box_2.png 480w, /blog-public/post/meshing-airfoil/images/O-Grid_hu9286bb32c6a4183f6bdeeaf501e8943c_503926_1024x0_resize_box_2.png 1024w"
 				width="2435"
 				height="1491"
 				loading="lazy"
@@ -331,8 +331,8 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
 		
 	</figure>
 <figure style="flex-grow: 191; flex-basis: 460px">
-		<a href="/post/meshing-airfoil/images/O-GridBound.png" data-size="3020x1575"><img src="/post/meshing-airfoil/images/O-GridBound.png"
-				srcset="/post/meshing-airfoil/images/O-GridBound_hud41ea0f4ced6b20e35e6eee8e38eaa56_1462631_480x0_resize_box_2.png 480w, /post/meshing-airfoil/images/O-GridBound_hud41ea0f4ced6b20e35e6eee8e38eaa56_1462631_1024x0_resize_box_2.png 1024w"
+		<a href="/blog-public/post/meshing-airfoil/images/O-GridBound.png" data-size="3020x1575"><img src="/blog-public/post/meshing-airfoil/images/O-GridBound.png"
+				srcset="/blog-public/post/meshing-airfoil/images/O-GridBound_hud41ea0f4ced6b20e35e6eee8e38eaa56_1462631_480x0_resize_box_2.png 480w, /blog-public/post/meshing-airfoil/images/O-GridBound_hud41ea0f4ced6b20e35e6eee8e38eaa56_1462631_1024x0_resize_box_2.png 1024w"
 				width="3020"
 				height="1575"
 				loading="lazy"
@@ -341,8 +341,8 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
 		
 	</figure>
 <figure style="flex-grow: 192; flex-basis: 461px">
-		<a href="/post/meshing-airfoil/images/O-GridLE.png" data-size="3030x1576"><img src="/post/meshing-airfoil/images/O-GridLE.png"
-				srcset="/post/meshing-airfoil/images/O-GridLE_hu38b4b2974bd84f6f94ddb77af4c9d1e3_1454377_480x0_resize_box_2.png 480w, /post/meshing-airfoil/images/O-GridLE_hu38b4b2974bd84f6f94ddb77af4c9d1e3_1454377_1024x0_resize_box_2.png 1024w"
+		<a href="/blog-public/post/meshing-airfoil/images/O-GridLE.png" data-size="3030x1576"><img src="/blog-public/post/meshing-airfoil/images/O-GridLE.png"
+				srcset="/blog-public/post/meshing-airfoil/images/O-GridLE_hu38b4b2974bd84f6f94ddb77af4c9d1e3_1454377_480x0_resize_box_2.png 480w, /blog-public/post/meshing-airfoil/images/O-GridLE_hu38b4b2974bd84f6f94ddb77af4c9d1e3_1454377_1024x0_resize_box_2.png 1024w"
 				width="3030"
 				height="1576"
 				loading="lazy"
@@ -353,8 +353,8 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
 <hr>
 <p><strong>Bonus:</strong> I was able to devise a blocking technique to generate a 3D C-grid about a rectangular wing with an SD6045 section as well.</p>
 <p><figure style="flex-grow: 146; flex-basis: 351px">
-		<a href="/post/meshing-airfoil/images/CFD1.jpg" data-size="2400x1640"><img src="/post/meshing-airfoil/images/CFD1.jpg"
-				srcset="/post/meshing-airfoil/images/CFD1_huee04e72e1d725389917645cf17fd1ddb_1554287_480x0_resize_q75_box.jpg 480w, /post/meshing-airfoil/images/CFD1_huee04e72e1d725389917645cf17fd1ddb_1554287_1024x0_resize_q75_box.jpg 1024w"
+		<a href="/blog-public/post/meshing-airfoil/images/CFD1.jpg" data-size="2400x1640"><img src="/blog-public/post/meshing-airfoil/images/CFD1.jpg"
+				srcset="/blog-public/post/meshing-airfoil/images/CFD1_huee04e72e1d725389917645cf17fd1ddb_1554287_480x0_resize_q75_box.jpg 480w, /blog-public/post/meshing-airfoil/images/CFD1_huee04e72e1d725389917645cf17fd1ddb_1554287_1024x0_resize_q75_box.jpg 1024w"
 				width="2400"
 				height="1640"
 				loading="lazy"
@@ -362,8 +362,8 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
 		</a>
 		
 	</figure> <figure style="flex-grow: 169; flex-basis: 407px">
-		<a href="/post/meshing-airfoil/images/CFD4.jpg" data-size="2688x1584"><img src="/post/meshing-airfoil/images/CFD4.jpg"
-				srcset="/post/meshing-airfoil/images/CFD4_hub69445c1b7a9a97db59249d858a3ee0d_2078075_480x0_resize_q75_box.jpg 480w, /post/meshing-airfoil/images/CFD4_hub69445c1b7a9a97db59249d858a3ee0d_2078075_1024x0_resize_q75_box.jpg 1024w"
+		<a href="/blog-public/post/meshing-airfoil/images/CFD4.jpg" data-size="2688x1584"><img src="/blog-public/post/meshing-airfoil/images/CFD4.jpg"
+				srcset="/blog-public/post/meshing-airfoil/images/CFD4_hub69445c1b7a9a97db59249d858a3ee0d_2078075_480x0_resize_q75_box.jpg 480w, /blog-public/post/meshing-airfoil/images/CFD4_hub69445c1b7a9a97db59249d858a3ee0d_2078075_1024x0_resize_q75_box.jpg 1024w"
 				width="2688"
 				height="1584"
 				loading="lazy"
@@ -372,8 +372,8 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
 		
 	</figure></p>
 <p><figure style="flex-grow: 187; flex-basis: 448px">
-		<a href="/post/meshing-airfoil/images/CFD2.jpg" data-size="2992x1600"><img src="/post/meshing-airfoil/images/CFD2.jpg"
-				srcset="/post/meshing-airfoil/images/CFD2_hu9e885af0ba9c080d4e3d620bdb6d139f_1857448_480x0_resize_q75_box.jpg 480w, /post/meshing-airfoil/images/CFD2_hu9e885af0ba9c080d4e3d620bdb6d139f_1857448_1024x0_resize_q75_box.jpg 1024w"
+		<a href="/blog-public/post/meshing-airfoil/images/CFD2.jpg" data-size="2992x1600"><img src="/blog-public/post/meshing-airfoil/images/CFD2.jpg"
+				srcset="/blog-public/post/meshing-airfoil/images/CFD2_hu9e885af0ba9c080d4e3d620bdb6d139f_1857448_480x0_resize_q75_box.jpg 480w, /blog-public/post/meshing-airfoil/images/CFD2_hu9e885af0ba9c080d4e3d620bdb6d139f_1857448_1024x0_resize_q75_box.jpg 1024w"
 				width="2992"
 				height="1600"
 				loading="lazy"
@@ -381,8 +381,8 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
 		</a>
 		
 	</figure> <figure style="flex-grow: 192; flex-basis: 461px">
-		<a href="/post/meshing-airfoil/images/CFD3.jpg" data-size="3000x1560"><img src="/post/meshing-airfoil/images/CFD3.jpg"
-				srcset="/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_480x0_resize_q75_box.jpg 480w, /post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_1024x0_resize_q75_box.jpg 1024w"
+		<a href="/blog-public/post/meshing-airfoil/images/CFD3.jpg" data-size="3000x1560"><img src="/blog-public/post/meshing-airfoil/images/CFD3.jpg"
+				srcset="/blog-public/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_480x0_resize_q75_box.jpg 480w, /blog-public/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_1024x0_resize_q75_box.jpg 1024w"
 				width="3000"
 				height="1560"
 				loading="lazy"
@@ -448,12 +448,12 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
                 
                     
 <article class="has-image">
-    <a href="/post/cfd-python/">
+    <a href="/blog-public/post/cfd-python/">
         
         
             <div class="article-image">
                 
-                    <img src="/post/cfd-python/images/2DCavityStreamStud.svg" loading="lazy" data-key="cfd-python" data-hash="/post/cfd-python/images/2DCavityStreamStud.svg"/>
+                    <img src="/blog-public/post/cfd-python/images/2DCavityStreamStud.svg" loading="lazy" data-key="cfd-python" data-hash="/blog-public/post/cfd-python/images/2DCavityStreamStud.svg"/>
                 
             </div>
         
@@ -466,12 +466,12 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
                 
                     
 <article class="has-image">
-    <a href="/post/induced-drag/">
+    <a href="/blog-public/post/induced-drag/">
         
         
             <div class="article-image">
                 
-                    <img src="/post/induced-drag/AircraftStream.svg" loading="lazy" data-key="induced-drag" data-hash="/post/induced-drag/AircraftStream.svg"/>
+                    <img src="/blog-public/post/induced-drag/AircraftStream.svg" loading="lazy" data-key="induced-drag" data-hash="/blog-public/post/induced-drag/AircraftStream.svg"/>
                 
             </div>
         
@@ -630,7 +630,7 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
                 defer="false"
                 >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/blog-public/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
