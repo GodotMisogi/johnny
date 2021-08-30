@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computational Fluid Dynamics on ｢ALL FICTION｣</title>
+    <link>https://godot-bloggy.xyz/categories/computational-fluid-dynamics/</link>
+    <description>Recent content in Computational Fluid Dynamics on ｢ALL FICTION｣</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Sat, 05 May 2018 16:54:58 +0530</lastBuildDate><atom:link href="https://godot-bloggy.xyz/categories/computational-fluid-dynamics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computational Fluid Dynamics - CFDPython</title>
+      <link>https://godot-bloggy.xyz/post/cfd-python/</link>
+      <pubDate>Sat, 05 May 2018 16:54:58 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/cfd-python/</guid>
+      <description>This &amp;lsquo;notebook&amp;rsquo; consists of my run-through of Prof. Lorena Barba&amp;rsquo;s &amp;ldquo;12 steps to Navier-Stokes&amp;rdquo; course, because I admit I have a problem with fluids. The Navier-Stokes equations that will be solved in this notebook are the following in conservative form:
+$$ \frac{\partial \rho}{\partial t} + \nabla \cdot \left(\rho V\right) = 0 $$
+$$ \frac{\partial (\rho\vec V)}{\partial t} + \nabla \cdot \left(\rho ~\vec V \otimes \vec V + p\hat I \right) = \rho \vec g + \nabla \cdot \hat \tau + \vec f$$</description>
+    </item>
+    
+    <item>
+      <title>Meshing Techniques - Cambered Airfoil</title>
+      <link>https://godot-bloggy.xyz/post/meshing-airfoil/</link>
+      <pubDate>Mon, 10 Jul 2017 22:55:50 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/meshing-airfoil/</guid>
+      <description>Meshing is a crucial process in obtaining accurate results for various simulations across different fields. In computational fluid dynamics, various meshing techniques are used in grid generation for 2D analyses of airfoils. Some nice run-throughs exist on YouTube, but they mostly deal with symmetric airfoils such as the beloved NACA 0012. I&amp;rsquo;ll attempt generating preliminary meshes over a cambered airfoil in this post and probably write a project once I&amp;rsquo;ve been able to perform flow analyses with accurate results.</description>
+    </item>
+    
+  </channel>
+</rss>

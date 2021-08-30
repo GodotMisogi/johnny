@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Physics on ｢ALL FICTION｣</title>
+    <link>https://godot-bloggy.xyz/categories/physics/</link>
+    <description>Recent content in Physics on ｢ALL FICTION｣</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Sun, 27 Aug 2017 01:26:50 +0530</lastBuildDate><atom:link href="https://godot-bloggy.xyz/categories/physics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Academic Notes - Physics and Mathematics</title>
+      <link>https://godot-bloggy.xyz/project/academics/</link>
+      <pubDate>Sun, 27 Aug 2017 01:26:50 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/project/academics/</guid>
+      <description>I&amp;rsquo;ve been studying some physics for a while and decided to write solution manuals for reference in case I forget the approach to a problem later. They&amp;rsquo;re lazily written, hence some solutions might be incomplete, incorrect or have illogical statements. Here&amp;rsquo;s what I&amp;rsquo;ve compiled so far:
+ Tom Lancaster et. al. - Quantum Field Theory for the Gifted Amateur Bernard F. Schutz - A First Course in General Relativity Ramamurti Shankar - Principles of Quantum Mechanics T.</description>
+    </item>
+    
+    <item>
+      <title>Derivation - Geodesic Equation</title>
+      <link>https://godot-bloggy.xyz/post/derivation-geodesic-equation/</link>
+      <pubDate>Wed, 19 Apr 2017 21:53:06 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/derivation-geodesic-equation/</guid>
+      <description>Bernard F. Schutz&amp;rsquo;s A First Course in General Relativity provides a nice introduction to the difficult subject in my opinion. In Chapter 6, he mentions that one should derive the Euler-Lagrange equations to minimise the spacetime interval of a particle&amp;rsquo;s trajectory, obtaining the geodesic equation:
+$$ \frac{\mathrm{d}}{\mathrm{d}\lambda}\left(\frac{\mathrm{d}x^{\gamma}}{\mathrm{d}\lambda}\right) + \Gamma^{\gamma}_{~\alpha\beta}\frac{\mathrm{d}x^{\alpha}}{\mathrm{d}\lambda}\frac{\mathrm{d}x^{\beta}}{\mathrm{d}\lambda} = 0 $$
+Note: At first I derived it from variational principles, but the Euler-Lagrange equations provide a faster route via means of a neat trick.</description>
+    </item>
+    
+    <item>
+      <title>Dubby Pendy - A Double Pendulum Simulator</title>
+      <link>https://godot-bloggy.xyz/post/dubby-pendy/</link>
+      <pubDate>Tue, 27 Dec 2016 16:54:58 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/dubby-pendy/</guid>
+      <description>Learning about Lagrangian and Hamiltonian mechanics introduced me to an entirely new way of solving physics problems. The first time I&amp;rsquo;d read about this topic was in The Principle of Least Action chapter in Vol. 2 of The Feynman Lectures on Physics. I was introduced to a different perspective of viewing the physical world, perhaps a more general one than Newton&amp;rsquo;s laws.
+A famous example of a system whose equations of motion can be more easily attained using Lagrangian or Hamiltonian mechanics is the double pendulum.</description>
+    </item>
+    
+  </channel>
+</rss>

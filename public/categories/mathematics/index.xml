@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mathematics on ｢ALL FICTION｣</title>
+    <link>https://godot-bloggy.xyz/categories/mathematics/</link>
+    <description>Recent content in Mathematics on ｢ALL FICTION｣</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Sat, 05 May 2018 16:54:58 +0530</lastBuildDate><atom:link href="https://godot-bloggy.xyz/categories/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computational Fluid Dynamics - CFDPython</title>
+      <link>https://godot-bloggy.xyz/post/cfd-python/</link>
+      <pubDate>Sat, 05 May 2018 16:54:58 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/cfd-python/</guid>
+      <description>This &amp;lsquo;notebook&amp;rsquo; consists of my run-through of Prof. Lorena Barba&amp;rsquo;s &amp;ldquo;12 steps to Navier-Stokes&amp;rdquo; course, because I admit I have a problem with fluids. The Navier-Stokes equations that will be solved in this notebook are the following in conservative form:
+$$ \frac{\partial \rho}{\partial t} + \nabla \cdot \left(\rho V\right) = 0 $$
+$$ \frac{\partial (\rho\vec V)}{\partial t} + \nabla \cdot \left(\rho ~\vec V \otimes \vec V + p\hat I \right) = \rho \vec g + \nabla \cdot \hat \tau + \vec f$$</description>
+    </item>
+    
+    <item>
+      <title>Academic Notes - Physics and Mathematics</title>
+      <link>https://godot-bloggy.xyz/project/academics/</link>
+      <pubDate>Sun, 27 Aug 2017 01:26:50 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/project/academics/</guid>
+      <description>I&amp;rsquo;ve been studying some physics for a while and decided to write solution manuals for reference in case I forget the approach to a problem later. They&amp;rsquo;re lazily written, hence some solutions might be incomplete, incorrect or have illogical statements. Here&amp;rsquo;s what I&amp;rsquo;ve compiled so far:
+ Tom Lancaster et. al. - Quantum Field Theory for the Gifted Amateur Bernard F. Schutz - A First Course in General Relativity Ramamurti Shankar - Principles of Quantum Mechanics T.</description>
+    </item>
+    
+    <item>
+      <title>Derivation - Geodesic Equation</title>
+      <link>https://godot-bloggy.xyz/post/derivation-geodesic-equation/</link>
+      <pubDate>Wed, 19 Apr 2017 21:53:06 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/derivation-geodesic-equation/</guid>
+      <description>Bernard F. Schutz&amp;rsquo;s A First Course in General Relativity provides a nice introduction to the difficult subject in my opinion. In Chapter 6, he mentions that one should derive the Euler-Lagrange equations to minimise the spacetime interval of a particle&amp;rsquo;s trajectory, obtaining the geodesic equation:
+$$ \frac{\mathrm{d}}{\mathrm{d}\lambda}\left(\frac{\mathrm{d}x^{\gamma}}{\mathrm{d}\lambda}\right) + \Gamma^{\gamma}_{~\alpha\beta}\frac{\mathrm{d}x^{\alpha}}{\mathrm{d}\lambda}\frac{\mathrm{d}x^{\beta}}{\mathrm{d}\lambda} = 0 $$
+Note: At first I derived it from variational principles, but the Euler-Lagrange equations provide a faster route via means of a neat trick.</description>
+    </item>
+    
+    <item>
+      <title>Calculus of Variations - Induced Drag Over a Wing</title>
+      <link>https://godot-bloggy.xyz/post/induced-drag/</link>
+      <pubDate>Mon, 26 Dec 2016 01:55:24 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/induced-drag/</guid>
+      <description>While reading through John D. Anderson Jr.&amp;rsquo;s derivation of minimum induced drag, I thought of a cool application of the calculus of variations in one of the equations to deduce the required condition.
+The equation that determines the downwash at a point is:
+$$w(y_0) = -\frac{1}{4\pi }\int^{b/2}_{-b/2} \frac{(\mathrm{d}\Gamma/\mathrm{d}y)}{y_0 - y}\mathrm{d}y = \int^{b/2}_{-b/2} \mathcal{L}(\Gamma,\Gamma&#39;,y)~\mathrm{d}y$$
+This effectively implies that the downwash can be expressed as a functional of $\Gamma$, i.e. $w\left[\Gamma(y)\right]$, and one can find the functional derivative to find the extremal point.</description>
+    </item>
+    
+    <item>
+      <title>Investigation - The Roots of Unity</title>
+      <link>https://godot-bloggy.xyz/post/roots-of-unity/</link>
+      <pubDate>Sun, 25 Dec 2016 02:43:36 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/roots-of-unity/</guid>
+      <description>During my second year of the International Baccalaureate: Diploma Programme, we were assigned the task of making a portfolio for a problem statement in Mathematics HL. While I don&amp;rsquo;t have the problem statement anymore, I&amp;rsquo;ll outline the major points of the task:
+  Find the solutions to $z^n - 1 = 0,~ z \in \mathbb{C}$.
+  Plot these solutions on the Argand plane.
+  Draw a tree diagram starting from the trivial solution $z = 1$ to every other root.</description>
+    </item>
+    
+  </channel>
+</rss>

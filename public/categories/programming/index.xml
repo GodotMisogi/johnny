@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on ｢ALL FICTION｣</title>
+    <link>https://godot-bloggy.xyz/categories/programming/</link>
+    <description>Recent content in Programming on ｢ALL FICTION｣</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Sat, 05 May 2018 16:54:58 +0530</lastBuildDate><atom:link href="https://godot-bloggy.xyz/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computational Fluid Dynamics - CFDPython</title>
+      <link>https://godot-bloggy.xyz/post/cfd-python/</link>
+      <pubDate>Sat, 05 May 2018 16:54:58 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/cfd-python/</guid>
+      <description>This &amp;lsquo;notebook&amp;rsquo; consists of my run-through of Prof. Lorena Barba&amp;rsquo;s &amp;ldquo;12 steps to Navier-Stokes&amp;rdquo; course, because I admit I have a problem with fluids. The Navier-Stokes equations that will be solved in this notebook are the following in conservative form:
+$$ \frac{\partial \rho}{\partial t} + \nabla \cdot \left(\rho V\right) = 0 $$
+$$ \frac{\partial (\rho\vec V)}{\partial t} + \nabla \cdot \left(\rho ~\vec V \otimes \vec V + p\hat I \right) = \rho \vec g + \nabla \cdot \hat \tau + \vec f$$</description>
+    </item>
+    
+    <item>
+      <title>Dubby Pendy - A Double Pendulum Simulator</title>
+      <link>https://godot-bloggy.xyz/post/dubby-pendy/</link>
+      <pubDate>Tue, 27 Dec 2016 16:54:58 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/dubby-pendy/</guid>
+      <description>Learning about Lagrangian and Hamiltonian mechanics introduced me to an entirely new way of solving physics problems. The first time I&amp;rsquo;d read about this topic was in The Principle of Least Action chapter in Vol. 2 of The Feynman Lectures on Physics. I was introduced to a different perspective of viewing the physical world, perhaps a more general one than Newton&amp;rsquo;s laws.
+A famous example of a system whose equations of motion can be more easily attained using Lagrangian or Hamiltonian mechanics is the double pendulum.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en-uk">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='An exercise from a textbook on general relativity.'><title>Derivation - Geodesic Equation</title>
+
+<link rel='canonical' href='https://godot-bloggy.xyz/post/derivation-geodesic-equation/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Derivation - Geodesic Equation'>
+<meta property='og:description' content='An exercise from a textbook on general relativity.'>
+<meta property='og:url' content='https://godot-bloggy.xyz/post/derivation-geodesic-equation/'>
+<meta property='og:site_name' content='｢ALL FICTION｣'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2017-04-19T21:53:06&#43;05:30'/><meta property='article:modified_time' content='2017-04-19T21:53:06&#43;05:30'/>
+<meta name="twitter:site" content="GodotMisogi"><meta name="twitter:title" content="Derivation - Geodesic Equation">
+<meta name="twitter:description" content="An exercise from a textbook on general relativity.">
+    <link rel="shortcut icon" href="/punpun1.jpg" />
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-89998292-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "light");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column compact article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/punpun1_huab25ab071e0e366f9d0ed5a1d3b49099_44920_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://godot-bloggy.xyz/">｢ALL FICTION｣</a></h1>
+        <h2 class="site-description">Arjit Seth</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/project'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" />
+  <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
+</svg>
+                
+                <span>Projects</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/music'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-headphones" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="13" rx="2" width="5" height="7" />
+  <rect x="15" y="13" rx="2" width="5" height="7" />
+  <path d="M4 15v-3a8 8 0 0 1 16 0v3" />
+</svg>
+                
+                <span>Music</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/cv'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Curriculum Vitae</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://github.com/GodotMisogi'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+                
+                <span>GitHub</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://godot-bloggy.xyz/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/physics/" >
+                Physics
+            </a>
+        
+            <a href="/categories/mathematics/" >
+                Mathematics
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/derivation-geodesic-equation/">Derivation - Geodesic Equation</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        An exercise from a textbook on general relativity.
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Apr 19, 2017</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p>Bernard F. Schutz&rsquo;s <a class="link" href="http://www.cambridge.org/us/academic/subjects/physics/cosmology-relativity-and-gravitation/first-course-general-relativity-2nd-edition?format=HB&amp;isbn=9780521887052"  target="_blank" rel="noopener"
+    >A First Course in General Relativity</a> provides a nice introduction to the difficult subject in my opinion. In Chapter 6, he mentions that one should derive the Euler-Lagrange equations to minimise the spacetime interval of a particle&rsquo;s trajectory, obtaining the geodesic equation:</p>
+<p>$$ \frac{\mathrm{d}}{\mathrm{d}\lambda}\left(\frac{\mathrm{d}x^{\gamma}}{\mathrm{d}\lambda}\right) + \Gamma^{\gamma}_{~\alpha\beta}\frac{\mathrm{d}x^{\alpha}}{\mathrm{d}\lambda}\frac{\mathrm{d}x^{\beta}}{\mathrm{d}\lambda} = 0 $$</p>
+<p><em>Note:</em> At first I derived it from variational principles, but the Euler-Lagrange equations provide a faster route via means of a neat trick.</p>
+<p><strong>Motivation</strong>: The main aim of this investigation is to find curves that parallel-transport tangent vectors. The following diagram should make this idea clearer:</p>
+<p><figure style="flex-grow: 89; flex-basis: 214px">
+		<a href="/post/derivation-geodesic-equation/Parallel_transport.png" data-size="510x570"><img src="/post/derivation-geodesic-equation/Parallel_transport.png"
+				srcset="/post/derivation-geodesic-equation/Parallel_transport_huf7a23ab9577d57f62c7055dcd7470096_59986_480x0_resize_box_2.png 480w, /post/derivation-geodesic-equation/Parallel_transport_huf7a23ab9577d57f62c7055dcd7470096_59986_1024x0_resize_box_2.png 1024w"
+				width="510"
+				height="570"
+				loading="lazy"
+				>
+		</a>
+		
+	</figure></p>
+<p>Image source: <a href="https://upload.wikimedia.org/wikipedia/commons/6/6d/Parallel_transport.png">https://upload.wikimedia.org/wikipedia/commons/6/6d/Parallel_transport.png</a></p>
+<p>If one starts from point A on the equator of a sphere and moves to the North pole, the tangent vector along the curve will look like the one shown in the figure, perpendicular to the equatorial line. Continuing this path from the North pole, if one wishes to reach a different point B on the equator, the vector field described will have undergone a 90 degrees rotation, so the vector points along the equatorial line.</p>
+<p>This can be easily visualised as walking to the North pole from A with your arm outstretched forward (representing the tangent vector), which is perpendicular to the equator. Once you reach, you need to go to point B, so your body rotates, but your arm is fixed because of parallel transport, so you&rsquo;re now walking with your arm outstretched to the left. Once you reach point B, you realise that your arm is along the equatorial line. Therefore parallel transport isn&rsquo;t preserved because of the curvature of the sphere.</p>
+<p>Since this is a property that directly results from the intrinsic curvature of the sphere, one can deduce that there is no definition of globally parallel vector fields.</p>
+<p>A geodesic can be thought of as a curve which parallel transports its own tangent vector. Another way of saying this is that it&rsquo;s the curve of shortest distance between two points in a given space of any curvature, implying local parallel transport. In the case of a sphere, a geodesic lies on a great circle, defined as the circle on the surface of a sphere which lies in a plane passing through the sphere&rsquo;s centre.</p>
+<p>In relativity, the definition of distance (or interval between points) is a little different as compared to Euclidean geometry. Since we deal with space-time rather than space, the metric of space-time (called Minkowski space-time) must be used, as described below (in one convention):</p>
+<p>$$ (\Delta s)^2 = -(c\Delta t)^2 + (\Delta x)^2 + (\Delta y)^2 + (\Delta z)^2 $$</p>
+<p>There is a large historical development for this formulation with plenty of literature available. The foundation lies in Maxwell&rsquo;s equations and Einstein&rsquo;s postulates of special relativity. There is a more general formulation for calculating magnitudes over arbitrary metrics by using the dot product:</p>
+<p>$$ \vec{U}\cdot\vec{V} = g_{\alpha\beta}U^{\alpha}V^{\beta} = g_{00}U^{0}V^{0} + g_{10}U^{1}V^{0} + g_{01}U^{0}V^{1} + &hellip;$$</p>
+<p>With summations over the set of values that the repeated indices $\alpha$ and $\beta$ take and $ g_{\alpha\beta}(\vec x)$ is the metric tensor defined by the space under evaluation. In the case of special relativity, the metric tensor is represented as the matrix $ g_{\alpha\beta} = \mathrm{diag}(-1,1,1,1) $ in one convention, a flat space-time.</p>
+<p>The length of the tangent vector between two points can be described by its magnitude. This functional that must be minimised is called the proper length, and can be expressed as follows:</p>
+<p>$$ \mathrm{d}s = \int_{\lambda_0}^{\lambda_l} \left|\vec{V}\cdot\vec{V}\right|^{\frac{1}{2}} \mathrm{d}\lambda = \int_{\lambda_0}^{\lambda_1} \left|g_{\alpha\beta}\frac{\mathrm{d}x^{\alpha}}{\mathrm{d}\lambda}\frac{\mathrm{d}x^{\beta}}{\mathrm{d}\lambda}\right|^{\frac{1}{2}} \mathrm{d}\lambda $$</p>
+<p>Where $\lambda$ is a parameter for the curve, usually the proper time. This exercise essentially means that the magnitude of the four-velocity integrated over proper time should be a minimum. So the Lagrangian is:</p>
+<p>$$ \mathcal{L} = \left|g_{\alpha\beta}\frac{\mathrm{d}x^{\alpha}}{\mathrm{d}\lambda}\frac{\mathrm{d}x^{\beta}}{\mathrm{d}\lambda}\right|^{\frac{1}{2}} $$</p>
+<p>The neat trick here is taking $\mathcal{L}^2$ and substituting it into the Euler-Lagrange equation:</p>
+<p>$$ g_{\alpha\beta,\mu}\dot{x}^{\alpha}\dot{x}^{\beta} - \frac{\mathrm{d}}{\mathrm{d}\lambda}\left[g_{\alpha\mu}\dot{x}^{\alpha} + g_{\mu\beta}\dot{x}^{\beta}\right] = 0 $$</p>
+<p>Where $\dot{x} = \mathrm{d}x/\mathrm{d}\lambda$. Note that this equation just talks about extrema rather than maxima or minima explicitly. The second term is a total derivative, which results in:</p>
+<p>$$ g_{\alpha\beta,\mu}\dot{x}^{\alpha}\dot{x}^{\beta} - \left[g_{\alpha\mu,\beta}\dot{x}^{\beta}\dot{x}^{\alpha} + g_{\mu\beta,\alpha}\dot{x}^{\alpha}\dot{x}^{\beta} + g_{\alpha\mu}\ddot{x}^{\alpha} + g_{\mu\beta}\ddot{x}^{\beta} \right] = 0$$</p>
+<p>Changing the last term&rsquo;s dummy index $\beta\rightarrow\alpha$ and multiplying by $g^{\mu\gamma}$:</p>
+<p>$$ -2g^{\mu\gamma}g_{\alpha\mu}\ddot{x}^{\alpha} + g^{\mu\gamma}\left(g_{\alpha\beta,\mu} - g_{\mu\beta,\alpha} - g_{\mu\alpha,\beta}\right)\dot{x}^{\alpha}\dot{x}^{\beta} = 0 $$</p>
+<p>Using the Christoffel symbol of the second kind with the following definition:</p>
+<p>$$ \Gamma^{\gamma}_{~\alpha\beta} = \frac{1}{2}g^{\mu\gamma}\left(g_{\mu\beta,\alpha} + g_{\mu\alpha,\beta} - g_{\alpha\beta,\mu}\right)$$</p>
+<p>and using $g^{\mu\gamma}g_{\alpha\mu} = \delta^{\gamma}_{~\alpha}$:</p>
+<p>$$ -2\delta^{\gamma}_{~\alpha}\ddot{x}^{\alpha} - 2\Gamma^{\gamma}_{~\alpha\beta}\dot{x}^{\alpha}\dot{x}^{\beta} = 0 $$</p>
+<p>The expression simplifies to the geodesic equation:</p>
+<p>$$ \ddot{x}^{\gamma} + \Gamma^{\gamma}_{~\alpha\beta}\dot{x}^{\alpha}\dot{x}^{\beta} = 0 $$</p>
+<!-- <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FTheoreticalPhysicsMemes%2Fposts%2F1167606566653652%3A0&width=580"></iframe> -->
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/project/academics/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/project/academics/SES.svg" loading="lazy" data-key="" data-hash="/project/academics/SES.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Academic Notes - Physics and Mathematics</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/post/cfd-python/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/cfd-python/images/2DCavityStreamStud.svg" loading="lazy" data-key="cfd-python" data-hash="/post/cfd-python/images/2DCavityStreamStud.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Computational Fluid Dynamics - CFDPython</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/post/dubby-pendy/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/dubby-pendy/DubbyPendy.svg" loading="lazy" data-key="dubby-pendy" data-hash="/post/dubby-pendy/DubbyPendy.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dubby Pendy - A Double Pendulum Simulator</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/post/induced-drag/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/induced-drag/AircraftStream.svg" loading="lazy" data-key="induced-drag" data-hash="/post/induced-drag/AircraftStream.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Calculus of Variations - Induced Drag Over a Wing</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/post/roots-of-unity/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/roots-of-unity/Roots2.svg" loading="lazy" data-key="roots-of-unity" data-hash="/post/roots-of-unity/Roots2.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Investigation - The Roots of Unity</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "godotmisogi" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2016 - 
+        
+        2021 ｢ALL FICTION｣
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

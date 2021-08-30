@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on ｢ALL FICTION｣</title>
+    <link>https://godot-bloggy.xyz/categories/</link>
+    <description>Recent content in Categories on ｢ALL FICTION｣</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Sat, 05 May 2018 16:54:58 +0530</lastBuildDate><atom:link href="https://godot-bloggy.xyz/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computational Fluid Dynamics</title>
+      <link>https://godot-bloggy.xyz/categories/computational-fluid-dynamics/</link>
+      <pubDate>Sat, 05 May 2018 16:54:58 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/categories/computational-fluid-dynamics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mathematics</title>
+      <link>https://godot-bloggy.xyz/categories/mathematics/</link>
+      <pubDate>Sat, 05 May 2018 16:54:58 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/categories/mathematics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Programming</title>
+      <link>https://godot-bloggy.xyz/categories/programming/</link>
+      <pubDate>Sat, 05 May 2018 16:54:58 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/categories/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Physics</title>
+      <link>https://godot-bloggy.xyz/categories/physics/</link>
+      <pubDate>Sun, 27 Aug 2017 01:26:50 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/categories/physics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Music</title>
+      <link>https://godot-bloggy.xyz/categories/music/</link>
+      <pubDate>Tue, 11 Jul 2017 03:00:50 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/categories/music/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Design</title>
+      <link>https://godot-bloggy.xyz/categories/design/</link>
+      <pubDate>Tue, 11 Jul 2017 01:26:50 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/categories/design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Aerodynamics</title>
+      <link>https://godot-bloggy.xyz/categories/aerodynamics/</link>
+      <pubDate>Mon, 10 Jul 2017 22:55:50 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/categories/aerodynamics/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

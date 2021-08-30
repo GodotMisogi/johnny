@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aerodynamics on ｢ALL FICTION｣</title>
+    <link>https://godot-bloggy.xyz/categories/aerodynamics/</link>
+    <description>Recent content in Aerodynamics on ｢ALL FICTION｣</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Mon, 10 Jul 2017 22:55:50 +0530</lastBuildDate><atom:link href="https://godot-bloggy.xyz/categories/aerodynamics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Meshing Techniques - Cambered Airfoil</title>
+      <link>https://godot-bloggy.xyz/post/meshing-airfoil/</link>
+      <pubDate>Mon, 10 Jul 2017 22:55:50 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/meshing-airfoil/</guid>
+      <description>Meshing is a crucial process in obtaining accurate results for various simulations across different fields. In computational fluid dynamics, various meshing techniques are used in grid generation for 2D analyses of airfoils. Some nice run-throughs exist on YouTube, but they mostly deal with symmetric airfoils such as the beloved NACA 0012. I&amp;rsquo;ll attempt generating preliminary meshes over a cambered airfoil in this post and probably write a project once I&amp;rsquo;ve been able to perform flow analyses with accurate results.</description>
+    </item>
+    
+    <item>
+      <title>Calculus of Variations - Induced Drag Over a Wing</title>
+      <link>https://godot-bloggy.xyz/post/induced-drag/</link>
+      <pubDate>Mon, 26 Dec 2016 01:55:24 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/induced-drag/</guid>
+      <description>While reading through John D. Anderson Jr.&amp;rsquo;s derivation of minimum induced drag, I thought of a cool application of the calculus of variations in one of the equations to deduce the required condition.
+The equation that determines the downwash at a point is:
+$$w(y_0) = -\frac{1}{4\pi }\int^{b/2}_{-b/2} \frac{(\mathrm{d}\Gamma/\mathrm{d}y)}{y_0 - y}\mathrm{d}y = \int^{b/2}_{-b/2} \mathcal{L}(\Gamma,\Gamma&#39;,y)~\mathrm{d}y$$
+This effectively implies that the downwash can be expressed as a functional of $\Gamma$, i.e. $w\left[\Gamma(y)\right]$, and one can find the functional derivative to find the extremal point.</description>
+    </item>
+    
+  </channel>
+</rss>
