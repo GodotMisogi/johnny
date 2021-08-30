@@ -1,0 +1,167 @@
+baseurl: https://godot-bloggy.xyz/
+languageCode: en-uk
+theme: hugo-theme-stack
+paginate: 100
+title: ｢ALL FICTION｣
+
+# Change it to your Disqus shortname before using
+disqusShortname: godotmisogi
+
+# GA Tracking ID
+googleAnalytics: UA-89998292-1
+
+# Theme i18n support
+# Available values: en, fr, id, ja, ko, pt-br, zh-cn
+DefaultContentLanguage: en
+
+permalinks:
+    post: /post/:slug/
+    page: /:slug/
+
+params:
+    notFound:
+        local: true
+        src: img/404.jpg
+        title:
+            other: Not Found
+        subtitle:
+            other: It wasn't me!
+
+    mainSections:
+        - post
+        - project
+    featuredImageField: image
+    rssFullContent: true
+    favicon: /punpun1.jpg
+
+    footer:
+        since: 2016
+        customText:
+
+    dateFormat:
+        published: Jan 02, 2006
+        lastUpdated: Jan 02, 2006 15:04 MST
+
+    sidebar:
+        emoji: 🎓
+        subtitle: Arjit Seth
+        avatar:
+            local: true
+            src: img/punpun1.jpg
+
+    article:
+        math: true
+        license:
+            enabled: true
+            default: Licensed under CC BY-NC-SA 4.0
+
+    comments:
+        enabled: true
+        provider: disqus
+
+        utterances:
+            repo:
+            issueTerm: pathname
+            label:
+
+        remark42:
+            host:
+            site:
+            locale:
+
+    widgets:
+        enabled:
+            # - search
+            # - archives
+            # - tag-cloud
+
+        archives:
+            limit: 5
+
+        tagCloud:
+            limit: 10
+
+    opengraph:
+        twitter:
+            # Your Twitter username
+            site: GodotMisogi
+
+            # Available values: summary, summary_large_image
+            card: summary_large_image
+
+    defaultImage:
+        opengraph:
+            enabled: false
+            local: false
+            src:
+
+    colorScheme:
+        # Display toggle
+        toggle: true
+
+        # Available values: auto, light, dark
+        default: light
+
+    imageProcessing:
+        cover:
+            enabled: true
+        content:
+            enabled: true
+
+menu:
+    main:
+        - identifier: home
+          name: Home
+          url: /
+          weight: -100
+          pre: home
+
+        - identifier: about
+          name: About
+          url: /about
+          weight: -90
+          pre: user
+
+        - identifier: project
+          name: Projects
+          url: /project
+          weight: -70
+          pre: files
+          
+        - identifier: music
+          name: Music
+          url: /music
+          weight: -60
+          pre: music
+
+        - identifier: cv
+          name: Curriculum Vitae
+          url: /cv
+          weight: -50
+          pre: search
+
+        - identifier: github
+          name: GitHub
+          url: https://github.com/GodotMisogi
+          weight: -40
+          pre: github
+
+
+related:
+    includeNewer: true
+    threshold: 60
+    toLower: false
+    indices:
+        - name: tags
+          weight: 100
+
+        - name: categories
+          weight: 200
+
+markup:
+    highlight:
+        noClasses: false
+    goldmark:
+        renderer:
+            unsafe: true
+            hardWraps: false

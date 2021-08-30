@@ -1,0 +1,22 @@
+{{ define "main" }}
+    <div class="not-found-card">
+        <h1 class="article-title">{{ T "notFound.title" }}</h1>
+        <h2 class="article-subtitle">{{ T "notFound.subtitle" }}</h2>
+        <figure class="site-404">
+            {{ if not .Site.Params.notFound.local }}
+                <img src="{{ .src }}" width="500" class="site-404" loading="lazy" alt="404">
+            {{ else }}
+                {{ $notFound := resources.Get ( .Site.Params.notFound.src ) }}
+
+                {{ if $notFound }}
+                        {{ $notFoundResized := $notFound.Resize "500x" }}
+                        <div style="text-align:center"><img src="{{ $notFoundResized.RelPermalink }}" width="{{ $notFoundResized.Width }}"
+                            height="{{ $notFoundResized.Height }}" class="site-404" loading="lazy" alt="404"></div>
+                    {{ else }}
+                        {{ errorf "Failed loading notFound from %q" . }}
+                {{ end }}
+            {{end}}
+        </figure>
+    </div>
+    {{ partialCached "footer/footer" . }}
+{{ end }}
