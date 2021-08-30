@@ -257,9 +257,9 @@
 &lt;p&gt;To find the inverse spatial Fourier transform, we invoke the convolution theorem:&lt;/p&gt;
 &lt;p&gt;$$ u(x,t) = \mathcal F_x^{-1}\left[u_F(k,t)\right] =  \mathcal F_x^{-1}[u(k,0)] * \mathcal F_x^{-1} \left[e^{-\nu k^2 t}\right] = u(x,0) * \mathcal F_x^{-1} \left[e^{-\nu k^2 t}\right] $$&lt;/p&gt;
 &lt;p&gt;The second inverse transform is the Fourier transform of a Gaussian, which is nicely found in the following manner. Let $f(k) = e^{-\nu k^2 t}$ (with $\nu$ and $t$ as parameters), now differentiate and take the Fourier transform:&lt;/p&gt;
-&lt;p&gt;$$
-\begin{aligned}
-ix \cdot f(x) &amp;amp; = -2\nu t \cdot i f&#39;(x) \\
+&lt;p&gt;$$ 
+\begin{aligned} 
+ix \cdot f(x) &amp;amp; = -2\nu t \cdot i f&#39;(x) \\ 
 \implies f(x) &amp;amp; = \frac{1}{\sqrt{4\pi\nu t}}\exp\left(-\frac{x^2}{4\nu t}\right)
 \end{aligned}
 $$&lt;/p&gt;
@@ -782,16 +782,16 @@ For loops took 4.577128199976869 seconds
 &lt;p&gt;$$ \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} = \nu\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\right) $$&lt;/p&gt;
 &lt;p&gt;$$ \frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} = \nu\left(\frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2}\right) $$&lt;/p&gt;
 &lt;p&gt;Discretised:&lt;/p&gt;
-&lt;p&gt;$$
-\begin{aligned}
-\frac{u_{i,j}^{n+1} - u_{i,j}^n}{\Delta t} &amp;amp; + u_{i,j}^n \frac{u_{i,j}^n-u_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{u_{i,j}^n - u_{i,j-1}^n}{\Delta y} \cr
-&amp;amp; = \nu \left( \frac{u_{i+1,j}^n - 2u_{i,j}^n+u_{i-1,j}^n}{\Delta x^2} + \frac{u_{i,j+1}^n - 2u_{i,j}^n + u_{i,j-1}^n}{\Delta y^2} \right)
+&lt;p&gt;$$ 
+\begin{aligned} 
+\frac{u_{i,j}^{n+1} - u_{i,j}^n}{\Delta t} &amp;amp; + u_{i,j}^n \frac{u_{i,j}^n-u_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{u_{i,j}^n - u_{i,j-1}^n}{\Delta y} \cr 
+&amp;amp; = \nu \left( \frac{u_{i+1,j}^n - 2u_{i,j}^n+u_{i-1,j}^n}{\Delta x^2} + \frac{u_{i,j+1}^n - 2u_{i,j}^n + u_{i,j-1}^n}{\Delta y^2} \right) 
 \end{aligned}
 $$&lt;/p&gt;
-&lt;p&gt;$$
-\begin{aligned}
-\frac{v_{i,j}^{n+1} - v_{i,j}^n}{\Delta t} &amp;amp; + u_{i,j}^n \frac{v_{i,j}^n-v_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{v_{i,j}^n - v_{i,j-1}^n}{\Delta y} \cr
-&amp;amp; = \nu \left( \frac{v_{i+1,j}^n - 2v_{i,j}^n+v_{i-1,j}^n}{\Delta x^2} + \frac{v_{i,j+1}^n - 2v_{i,j}^n + v_{i,j-1}^n}{\Delta y^2} \right)
+&lt;p&gt;$$ 
+\begin{aligned} 
+\frac{v_{i,j}^{n+1} - v_{i,j}^n}{\Delta t} &amp;amp; + u_{i,j}^n \frac{v_{i,j}^n-v_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{v_{i,j}^n - v_{i,j-1}^n}{\Delta y} \cr 
+&amp;amp; = \nu \left( \frac{v_{i+1,j}^n - 2v_{i,j}^n+v_{i-1,j}^n}{\Delta x^2} + \frac{v_{i,j+1}^n - 2v_{i,j}^n + v_{i,j-1}^n}{\Delta y^2} \right) 
 \end{aligned}
 $$&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;nx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;41&lt;/span&gt;
@@ -1852,7 +1852,7 @@ $$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Airfoil Selection:&lt;/strong&gt; A new airfoil I&amp;rsquo;ve been researching is the Selig S7075 for its good gliding/soaring characteristics and high efficiency at low Reynolds numbers. It&amp;rsquo;s a cambered airfoil with sharp trailing edge, and a maximum thickness-to-chord ratio of 9%  with the implementation of a boundary layer trip at 57.5% of the chord length. XFOIL analyses predict accurate results in agreement with Dr. Selig&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;http://m-selig.ae.illinois.edu/uiuc_lsat/Low-Speed-Airfoil-Data-V3.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;A Summary of Low-Speed Airfoil Data, Vol. 3&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Meshing Software:&lt;/strong&gt; I&amp;rsquo;ll be using ANSYS ICEM CFD and its convenient blocking features with its powerful sizing capabilities to generate 2D meshes.
+&lt;p&gt;&lt;strong&gt;Meshing Software:&lt;/strong&gt; I&amp;rsquo;ll be using ANSYS ICEM CFD and its convenient blocking features with its powerful sizing capabilities to generate 2D meshes. 
 The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a C-grid. An O-grid setup is when the body of analysis is enclosed within a curvilinear grid in which completely closed contours are created at offsets from the body. A C-grid setup, by example for an airfoil, is when the surrounding grid forms a &amp;lsquo;C&amp;rsquo; till the trailing edge.  Forums recommend that a C-grid mesh provides better results for airfoils with sharp trailing edges; this is because the grid alignment is along the airfoil shape (hence along the flow streamlines) to capture the flow results more accurately.&lt;/p&gt;
 &lt;p&gt;The blocking process in ICEM CFD used the same aspect ratios for element sizing in both meshing techniques. The operating Reynolds number for the flow is $ Re = 310,000 $ at sea level conditions. The desired $ y^+ = 1.0 $ in accordance with the Spalart-Allmaras model, and the estimated wall distance $ = 2.0 \times 10^{-5}~ m $ to resolve the boundary layer.&lt;/p&gt;
 &lt;hr&gt;
@@ -2053,18 +2053,18 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 &lt;/blockquote&gt;
 &lt;p&gt;X: 1
 T: C Locrian
-M:
-C:
-K:CLoc
+M: 
+C: 
+K:CLoc 
 |:CDEFGAB:|&lt;/p&gt;
 &lt;p&gt;The fundamental structure of a raga is based on the ascending and descending order of notes, referred to as &lt;em&gt;&amp;ldquo;Aaroh-Avroh&amp;rdquo;&lt;/em&gt;. The ornamentation in the instruments is also different: &lt;em&gt;&amp;ldquo;gamaks&amp;rdquo;&lt;/em&gt;, a quick slide between notes; permutations, abseneces and repetition of the notes are important in the definition of a raga. &lt;em&gt;Vyn&lt;/em&gt; from freenode&amp;rsquo;s &lt;code&gt;##math&lt;/code&gt; provided me with a few ragas and their respective interval structures, so I tried correlating some of them with the Gregorian modes. The following are two examples:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;B Phrygian: &lt;code&gt;B C D E F# G A&lt;/code&gt; = Raga Bhairavi&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;X: 1
-T: B Phrygian
-M:
-C:
+T: B Phrygian 
+M: 
+C: 
 K: BPhr
 |:B,CDEFGA:|&lt;/p&gt;
 &lt;blockquote&gt;
@@ -2153,7 +2153,7 @@ K: ADor
 &lt;div style=&#34;text-align:center&#34;&gt;&lt;img src=&#34;DubbyPendy.svg&#34; width=80% /&gt;&lt;/div&gt;
 &lt;p&gt;The Lagrangian of the system is:&lt;/p&gt;
 &lt;p&gt;$$ \mathcal{L} = T - V $$
-$$ T = \frac{1}{2}m_1 l_1^2 \dot{\theta}_1^2 + \frac{1}{2}m_2\left[l_1^2 \dot{\theta}_1^2 + l_2^2 \dot{\theta}_2^2 + 2l_1 l_2 \dot{\theta}_1 \dot{\theta}_2 \cos(\theta_1 - \theta_2)\right]$$
+$$ T = \frac{1}{2}m_1 l_1^2 \dot{\theta}_1^2 + \frac{1}{2}m_2\left[l_1^2 \dot{\theta}_1^2 + l_2^2 \dot{\theta}_2^2 + 2l_1 l_2 \dot{\theta}_1 \dot{\theta}_2 \cos(\theta_1 - \theta_2)\right]$$ 
 $$ V = -(m_1 + m_2)gl_1\cos \theta_1 - m_2gl_2\cos\theta_2 $$&lt;/p&gt;
 &lt;p&gt;After a &lt;a class=&#34;link&#34; href=&#34;http://scienceworld.wolfram.com/physics/DoublePendulum.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;very long derivation&lt;/a&gt;, Hamilton&amp;rsquo;s equations can be obtained:&lt;/p&gt;
@@ -2340,16 +2340,16 @@ $$ \sum^{n-1}_{k = 0} z_k = 0 $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;The roots of unity can be factorised into the following irreducible form over the field of real numbers:
-$$ z^n - 1 = (z-1)\sum^{n-1}_{i = 0} z^i $$
+$$ z^n - 1 = (z-1)\sum^{n-1}_{i = 0} z^i $$ 
 and can be factorised over the complex field as:
 $$ z^n - 1 = \prod_{k=0}^{n-1}(z-z_k) = (z-1)\prod_{k=1}^{n-1}(z-z_k) $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;A conjecture based on trial and error is:
-$$ \prod_{k=1}^{n-1}|z_k - z_0| = \prod_{k=1}^{n-1}|1-z_k| = n$$
+$$ \prod_{k=1}^{n-1}|z_k - z_0| = \prod_{k=1}^{n-1}|1-z_k| = n$$ 
 This states that the product of the distances between each root from a selected root is equal to the number of roots. To prove this, notice that:
-$$\sum^{n-1}_{i = 0} z^i = \prod_{k=1}^{n-1}(z-z_k) = \frac{z^n - 1}{z-1}$$
-For the equalities to be sensible at $z=1$, one must perform analytic continuation:
+$$\sum^{n-1}_{i = 0} z^i = \prod_{k=1}^{n-1}(z-z_k) = \frac{z^n - 1}{z-1}$$ 
+For the equalities to be sensible at $z=1$, one must perform analytic continuation: 
 $$\sum^{n-1}_{i = 0} 1^i = \prod_{k=1}^{n-1}|1-z_k| = \lim_{z\rightarrow 1} \frac{z^n - 1}{z-1}$$
 The first equality proves the conjecture. The last equality is evaluated using L&amp;rsquo;Hôpital&amp;rsquo;s rule, also  proving the conjecture:
 $$ \lim_{z\rightarrow 1} \frac{z^n - 1}{z-1} = \lim_{z\rightarrow 1} nz^{n-1} = n $$&lt;/p&gt;

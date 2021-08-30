@@ -519,9 +519,9 @@ if (!doNotTrack) {
 <p>To find the inverse spatial Fourier transform, we invoke the convolution theorem:</p>
 <p>$$ u(x,t) = \mathcal F_x^{-1}\left[u_F(k,t)\right] =  \mathcal F_x^{-1}[u(k,0)] * \mathcal F_x^{-1} \left[e^{-\nu k^2 t}\right] = u(x,0) * \mathcal F_x^{-1} \left[e^{-\nu k^2 t}\right] $$</p>
 <p>The second inverse transform is the Fourier transform of a Gaussian, which is nicely found in the following manner. Let $f(k) = e^{-\nu k^2 t}$ (with $\nu$ and $t$ as parameters), now differentiate and take the Fourier transform:</p>
-<p>$$
-\begin{aligned}
-ix \cdot f(x) &amp; = -2\nu t \cdot i f'(x) \\
+<p>$$ 
+\begin{aligned} 
+ix \cdot f(x) &amp; = -2\nu t \cdot i f'(x) \\ 
 \implies f(x) &amp; = \frac{1}{\sqrt{4\pi\nu t}}\exp\left(-\frac{x^2}{4\nu t}\right)
 \end{aligned}
 $$</p>
@@ -1044,16 +1044,16 @@ For loops took 4.577128199976869 seconds
 <p>$$ \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} = \nu\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\right) $$</p>
 <p>$$ \frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} = \nu\left(\frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2}\right) $$</p>
 <p>Discretised:</p>
-<p>$$
-\begin{aligned}
-\frac{u_{i,j}^{n+1} - u_{i,j}^n}{\Delta t} &amp; + u_{i,j}^n \frac{u_{i,j}^n-u_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{u_{i,j}^n - u_{i,j-1}^n}{\Delta y} \cr
-&amp; = \nu \left( \frac{u_{i+1,j}^n - 2u_{i,j}^n+u_{i-1,j}^n}{\Delta x^2} + \frac{u_{i,j+1}^n - 2u_{i,j}^n + u_{i,j-1}^n}{\Delta y^2} \right)
+<p>$$ 
+\begin{aligned} 
+\frac{u_{i,j}^{n+1} - u_{i,j}^n}{\Delta t} &amp; + u_{i,j}^n \frac{u_{i,j}^n-u_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{u_{i,j}^n - u_{i,j-1}^n}{\Delta y} \cr 
+&amp; = \nu \left( \frac{u_{i+1,j}^n - 2u_{i,j}^n+u_{i-1,j}^n}{\Delta x^2} + \frac{u_{i,j+1}^n - 2u_{i,j}^n + u_{i,j-1}^n}{\Delta y^2} \right) 
 \end{aligned}
 $$</p>
-<p>$$
-\begin{aligned}
-\frac{v_{i,j}^{n+1} - v_{i,j}^n}{\Delta t} &amp; + u_{i,j}^n \frac{v_{i,j}^n-v_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{v_{i,j}^n - v_{i,j-1}^n}{\Delta y} \cr
-&amp; = \nu \left( \frac{v_{i+1,j}^n - 2v_{i,j}^n+v_{i-1,j}^n}{\Delta x^2} + \frac{v_{i,j+1}^n - 2v_{i,j}^n + v_{i,j-1}^n}{\Delta y^2} \right)
+<p>$$ 
+\begin{aligned} 
+\frac{v_{i,j}^{n+1} - v_{i,j}^n}{\Delta t} &amp; + u_{i,j}^n \frac{v_{i,j}^n-v_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{v_{i,j}^n - v_{i,j-1}^n}{\Delta y} \cr 
+&amp; = \nu \left( \frac{v_{i+1,j}^n - 2v_{i,j}^n+v_{i-1,j}^n}{\Delta x^2} + \frac{v_{i,j+1}^n - 2v_{i,j}^n + v_{i,j-1}^n}{\Delta y^2} \right) 
 \end{aligned}
 $$</p>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">nx</span> <span class="o">=</span> <span class="mi">41</span>
