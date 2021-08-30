@@ -5,4 +5,4 @@ git add --all
 echo "Commit message?"
 read update
 git commit -m "$update"
-git push origin gh-pages
+git push origin -u origin master --recurse-submodules=on-demand
