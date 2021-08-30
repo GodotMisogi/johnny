@@ -1,9 +1,9 @@
 ---
 date: "2017-08-27T01:26:50+05:30"
-title: "Academic Notes — Physics and Mathematics"
+title: "Academic Notes - Physics and Mathematics"
 draft: false
 index: true
-description: A collection of notes consisting of my recreational studies in physics and mathematics.
+description: A collection of notes consisting of recreational studies in physics and mathematics.
 image: SES.svg
 categories: 
     - Physics

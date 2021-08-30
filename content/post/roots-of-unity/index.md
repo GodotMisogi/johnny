@@ -1,6 +1,6 @@
 ---
 date: "2016-12-25T02:43:36+05:30"
-title: Investigation — The Roots of Unity
+title: Investigation - The Roots of Unity
 draft: false
 # math:true
 image: Roots2.svg

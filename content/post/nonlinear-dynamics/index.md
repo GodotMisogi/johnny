@@ -1,6 +1,6 @@
 ---
 date: "2021-04-06T21:53:06+05:30"
-title: Nonlinear Dynamics — A Game of Computation?
+title: Nonlinear Dynamics - A Game of Computation?
 draft: true
 description: Playing around with nonlinear dynamics and populations.
 slug: nonlinear-dynamics

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-uk">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='A misguided post of what I thought was cool in computational fluid dynamics as an undergraduate.'><title>Meshing Techniques — Cambered Airfoil</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='A misguided post of what I thought was cool in computational fluid dynamics as an undergraduate.'><title>Meshing Techniques - Cambered Airfoil</title>
 
 <link rel='canonical' href='https://godotmisogi.github.io/blog-public/post/meshing-airfoil/'>
 
-<link rel="stylesheet" href="/blog-public/scss/style.min.css"><meta property='og:title' content='Meshing Techniques — Cambered Airfoil'>
+<link rel="stylesheet" href="/blog-public/scss/style.min.css"><meta property='og:title' content='Meshing Techniques - Cambered Airfoil'>
 <meta property='og:description' content='A misguided post of what I thought was cool in computational fluid dynamics as an undergraduate.'>
 <meta property='og:url' content='https://godotmisogi.github.io/blog-public/post/meshing-airfoil/'>
 <meta property='og:site_name' content='｢ALL FICTION｣'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2017-07-10T22:55:50&#43;05:30'/><meta property='article:modified_time' content='2017-07-10T22:55:50&#43;05:30'/><meta property='og:image' content='https://godotmisogi.github.io/blog-public/post/meshing-airfoil/images/CFD3.jpg' />
-<meta name="twitter:site" content="GodotMisogi"><meta name="twitter:title" content="Meshing Techniques — Cambered Airfoil">
+<meta name="twitter:site" content="GodotMisogi"><meta name="twitter:title" content="Meshing Techniques - Cambered Airfoil">
 <meta name="twitter:description" content="A misguided post of what I thought was cool in computational fluid dynamics as an undergraduate."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://godotmisogi.github.io/blog-public/post/meshing-airfoil/images/CFD3.jpg' />
     <link rel="shortcut icon" href="/punpun1.jpg" />
@@ -231,7 +231,7 @@ if (!doNotTrack) {
                         width="800" 
                         height="416" 
                         loading="lazy"
-                        alt="Featured image of post Meshing Techniques — Cambered Airfoil" />
+                        alt="Featured image of post Meshing Techniques - Cambered Airfoil" />
                 
             </a>
         </div>
@@ -253,7 +253,7 @@ if (!doNotTrack) {
     
 
     <h2 class="article-title">
-        <a href="/blog-public/post/meshing-airfoil/">Meshing Techniques — Cambered Airfoil</a>
+        <a href="/blog-public/post/meshing-airfoil/">Meshing Techniques - Cambered Airfoil</a>
     </h2>
 
     
@@ -279,7 +279,7 @@ if (!doNotTrack) {
 <p><strong>Airfoil Selection:</strong> A new airfoil I&rsquo;ve been researching is the Selig S7075 for its good gliding/soaring characteristics and high efficiency at low Reynolds numbers. It&rsquo;s a cambered airfoil with sharp trailing edge, and a maximum thickness-to-chord ratio of 9%  with the implementation of a boundary layer trip at 57.5% of the chord length. XFOIL analyses predict accurate results in agreement with Dr. Selig&rsquo;s <a class="link" href="http://m-selig.ae.illinois.edu/uiuc_lsat/Low-Speed-Airfoil-Data-V3.pdf"  target="_blank" rel="noopener"
     >A Summary of Low-Speed Airfoil Data, Vol. 3</a>.</p>
 <hr>
-<p><strong>Meshing Software:</strong> I&rsquo;ll be using ANSYS ICEM CFD and its convenient blocking features with its powerful sizing capabilities to generate 2D meshes.
+<p><strong>Meshing Software:</strong> I&rsquo;ll be using ANSYS ICEM CFD and its convenient blocking features with its powerful sizing capabilities to generate 2D meshes. 
 The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-grid. An O-grid setup is when the body of analysis is enclosed within a curvilinear grid in which completely closed contours are created at offsets from the body. A C-grid setup, by example for an airfoil, is when the surrounding grid forms a &lsquo;C&rsquo; till the trailing edge.  Forums recommend that a C-grid mesh provides better results for airfoils with sharp trailing edges; this is because the grid alignment is along the airfoil shape (hence along the flow streamlines) to capture the flow results more accurately.</p>
 <p>The blocking process in ICEM CFD used the same aspect ratios for element sizing in both meshing techniques. The operating Reynolds number for the flow is $ Re = 310,000 $ at sea level conditions. The desired $ y^+ = 1.0 $ in accordance with the Spalart-Allmaras model, and the estimated wall distance $ = 2.0 \times 10^{-5}~ m $ to resolve the boundary layer.</p>
 <hr>
@@ -392,8 +392,6 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
 	</figure></p>
 <hr>
 <p>These meshes will require refinement before they&rsquo;re ready to be analysed and produce accurate results, which I&rsquo;ll be working on as a project. Hopefully I&rsquo;ll be able to complete it soon and post it with all the details regarding the meshing procedure.</p>
-<p><strong>UPDATE:</strong> These procedures are arduous and time-consuming. The <a class="link" href="https://github.com/mdolab/MACH-Aero"  target="_blank" rel="noopener"
-    >MACH-Aero</a> framework developed by the MDOLab at University of Michigan — Ann Arbor provides a much nicer and faster way of generating meshes for airfoils and wings with powerful solvers for CFD analyses and optimisations.</p>
 
 </section>
 
@@ -461,7 +459,7 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
         
 
         <div class="article-details">
-            <h2 class="article-title">Computational Fluid Dynamics — CFDPython</h2>
+            <h2 class="article-title">Computational Fluid Dynamics - CFDPython</h2>
         </div>
     </a>
 </article>
@@ -479,7 +477,7 @@ The two types of meshes I&rsquo;ll be trying to generate are an O-grid and a C-g
         
 
         <div class="article-details">
-            <h2 class="article-title">Variational Calculus — Induced Drag Over a Wing</h2>
+            <h2 class="article-title">Calculus of Variations - Induced Drag Over a Wing</h2>
         </div>
     </a>
 </article>

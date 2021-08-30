@@ -1,9 +1,8 @@
 ---
 date: "2017-07-11T01:26:50+05:30"
-title: Graphic Designs — AeroMIT
+title: AeroMIT - Graphics Design
 draft: false
 slug: aeromit-design
-description: Graphic designs of paraphernalia for my undergraduate aeromodelling team.
 categories: 
     - Design
 image: recruitment-2017.png

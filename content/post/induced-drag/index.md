@@ -1,6 +1,6 @@
 ---
 date: "2016-12-26T01:55:24+05:30"
-title: "Variational Calculus — Induced Drag Over a Wing"
+title: "Calculus of Variations - Induced Drag Over a Wing"
 draft: false
 slug: induced-drag
 description: A desperate attempt to come up with something original in aerodynamics using studies from physics, only having found it to be already discovered in the 1960s.

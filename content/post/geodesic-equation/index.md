@@ -1,6 +1,6 @@
 ---
 date: "2017-04-19T21:53:06+05:30"
-title: Variational Calculus — Geodesic Equation
+title: Derivation - Geodesic Equation
 draft: false
 # math:true
 description: An exercise from a textbook on general relativity.

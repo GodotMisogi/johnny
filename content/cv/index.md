@@ -4,7 +4,7 @@ title: "Curriculum Vitae"
 draft: false
 ---
 
-E-mail: `ajseth AT ust DOT hk`
+E-mail: [`ajseth AT ust DOT hk`](mailto:ajseth@ust.hk)
 
 ## Education
 
@@ -18,9 +18,9 @@ E-mail: `ajseth AT ust DOT hk`
 
 ### Peer-Reviewed Articles 
 
-1. **Arjit Seth** and Rhea P. Liem. Amphibious Aircraft Developments: Computational Studies of Hydrofoil Design for Improvements in Water-Takeoffs. Aerospace (**8**), 10, 2021. https://doi.org/10.3390/aerospace8010010
+1. **Arjit Seth** and Rhea P. Liem. Amphibious Aircraft Developments: Computational Studies of Hydrofoil Design for Improvements in Water-Takeoffs. Aerospace 2021, 8, 10. https://doi.org/10.3390/aerospace8010010
 
-2. Dajung Kim, **Arjit Seth** and Rhea P. Liem. Data-enhanced dynamic flight simulations for flight performance analysis. Under review after revised submission, 2021.
+2. Dajung Kim, **Arjit Seth** and Rhea P. Liem. Data-enhanced dynamic flight simulations for flight performance analysis. Under review after submission.
 
 <!-- 3. Vinay Madhusudanan, G. Sudhakara, **Arjit Seth**. Descending Endomorphisms of Groups. Under preparation for submission. -->
 

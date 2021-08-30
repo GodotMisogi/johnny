@@ -1,6 +1,6 @@
 ---
 date: "2016-12-27T16:54:58+05:30"
-title: Dubby Pendy — A Double Pendulum Simulator
+title: Dubby Pendy - A Double Pendulum Simulator
 draft: false
 # math:true
 slug: dubby-pendy
