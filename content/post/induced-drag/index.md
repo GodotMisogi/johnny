@@ -52,7 +52,7 @@ $$ \frac{\mathrm{d}}{\mathrm{d}y}\int^{b/2}\_{-b/2}\frac{\Gamma(x)}{y-x}~\mathrm
 
 Feynman's favourite trick, differentiating under the integral sign:
 
-$$ \require{cancel} \frac{\mathrm{d}}{\mathrm{d}y}\int^{y-b/2}\_{y+b/2}\frac{\Gamma(y-q)}{q}~\mathrm{d}q = \cancel{\frac{\Gamma(b/2)}{y-b/2}} - \cancel{\frac{\Gamma(-b/2)}{y+b/2}} + \int^{y-b/2}\_{y+b/2}\frac{\partial}{\partial y}\frac{\Gamma(y-q)}{q}~\mathrm{d}q $$
+$$ \frac{\mathrm{d}}{\mathrm{d}y}\int^{y-b/2}\_{y+b/2}\frac{\Gamma(y-q)}{q}~\mathrm{d}q = \cancel{\frac{\Gamma(b/2)}{y-b/2}} - \cancel{\frac{\Gamma(-b/2)}{y+b/2}} + \int^{y-b/2}\_{y+b/2}\frac{\partial}{\partial y}\frac{\Gamma(y-q)}{q}~\mathrm{d}q $$
 
 Mapping the variables back:
 

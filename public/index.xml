@@ -2285,7 +2285,7 @@ Your browser does not support the video tag.
 &lt;p&gt;A change of variables $y-x = q$ is useful to evaluate the last integral:&lt;/p&gt;
 &lt;p&gt;$$ \frac{\mathrm{d}}{\mathrm{d}y}\int^{b/2}_{-b/2}\frac{\Gamma(x)}{y-x}~\mathrm{d}x = \frac{\mathrm{d}}{\mathrm{d}y}\int^{y-b/2}_{y+b/2}\frac{\Gamma(y-q)}{q}~\mathrm{d}q$$&lt;/p&gt;
 &lt;p&gt;Feynman&amp;rsquo;s favourite trick, differentiating under the integral sign:&lt;/p&gt;
-&lt;p&gt;$$ \require{cancel} \frac{\mathrm{d}}{\mathrm{d}y}\int^{y-b/2}_{y+b/2}\frac{\Gamma(y-q)}{q}~\mathrm{d}q = \cancel{\frac{\Gamma(b/2)}{y-b/2}} - \cancel{\frac{\Gamma(-b/2)}{y+b/2}} + \int^{y-b/2}_{y+b/2}\frac{\partial}{\partial y}\frac{\Gamma(y-q)}{q}~\mathrm{d}q $$&lt;/p&gt;
+&lt;p&gt;$$ \frac{\mathrm{d}}{\mathrm{d}y}\int^{y-b/2}_{y+b/2}\frac{\Gamma(y-q)}{q}~\mathrm{d}q = \cancel{\frac{\Gamma(b/2)}{y-b/2}} - \cancel{\frac{\Gamma(-b/2)}{y+b/2}} + \int^{y-b/2}_{y+b/2}\frac{\partial}{\partial y}\frac{\Gamma(y-q)}{q}~\mathrm{d}q $$&lt;/p&gt;
 &lt;p&gt;Mapping the variables back:&lt;/p&gt;
 &lt;p&gt;$$ \int^{y-b/2}_{y+b/2}\frac{\partial}{\partial y}\frac{\Gamma(y-q)}{q}~\mathrm{d}q = \int^{b/2}_{-b/2}\frac{\Gamma&#39;(x)}{y-x}~\mathrm{d}x$$&lt;/p&gt;
 &lt;p&gt;Substituting this into the original expression:&lt;/p&gt;
