@@ -12,7 +12,7 @@
         <pubDate>Sat, 05 May 2018 16:54:58 +0530</pubDate>
         
         <guid>https://godotmisogi.github.io/post/cfd-python/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/post/cfd-python/images/2DPoissonSurfStud.svg" alt="Featured image of post Computational Fluid Dynamics - CFDPython" /&gt;&lt;p&gt;This &amp;lsquo;notebook&amp;rsquo; consists of my run-through of Prof. Lorena Barba&amp;rsquo;s &amp;ldquo;&lt;a class=&#34;link&#34; href=&#34;http://lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;img src="https://godotmisogi.github.io/post/cfd-python/images/2DCavityStreamStud.svg" alt="Featured image of post Computational Fluid Dynamics - CFDPython" /&gt;&lt;p&gt;This &amp;lsquo;notebook&amp;rsquo; consists of my run-through of Prof. Lorena Barba&amp;rsquo;s &amp;ldquo;&lt;a class=&#34;link&#34; href=&#34;http://lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;12 steps to Navier-Stokes&lt;/a&gt;&amp;rdquo; course, because I admit I have a problem with fluids. The &lt;a class=&#34;link&#34; href=&#34;https://www.grc.nasa.gov/www/k-12/airplane/nseqs.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Navier-Stokes&lt;/a&gt; equations that will be solved in this notebook are the following in conservative form:&lt;/p&gt;
 &lt;p&gt;$$ \frac{\partial \rho}{\partial t} + \nabla \cdot \left(\rho V\right) = 0 $$&lt;/p&gt;
