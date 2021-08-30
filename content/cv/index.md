@@ -106,24 +106,20 @@ Previously an intern at the OCTAD Lab under HKUST's International Visiting Inter
 
 *Developments —*
 
-* Weight estimation, sizing, payload optimisation, performance, stability and structural analyses of aircraft.
+  * Weight estimation, sizing, payload optimisation, performance, stability and structural analyses of aircraft.
+  * Computational fluid dynamics analyses of high-lift airfoils and wings.
+  * Preparation of technical design report and presentation.
+  * Teaching aerodynamics, flight dynamics, aircraft design and CFD to juniors of the team.
 
-* Computational fluid dynamics analyses of high-lift airfoils and wings.
+*Results —* 
 
-* Preparation of technical design report and presentation.
-
-* Teaching aerodynamics, flight dynamics, aircraft design and CFD to juniors of the team.
-
-*[2018 East Results](https://www.saeaerodesign.com/content/2018-AE-MicroClassOverallResults.pdf):* Rank 1 in Design and Rank 3 in Presentation.
-
-*[2017 West Results](https://www.saeaerodesign.com/content/ADW2017_FINAL.pdf):* Rank 1 in Highest Payload Lifted, Rank 2 in Highest Payload Fraction, Rank 4 Overall.
-
-*[2016 East Results](https://www.saeaerodesign.com/content/2016aeroEastFinal.pdf):* Rank 3 in Highest Payload Lifted, Rank 4 in Highest Payload Fraction, Rank 5 Overall.
+  1. *[2018 East](https://www.saeaerodesign.com/content/2018-AE-MicroClassOverallResults.pdf):* Rank 1 in Design and Rank 3 in Presentation.
+  2. *[2017 West](https://www.saeaerodesign.com/content/ADW2017_FINAL.pdf):* Rank 1 in Highest Payload Lifted, Rank 2 in Highest Payload Fraction, Rank 4 Overall.
+  3. *[2016 East](https://www.saeaerodesign.com/content/2016aeroEastFinal.pdf):* Rank 3 in Highest Payload Lifted, Rank 4 in Highest Payload Fraction, Rank 5 Overall.
 
 **Protean UAV Challenge sponsored by TATA Sons GTIO and Indian Institute of Technology, Bombay**: Reponsible for development of a multi-rotor aircraft able to switch between quad, hex and octo configurations while midair with stability.
 
-* Mathematical model development to ensure maneuvering stability between configurations using MATLAB and Simulink.
+  * Mathematical model development to ensure maneuvering stability between configurations using MATLAB and Simulink.
+  * Computational structural analyses to ensure sufficient rigidity.
 
-* Computational structural analyses to ensure sufficient rigidity.
-
-*Results:* 1st prize winner.
+  *Results —* 1st prize winner.
