@@ -8,7 +8,7 @@
     <language>en-uk</language>
     <lastBuildDate>Sat, 05 May 2018 16:54:58 +0530</lastBuildDate><atom:link href="https://godotmisogi.github.io/blog-public/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Computational Fluid Dynamics - CFDPython</title>
+      <title>Computational Fluid Dynamics — CFDPython</title>
       <link>https://godotmisogi.github.io/blog-public/post/cfd-python/</link>
       <pubDate>Sat, 05 May 2018 16:54:58 +0530</pubDate>
       
@@ -19,7 +19,7 @@ $$ \frac{\partial (\rho\vec V)}{\partial t} + \nabla \cdot \left(\rho ~\vec V \o
     </item>
     
     <item>
-      <title>Meshing Techniques - Cambered Airfoil</title>
+      <title>Meshing Techniques — Cambered Airfoil</title>
       <link>https://godotmisogi.github.io/blog-public/post/meshing-airfoil/</link>
       <pubDate>Mon, 10 Jul 2017 22:55:50 +0530</pubDate>
       
@@ -28,18 +28,18 @@ $$ \frac{\partial (\rho\vec V)}{\partial t} + \nabla \cdot \left(\rho ~\vec V \o
     </item>
     
     <item>
-      <title>Derivation - Geodesic Equation</title>
-      <link>https://godotmisogi.github.io/blog-public/post/derivation-geodesic-equation/</link>
+      <title>Variational Calculus — Geodesic Equation</title>
+      <link>https://godotmisogi.github.io/blog-public/post/variational-calculus-geodesic-equation/</link>
       <pubDate>Wed, 19 Apr 2017 21:53:06 +0530</pubDate>
       
-      <guid>https://godotmisogi.github.io/blog-public/post/derivation-geodesic-equation/</guid>
+      <guid>https://godotmisogi.github.io/blog-public/post/variational-calculus-geodesic-equation/</guid>
       <description>Bernard F. Schutz&amp;rsquo;s A First Course in General Relativity provides a nice introduction to the difficult subject in my opinion. In Chapter 6, he mentions that one should derive the Euler-Lagrange equations to minimise the spacetime interval of a particle&amp;rsquo;s trajectory, obtaining the geodesic equation:
 $$ \frac{\mathrm{d}}{\mathrm{d}\lambda}\left(\frac{\mathrm{d}x^{\gamma}}{\mathrm{d}\lambda}\right) + \Gamma^{\gamma}_{~\alpha\beta}\frac{\mathrm{d}x^{\alpha}}{\mathrm{d}\lambda}\frac{\mathrm{d}x^{\beta}}{\mathrm{d}\lambda} = 0 $$
 Note: At first I derived it from variational principles, but the Euler-Lagrange equations provide a faster route via means of a neat trick.</description>
     </item>
     
     <item>
-      <title>Observation - Indian Classical Music</title>
+      <title>Observation — Indian Classical Music</title>
       <link>https://godotmisogi.github.io/blog-public/post/indian-classical/</link>
       <pubDate>Tue, 17 Jan 2017 22:55:27 +0530</pubDate>
       
@@ -49,7 +49,7 @@ Note: At first I derived it from variational principles, but the Euler-Lagrange 
     </item>
     
     <item>
-      <title>Dubby Pendy - A Double Pendulum Simulator</title>
+      <title>Dubby Pendy — A Double Pendulum Simulator</title>
       <link>https://godotmisogi.github.io/blog-public/post/dubby-pendy/</link>
       <pubDate>Tue, 27 Dec 2016 16:54:58 +0530</pubDate>
       
@@ -59,7 +59,7 @@ A famous example of a system whose equations of motion can be more easily attain
     </item>
     
     <item>
-      <title>Calculus of Variations - Induced Drag Over a Wing</title>
+      <title>Variational Calculus — Induced Drag Over a Wing</title>
       <link>https://godotmisogi.github.io/blog-public/post/induced-drag/</link>
       <pubDate>Mon, 26 Dec 2016 01:55:24 +0530</pubDate>
       
@@ -71,7 +71,7 @@ This effectively implies that the downwash can be expressed as a functional of $
     </item>
     
     <item>
-      <title>Investigation - The Roots of Unity</title>
+      <title>Investigation — The Roots of Unity</title>
       <link>https://godotmisogi.github.io/blog-public/post/roots-of-unity/</link>
       <pubDate>Sun, 25 Dec 2016 02:43:36 +0530</pubDate>
       

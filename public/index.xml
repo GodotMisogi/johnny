@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-uk</language>
         <lastBuildDate>Sat, 05 May 2018 16:54:58 +0530</lastBuildDate><atom:link href="https://godotmisogi.github.io/blog-public/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Computational Fluid Dynamics - CFDPython</title>
+        <title>Computational Fluid Dynamics — CFDPython</title>
         <link>https://godotmisogi.github.io/blog-public/post/cfd-python/</link>
         <pubDate>Sat, 05 May 2018 16:54:58 +0530</pubDate>
         
         <guid>https://godotmisogi.github.io/blog-public/post/cfd-python/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/cfd-python/images/2DPoissonSurfStud.svg" alt="Featured image of post Computational Fluid Dynamics - CFDPython" /&gt;&lt;p&gt;This &amp;lsquo;notebook&amp;rsquo; consists of my run-through of Prof. Lorena Barba&amp;rsquo;s &amp;ldquo;&lt;a class=&#34;link&#34; href=&#34;http://lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/cfd-python/images/2DPoissonSurfStud.svg" alt="Featured image of post Computational Fluid Dynamics — CFDPython" /&gt;&lt;p&gt;This &amp;lsquo;notebook&amp;rsquo; consists of my run-through of Prof. Lorena Barba&amp;rsquo;s &amp;ldquo;&lt;a class=&#34;link&#34; href=&#34;http://lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;12 steps to Navier-Stokes&lt;/a&gt;&amp;rdquo; course, because I admit I have a problem with fluids. The &lt;a class=&#34;link&#34; href=&#34;https://www.grc.nasa.gov/www/k-12/airplane/nseqs.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Navier-Stokes&lt;/a&gt; equations that will be solved in this notebook are the following in conservative form:&lt;/p&gt;
 &lt;p&gt;$$ \frac{\partial \rho}{\partial t} + \nabla \cdot \left(\rho V\right) = 0 $$&lt;/p&gt;
@@ -257,9 +257,9 @@
 &lt;p&gt;To find the inverse spatial Fourier transform, we invoke the convolution theorem:&lt;/p&gt;
 &lt;p&gt;$$ u(x,t) = \mathcal F_x^{-1}\left[u_F(k,t)\right] =  \mathcal F_x^{-1}[u(k,0)] * \mathcal F_x^{-1} \left[e^{-\nu k^2 t}\right] = u(x,0) * \mathcal F_x^{-1} \left[e^{-\nu k^2 t}\right] $$&lt;/p&gt;
 &lt;p&gt;The second inverse transform is the Fourier transform of a Gaussian, which is nicely found in the following manner. Let $f(k) = e^{-\nu k^2 t}$ (with $\nu$ and $t$ as parameters), now differentiate and take the Fourier transform:&lt;/p&gt;
-&lt;p&gt;$$ 
-\begin{aligned} 
-ix \cdot f(x) &amp;amp; = -2\nu t \cdot i f&#39;(x) \\ 
+&lt;p&gt;$$
+\begin{aligned}
+ix \cdot f(x) &amp;amp; = -2\nu t \cdot i f&#39;(x) \\
 \implies f(x) &amp;amp; = \frac{1}{\sqrt{4\pi\nu t}}\exp\left(-\frac{x^2}{4\nu t}\right)
 \end{aligned}
 $$&lt;/p&gt;
@@ -782,16 +782,16 @@ For loops took 4.577128199976869 seconds
 &lt;p&gt;$$ \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} = \nu\left(\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}\right) $$&lt;/p&gt;
 &lt;p&gt;$$ \frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y} = \nu\left(\frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2}\right) $$&lt;/p&gt;
 &lt;p&gt;Discretised:&lt;/p&gt;
-&lt;p&gt;$$ 
-\begin{aligned} 
-\frac{u_{i,j}^{n+1} - u_{i,j}^n}{\Delta t} &amp;amp; + u_{i,j}^n \frac{u_{i,j}^n-u_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{u_{i,j}^n - u_{i,j-1}^n}{\Delta y} \cr 
-&amp;amp; = \nu \left( \frac{u_{i+1,j}^n - 2u_{i,j}^n+u_{i-1,j}^n}{\Delta x^2} + \frac{u_{i,j+1}^n - 2u_{i,j}^n + u_{i,j-1}^n}{\Delta y^2} \right) 
+&lt;p&gt;$$
+\begin{aligned}
+\frac{u_{i,j}^{n+1} - u_{i,j}^n}{\Delta t} &amp;amp; + u_{i,j}^n \frac{u_{i,j}^n-u_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{u_{i,j}^n - u_{i,j-1}^n}{\Delta y} \cr
+&amp;amp; = \nu \left( \frac{u_{i+1,j}^n - 2u_{i,j}^n+u_{i-1,j}^n}{\Delta x^2} + \frac{u_{i,j+1}^n - 2u_{i,j}^n + u_{i,j-1}^n}{\Delta y^2} \right)
 \end{aligned}
 $$&lt;/p&gt;
-&lt;p&gt;$$ 
-\begin{aligned} 
-\frac{v_{i,j}^{n+1} - v_{i,j}^n}{\Delta t} &amp;amp; + u_{i,j}^n \frac{v_{i,j}^n-v_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{v_{i,j}^n - v_{i,j-1}^n}{\Delta y} \cr 
-&amp;amp; = \nu \left( \frac{v_{i+1,j}^n - 2v_{i,j}^n+v_{i-1,j}^n}{\Delta x^2} + \frac{v_{i,j+1}^n - 2v_{i,j}^n + v_{i,j-1}^n}{\Delta y^2} \right) 
+&lt;p&gt;$$
+\begin{aligned}
+\frac{v_{i,j}^{n+1} - v_{i,j}^n}{\Delta t} &amp;amp; + u_{i,j}^n \frac{v_{i,j}^n-v_{i-1,j}^n}{\Delta x} + v_{i,j}^n \frac{v_{i,j}^n - v_{i,j-1}^n}{\Delta y} \cr
+&amp;amp; = \nu \left( \frac{v_{i+1,j}^n - 2v_{i,j}^n+v_{i-1,j}^n}{\Delta x^2} + \frac{v_{i,j+1}^n - 2v_{i,j}^n + v_{i,j-1}^n}{\Delta y^2} \right)
 \end{aligned}
 $$&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;nx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;41&lt;/span&gt;
@@ -1743,12 +1743,12 @@ $$&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>Academic Notes - Physics and Mathematics</title>
+        <title>Academic Notes — Physics and Mathematics</title>
         <link>https://godotmisogi.github.io/blog-public/project/academics/</link>
         <pubDate>Sun, 27 Aug 2017 01:26:50 +0530</pubDate>
         
         <guid>https://godotmisogi.github.io/blog-public/project/academics/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/blog-public/project/academics/SES.svg" alt="Featured image of post Academic Notes - Physics and Mathematics" /&gt;&lt;p&gt;I&amp;rsquo;ve been studying some physics for a while and decided to write solution manuals for reference in case I forget the approach to a problem later. They&amp;rsquo;re lazily written, hence some solutions might be incomplete, incorrect or have illogical statements. Here&amp;rsquo;s what I&amp;rsquo;ve compiled so far:&lt;/p&gt;
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/project/academics/SES.svg" alt="Featured image of post Academic Notes — Physics and Mathematics" /&gt;&lt;p&gt;I&amp;rsquo;ve been studying some physics for a while and decided to write solution manuals for reference in case I forget the approach to a problem later. They&amp;rsquo;re lazily written, hence some solutions might be incomplete, incorrect or have illogical statements. Here&amp;rsquo;s what I&amp;rsquo;ve compiled so far:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://raw.githubusercontent.com/GodotMisogi/physics-notes/master/Quantum%20Field%20Theory%20for%20the%20Gifted%20Amateur%20-%20T.%20Lancaster%20%26%20S.%20J.%20Blundell/Lancaster%20Solutions.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Tom Lancaster et. al. - Quantum Field Theory for the Gifted Amateur&lt;/a&gt;&lt;/li&gt;
@@ -1771,12 +1771,12 @@ $$&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>AeroMIT - Graphics Design</title>
+        <title>Graphic Designs — AeroMIT</title>
         <link>https://godotmisogi.github.io/blog-public/project/aeromit-design/</link>
         <pubDate>Tue, 11 Jul 2017 01:26:50 +0530</pubDate>
         
         <guid>https://godotmisogi.github.io/blog-public/project/aeromit-design/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/blog-public/project/aeromit-design/recruitment-2017.png" alt="Featured image of post AeroMIT - Graphics Design" /&gt;&lt;p&gt;I never really saw myself ever getting involved in any kind of designing activities, as I don&amp;rsquo;t feel I&amp;rsquo;m artistic enough or have the required &lt;code&gt;a e s t h e t i c&lt;/code&gt; abilities. However, I was given the responsibility to design a couple of posters, presentations and brochures for my team AeroMIT, our university&amp;rsquo;s aeromodelling team. I created a couple of items which I think are all right&lt;/p&gt;
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/project/aeromit-design/recruitment-2017.png" alt="Featured image of post Graphic Designs — AeroMIT" /&gt;&lt;p&gt;I never really saw myself ever getting involved in any kind of designing activities, as I don&amp;rsquo;t feel I&amp;rsquo;m artistic enough or have the required &lt;code&gt;a e s t h e t i c&lt;/code&gt; abilities. However, I was given the responsibility to design a couple of posters, presentations and brochures for my team AeroMIT, our university&amp;rsquo;s aeromodelling team. I created a couple of items which I think are all right&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Recruitment Poster 2017&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1842,17 +1842,17 @@ $$&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>Meshing Techniques - Cambered Airfoil</title>
+        <title>Meshing Techniques — Cambered Airfoil</title>
         <link>https://godotmisogi.github.io/blog-public/post/meshing-airfoil/</link>
         <pubDate>Mon, 10 Jul 2017 22:55:50 +0530</pubDate>
         
         <guid>https://godotmisogi.github.io/blog-public/post/meshing-airfoil/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/meshing-airfoil/images/CFD3.jpg" alt="Featured image of post Meshing Techniques - Cambered Airfoil" /&gt;&lt;p&gt;Meshing is a crucial process in obtaining accurate results for various simulations across different fields. In computational fluid dynamics, various meshing techniques are used in grid generation for 2D analyses of airfoils. Some nice run-throughs exist on YouTube, but they mostly deal with symmetric airfoils such as the &lt;em&gt;beloved&lt;/em&gt; NACA 0012. I&amp;rsquo;ll attempt generating preliminary meshes over a cambered airfoil in this post and probably write a project once I&amp;rsquo;ve been able to perform flow analyses with accurate results.&lt;/p&gt;
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/meshing-airfoil/images/CFD3.jpg" alt="Featured image of post Meshing Techniques — Cambered Airfoil" /&gt;&lt;p&gt;Meshing is a crucial process in obtaining accurate results for various simulations across different fields. In computational fluid dynamics, various meshing techniques are used in grid generation for 2D analyses of airfoils. Some nice run-throughs exist on YouTube, but they mostly deal with symmetric airfoils such as the &lt;em&gt;beloved&lt;/em&gt; NACA 0012. I&amp;rsquo;ll attempt generating preliminary meshes over a cambered airfoil in this post and probably write a project once I&amp;rsquo;ve been able to perform flow analyses with accurate results.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Airfoil Selection:&lt;/strong&gt; A new airfoil I&amp;rsquo;ve been researching is the Selig S7075 for its good gliding/soaring characteristics and high efficiency at low Reynolds numbers. It&amp;rsquo;s a cambered airfoil with sharp trailing edge, and a maximum thickness-to-chord ratio of 9%  with the implementation of a boundary layer trip at 57.5% of the chord length. XFOIL analyses predict accurate results in agreement with Dr. Selig&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;http://m-selig.ae.illinois.edu/uiuc_lsat/Low-Speed-Airfoil-Data-V3.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;A Summary of Low-Speed Airfoil Data, Vol. 3&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Meshing Software:&lt;/strong&gt; I&amp;rsquo;ll be using ANSYS ICEM CFD and its convenient blocking features with its powerful sizing capabilities to generate 2D meshes. 
+&lt;p&gt;&lt;strong&gt;Meshing Software:&lt;/strong&gt; I&amp;rsquo;ll be using ANSYS ICEM CFD and its convenient blocking features with its powerful sizing capabilities to generate 2D meshes.
 The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a C-grid. An O-grid setup is when the body of analysis is enclosed within a curvilinear grid in which completely closed contours are created at offsets from the body. A C-grid setup, by example for an airfoil, is when the surrounding grid forms a &amp;lsquo;C&amp;rsquo; till the trailing edge.  Forums recommend that a C-grid mesh provides better results for airfoils with sharp trailing edges; this is because the grid alignment is along the airfoil shape (hence along the flow streamlines) to capture the flow results more accurately.&lt;/p&gt;
 &lt;p&gt;The blocking process in ICEM CFD used the same aspect ratios for element sizing in both meshing techniques. The operating Reynolds number for the flow is $ Re = 310,000 $ at sea level conditions. The desired $ y^+ = 1.0 $ in accordance with the Spalart-Allmaras model, and the estimated wall distance $ = 2.0 \times 10^{-5}~ m $ to resolve the boundary layer.&lt;/p&gt;
 &lt;hr&gt;
@@ -1965,22 +1965,24 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 	&lt;/figure&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;These meshes will require refinement before they&amp;rsquo;re ready to be analysed and produce accurate results, which I&amp;rsquo;ll be working on as a project. Hopefully I&amp;rsquo;ll be able to complete it soon and post it with all the details regarding the meshing procedure.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;UPDATE:&lt;/strong&gt; These procedures are arduous and time-consuming. The &lt;a class=&#34;link&#34; href=&#34;https://github.com/mdolab/MACH-Aero&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MACH-Aero&lt;/a&gt; framework developed by the MDOLab at University of Michigan — Ann Arbor provides a much nicer and faster way of generating meshes for airfoils and wings with powerful solvers for CFD analyses and optimisations.&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>Derivation - Geodesic Equation</title>
-        <link>https://godotmisogi.github.io/blog-public/post/derivation-geodesic-equation/</link>
+        <title>Variational Calculus — Geodesic Equation</title>
+        <link>https://godotmisogi.github.io/blog-public/post/variational-calculus-geodesic-equation/</link>
         <pubDate>Wed, 19 Apr 2017 21:53:06 +0530</pubDate>
         
-        <guid>https://godotmisogi.github.io/blog-public/post/derivation-geodesic-equation/</guid>
+        <guid>https://godotmisogi.github.io/blog-public/post/variational-calculus-geodesic-equation/</guid>
         <description>&lt;p&gt;Bernard F. Schutz&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;http://www.cambridge.org/us/academic/subjects/physics/cosmology-relativity-and-gravitation/first-course-general-relativity-2nd-edition?format=HB&amp;amp;isbn=9780521887052&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;A First Course in General Relativity&lt;/a&gt; provides a nice introduction to the difficult subject in my opinion. In Chapter 6, he mentions that one should derive the Euler-Lagrange equations to minimise the spacetime interval of a particle&amp;rsquo;s trajectory, obtaining the geodesic equation:&lt;/p&gt;
 &lt;p&gt;$$ \frac{\mathrm{d}}{\mathrm{d}\lambda}\left(\frac{\mathrm{d}x^{\gamma}}{\mathrm{d}\lambda}\right) + \Gamma^{\gamma}_{~\alpha\beta}\frac{\mathrm{d}x^{\alpha}}{\mathrm{d}\lambda}\frac{\mathrm{d}x^{\beta}}{\mathrm{d}\lambda} = 0 $$&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; At first I derived it from variational principles, but the Euler-Lagrange equations provide a faster route via means of a neat trick.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Motivation&lt;/strong&gt;: The main aim of this investigation is to find curves that parallel-transport tangent vectors. The following diagram should make this idea clearer:&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 89; flex-basis: 214px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/derivation-geodesic-equation/Parallel_transport.png&#34; data-size=&#34;510x570&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/derivation-geodesic-equation/Parallel_transport.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/derivation-geodesic-equation/Parallel_transport_huf7a23ab9577d57f62c7055dcd7470096_59986_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/post/derivation-geodesic-equation/Parallel_transport_huf7a23ab9577d57f62c7055dcd7470096_59986_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/variational-calculus-geodesic-equation/Parallel_transport.png&#34; data-size=&#34;510x570&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/variational-calculus-geodesic-equation/Parallel_transport.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/variational-calculus-geodesic-equation/Parallel_transport_huf7a23ab9577d57f62c7055dcd7470096_59986_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/post/variational-calculus-geodesic-equation/Parallel_transport_huf7a23ab9577d57f62c7055dcd7470096_59986_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;510&#34;
 				height=&#34;570&#34;
 				loading=&#34;lazy&#34;
@@ -2017,7 +2019,7 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 &lt;!-- &lt;iframe src=&#34;https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FTheoreticalPhysicsMemes%2Fposts%2F1167606566653652%3A0&amp;width=580&#34;&gt;&lt;/iframe&gt; --&gt;</description>
         </item>
         <item>
-        <title>Observation - Indian Classical Music</title>
+        <title>Observation — Indian Classical Music</title>
         <link>https://godotmisogi.github.io/blog-public/post/indian-classical/</link>
         <pubDate>Tue, 17 Jan 2017 22:55:27 +0530</pubDate>
         
@@ -2051,18 +2053,18 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 &lt;/blockquote&gt;
 &lt;p&gt;X: 1
 T: C Locrian
-M: 
-C: 
-K:CLoc 
+M:
+C:
+K:CLoc
 |:CDEFGAB:|&lt;/p&gt;
 &lt;p&gt;The fundamental structure of a raga is based on the ascending and descending order of notes, referred to as &lt;em&gt;&amp;ldquo;Aaroh-Avroh&amp;rdquo;&lt;/em&gt;. The ornamentation in the instruments is also different: &lt;em&gt;&amp;ldquo;gamaks&amp;rdquo;&lt;/em&gt;, a quick slide between notes; permutations, abseneces and repetition of the notes are important in the definition of a raga. &lt;em&gt;Vyn&lt;/em&gt; from freenode&amp;rsquo;s &lt;code&gt;##math&lt;/code&gt; provided me with a few ragas and their respective interval structures, so I tried correlating some of them with the Gregorian modes. The following are two examples:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;B Phrygian: &lt;code&gt;B C D E F# G A&lt;/code&gt; = Raga Bhairavi&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;X: 1
-T: B Phrygian 
-M: 
-C: 
+T: B Phrygian
+M:
+C:
 K: BPhr
 |:B,CDEFGA:|&lt;/p&gt;
 &lt;blockquote&gt;
@@ -2137,12 +2139,12 @@ K: ADor
 </description>
         </item>
         <item>
-        <title>Dubby Pendy - A Double Pendulum Simulator</title>
+        <title>Dubby Pendy — A Double Pendulum Simulator</title>
         <link>https://godotmisogi.github.io/blog-public/post/dubby-pendy/</link>
         <pubDate>Tue, 27 Dec 2016 16:54:58 +0530</pubDate>
         
         <guid>https://godotmisogi.github.io/blog-public/post/dubby-pendy/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/dubby-pendy/DubbyPendy.svg" alt="Featured image of post Dubby Pendy - A Double Pendulum Simulator" /&gt;&lt;p&gt;Learning about Lagrangian and Hamiltonian mechanics introduced me to an entirely new way of solving physics problems. The first time I&amp;rsquo;d read about this topic was in &lt;a class=&#34;link&#34; href=&#34;http://www.feynmanlectures.caltech.edu/II_19.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/dubby-pendy/DubbyPendy.svg" alt="Featured image of post Dubby Pendy — A Double Pendulum Simulator" /&gt;&lt;p&gt;Learning about Lagrangian and Hamiltonian mechanics introduced me to an entirely new way of solving physics problems. The first time I&amp;rsquo;d read about this topic was in &lt;a class=&#34;link&#34; href=&#34;http://www.feynmanlectures.caltech.edu/II_19.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Principle of Least Action&lt;/a&gt; chapter in &lt;a class=&#34;link&#34; href=&#34;http://www.feynmanlectures.caltech.edu/II_toc.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Vol. 2 of The Feynman Lectures on Physics&lt;/a&gt;. I was introduced to a different perspective of viewing the physical world, perhaps a more general one than Newton&amp;rsquo;s laws.&lt;/p&gt;
 &lt;p&gt;A famous example of a system whose equations of motion can be more easily attained using Lagrangian or Hamiltonian mechanics is the double pendulum. I saw a &lt;a class=&#34;link&#34; href=&#34;http://scienceworld.wolfram.com/physics/DoublePendulum.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2151,7 +2153,7 @@ K: ADor
 &lt;div style=&#34;text-align:center&#34;&gt;&lt;img src=&#34;DubbyPendy.svg&#34; width=80% /&gt;&lt;/div&gt;
 &lt;p&gt;The Lagrangian of the system is:&lt;/p&gt;
 &lt;p&gt;$$ \mathcal{L} = T - V $$
-$$ T = \frac{1}{2}m_1 l_1^2 \dot{\theta}_1^2 + \frac{1}{2}m_2\left[l_1^2 \dot{\theta}_1^2 + l_2^2 \dot{\theta}_2^2 + 2l_1 l_2 \dot{\theta}_1 \dot{\theta}_2 \cos(\theta_1 - \theta_2)\right]$$ 
+$$ T = \frac{1}{2}m_1 l_1^2 \dot{\theta}_1^2 + \frac{1}{2}m_2\left[l_1^2 \dot{\theta}_1^2 + l_2^2 \dot{\theta}_2^2 + 2l_1 l_2 \dot{\theta}_1 \dot{\theta}_2 \cos(\theta_1 - \theta_2)\right]$$
 $$ V = -(m_1 + m_2)gl_1\cos \theta_1 - m_2gl_2\cos\theta_2 $$&lt;/p&gt;
 &lt;p&gt;After a &lt;a class=&#34;link&#34; href=&#34;http://scienceworld.wolfram.com/physics/DoublePendulum.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;very long derivation&lt;/a&gt;, Hamilton&amp;rsquo;s equations can be obtained:&lt;/p&gt;
@@ -2257,12 +2259,12 @@ Your browser does not support the video tag.
 </description>
         </item>
         <item>
-        <title>Calculus of Variations - Induced Drag Over a Wing</title>
+        <title>Variational Calculus — Induced Drag Over a Wing</title>
         <link>https://godotmisogi.github.io/blog-public/post/induced-drag/</link>
         <pubDate>Mon, 26 Dec 2016 01:55:24 +0530</pubDate>
         
         <guid>https://godotmisogi.github.io/blog-public/post/induced-drag/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/induced-drag/AircraftStream.svg" alt="Featured image of post Calculus of Variations - Induced Drag Over a Wing" /&gt;&lt;p&gt;While reading through John D. Anderson Jr.&amp;rsquo;s derivation of minimum induced drag, I thought of a cool application of the calculus of variations in one of the equations to deduce the required condition.&lt;/p&gt;
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/induced-drag/AircraftStream.svg" alt="Featured image of post Variational Calculus — Induced Drag Over a Wing" /&gt;&lt;p&gt;While reading through John D. Anderson Jr.&amp;rsquo;s derivation of minimum induced drag, I thought of a cool application of the calculus of variations in one of the equations to deduce the required condition.&lt;/p&gt;
 &lt;p&gt;The equation that determines the downwash at a point is:&lt;/p&gt;
 &lt;p&gt;$$w(y_0) = -\frac{1}{4\pi }\int^{b/2}_{-b/2} \frac{(\mathrm{d}\Gamma/\mathrm{d}y)}{y_0 - y}\mathrm{d}y = \int^{b/2}_{-b/2} \mathcal{L}(\Gamma,\Gamma&#39;,y)~\mathrm{d}y$$&lt;/p&gt;
 &lt;p&gt;This effectively implies that the downwash can be expressed as a &lt;em&gt;functional&lt;/em&gt; of $\Gamma$, i.e. $w\left[\Gamma(y)\right]$, and one can find the functional derivative to find the extremal point. There also exists a constraint on this system, the total lift across the span must be constant:&lt;/p&gt;
@@ -2300,12 +2302,12 @@ Your browser does not support the video tag.
 </description>
         </item>
         <item>
-        <title>Investigation - The Roots of Unity</title>
+        <title>Investigation — The Roots of Unity</title>
         <link>https://godotmisogi.github.io/blog-public/post/roots-of-unity/</link>
         <pubDate>Sun, 25 Dec 2016 02:43:36 +0530</pubDate>
         
         <guid>https://godotmisogi.github.io/blog-public/post/roots-of-unity/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/roots-of-unity/Roots2.svg" alt="Featured image of post Investigation - The Roots of Unity" /&gt;&lt;p&gt;During my second year of the International Baccalaureate: Diploma Programme, we were assigned the task of making a portfolio for a problem statement in Mathematics HL. While I don&amp;rsquo;t have the problem statement anymore, I&amp;rsquo;ll outline the major points of the task:&lt;/p&gt;
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/roots-of-unity/Roots2.svg" alt="Featured image of post Investigation — The Roots of Unity" /&gt;&lt;p&gt;During my second year of the International Baccalaureate: Diploma Programme, we were assigned the task of making a portfolio for a problem statement in Mathematics HL. While I don&amp;rsquo;t have the problem statement anymore, I&amp;rsquo;ll outline the major points of the task:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Find the solutions to $z^n - 1 = 0,~ z \in \mathbb{C}$.&lt;/p&gt;
@@ -2338,16 +2340,16 @@ $$ \sum^{n-1}_{k = 0} z_k = 0 $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;The roots of unity can be factorised into the following irreducible form over the field of real numbers:
-$$ z^n - 1 = (z-1)\sum^{n-1}_{i = 0} z^i $$ 
+$$ z^n - 1 = (z-1)\sum^{n-1}_{i = 0} z^i $$
 and can be factorised over the complex field as:
 $$ z^n - 1 = \prod_{k=0}^{n-1}(z-z_k) = (z-1)\prod_{k=1}^{n-1}(z-z_k) $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;A conjecture based on trial and error is:
-$$ \prod_{k=1}^{n-1}|z_k - z_0| = \prod_{k=1}^{n-1}|1-z_k| = n$$ 
+$$ \prod_{k=1}^{n-1}|z_k - z_0| = \prod_{k=1}^{n-1}|1-z_k| = n$$
 This states that the product of the distances between each root from a selected root is equal to the number of roots. To prove this, notice that:
-$$\sum^{n-1}_{i = 0} z^i = \prod_{k=1}^{n-1}(z-z_k) = \frac{z^n - 1}{z-1}$$ 
-For the equalities to be sensible at $z=1$, one must perform analytic continuation: 
+$$\sum^{n-1}_{i = 0} z^i = \prod_{k=1}^{n-1}(z-z_k) = \frac{z^n - 1}{z-1}$$
+For the equalities to be sensible at $z=1$, one must perform analytic continuation:
 $$\sum^{n-1}_{i = 0} 1^i = \prod_{k=1}^{n-1}|1-z_k| = \lim_{z\rightarrow 1} \frac{z^n - 1}{z-1}$$
 The first equality proves the conjecture. The last equality is evaluated using L&amp;rsquo;Hôpital&amp;rsquo;s rule, also  proving the conjecture:
 $$ \lim_{z\rightarrow 1} \frac{z^n - 1}{z-1} = \lim_{z\rightarrow 1} nz^{n-1} = n $$&lt;/p&gt;

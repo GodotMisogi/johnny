@@ -1,6 +1,6 @@
 ---
 date: "2021-02-24T22:55:27+08:00"
-title: Gradient-Based Optimization - Discrete Direct and Adjoint Methods
+title: Gradient-Based Optimization — Discrete Direct and Adjoint Methods
 draft: true
 slug: opt-problems
 description: Demystifying the hype of the Newton method for optimisations, with relevant implementations.
