@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>｢ALL FICTION｣</title>
-        <link>https://godotmisogi.github.io/</link>
+        <link>https://godotmisogi.github.io/blog-public/</link>
         <description>Recent content on ｢ALL FICTION｣</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-uk</language>
-        <lastBuildDate>Sat, 05 May 2018 16:54:58 +0530</lastBuildDate><atom:link href="https://godotmisogi.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 05 May 2018 16:54:58 +0530</lastBuildDate><atom:link href="https://godotmisogi.github.io/blog-public/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Computational Fluid Dynamics - CFDPython</title>
-        <link>https://godotmisogi.github.io/post/cfd-python/</link>
+        <link>https://godotmisogi.github.io/blog-public/post/cfd-python/</link>
         <pubDate>Sat, 05 May 2018 16:54:58 +0530</pubDate>
         
-        <guid>https://godotmisogi.github.io/post/cfd-python/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/post/cfd-python/images/2DCavityStreamStud.svg" alt="Featured image of post Computational Fluid Dynamics - CFDPython" /&gt;&lt;p&gt;This &amp;lsquo;notebook&amp;rsquo; consists of my run-through of Prof. Lorena Barba&amp;rsquo;s &amp;ldquo;&lt;a class=&#34;link&#34; href=&#34;http://lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>https://godotmisogi.github.io/blog-public/post/cfd-python/</guid>
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/cfd-python/images/2DPoissonSurfStud.svg" alt="Featured image of post Computational Fluid Dynamics - CFDPython" /&gt;&lt;p&gt;This &amp;lsquo;notebook&amp;rsquo; consists of my run-through of Prof. Lorena Barba&amp;rsquo;s &amp;ldquo;&lt;a class=&#34;link&#34; href=&#34;http://lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;12 steps to Navier-Stokes&lt;/a&gt;&amp;rdquo; course, because I admit I have a problem with fluids. The &lt;a class=&#34;link&#34; href=&#34;https://www.grc.nasa.gov/www/k-12/airplane/nseqs.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Navier-Stokes&lt;/a&gt; equations that will be solved in this notebook are the following in conservative form:&lt;/p&gt;
 &lt;p&gt;$$ \frac{\partial \rho}{\partial t} + \nabla \cdot \left(\rho V\right) = 0 $$&lt;/p&gt;
@@ -67,8 +67,8 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;[1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 2. 2. 2. 2. 2. 2. 2. 2. 2. 2. 2. 1. 1. 1.
  1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DConvectionInitProf.svg&#34; alt=&#34;&#34;  /&gt;
-&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DConvectionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DConvectionInitProf.svg&#34; alt=&#34;&#34;  /&gt;
+&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DConvectionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student&#34;&gt;Student&lt;/h4&gt;
 &lt;p&gt;No time to lose. (Down with mutability!)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;linearConvection&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
@@ -94,7 +94,7 @@
     &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;legend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 
 &lt;span class=&#34;n&#34;&gt;linearConvection&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;40&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DConvectionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DConvectionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;step-2-1d-nonlinear-convection&#34;&gt;&lt;strong&gt;Step 2: 1D Nonlinear Convection&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;professor-1&#34;&gt;Professor&lt;/h4&gt;
 &lt;p&gt;Partial differential equation:&lt;/p&gt;
@@ -122,7 +122,7 @@
 
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;numpy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;linspace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DNLConvectionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DNLConvectionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student-1&#34;&gt;Student&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;nonLinearConvection&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
     &lt;span class=&#34;n&#34;&gt;dx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;2.0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nx&lt;/span&gt;
@@ -150,7 +150,7 @@
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ylabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Velocity (m/s)&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;legend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DNLConvectionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DNLConvectionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;investigation-cfl-condition&#34;&gt;&lt;strong&gt;Investigation: CFL Condition&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;professor-2&#34;&gt;Professor&lt;/h4&gt;
 &lt;p&gt;Courant number:&lt;/p&gt;
@@ -177,7 +177,7 @@
     &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;numpy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;linspace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 
 &lt;span class=&#34;n&#34;&gt;linearconv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;501&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DCFLProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DCFLProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student-2&#34;&gt;Student&lt;/h4&gt;
 &lt;p&gt;This function allows you to input the simulation time and time-step size and provides warnings if the Courant Number is greater than 1 with recommendations.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;linearConvectionCFL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mesh_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
@@ -213,7 +213,7 @@
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;Warning: CFL Number greater than 1. Solver will probably produce incorrect results. Maximum time-step should be 0.02.
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DCFLStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DCFLStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;step-3-diffusion-equation-in-1d&#34;&gt;&lt;strong&gt;Step 3: Diffusion Equation in 1D&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;professor-3&#34;&gt;Professor&lt;/h4&gt;
 &lt;p&gt;Partial differential equation:&lt;/p&gt;
@@ -247,7 +247,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;[1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 2. 2. 2. 2. 2. 2. 2. 2. 2. 2. 2. 1. 1. 1.
  1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DDiffusionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DDiffusionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student-3&#34;&gt;Student&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;Analytical Solution of the Diffusion Equation using a Fourier Transform:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Take the spatial Fourier transform $\mathcal F_x$ of the equation with an initial value problem:&lt;/p&gt;
@@ -311,7 +311,7 @@ $$&lt;/p&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ylabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Velocity (m/s)&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;legend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DDiffusionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DDiffusionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;step-4-burgers-equation&#34;&gt;&lt;strong&gt;Step 4: Burgers&#39; Equation&lt;/strong&gt;&lt;/h3&gt;
 &lt;h3 id=&#34;professor-4&#34;&gt;Professor&lt;/h3&gt;
 &lt;p&gt;Partial differential equation:&lt;/p&gt;
@@ -365,8 +365,8 @@ $$&lt;/p&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ylim&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;legend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DBurgerInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DBurgerProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DBurgerInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DBurgerProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student-4&#34;&gt;Student&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;burgersEquation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mesh_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
     &lt;span class=&#34;n&#34;&gt;dx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;2.0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;numpy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pi&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mesh_size&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -404,7 +404,7 @@ $$&lt;/p&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ylim&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;legend&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/1DBurgerStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/1DBurgerStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;aside-kardarparisizhang-equation&#34;&gt;&lt;strong&gt;Aside: Kardar–Parisi–Zhang equation&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;student-5&#34;&gt;Student&lt;/h4&gt;
 &lt;p&gt;The KPZ equation is a generalisation of Burgers&#39; equation to multiple dimensions. Write Burgers&#39; equation in the form:&lt;/p&gt;
@@ -486,8 +486,8 @@ $$&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;Array operations took 0.009733499959111214 seconds
 For loops took 4.577128199976869 seconds
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DLinearConvectionInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DLinearConvectionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DLinearConvectionInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DLinearConvectionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student-6&#34;&gt;Student&lt;/h4&gt;
 &lt;p&gt;This function takes the mesh size in each direction as separate inputs and also the required simulation time. It minimises the time-step based on the smaller grid distance between &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; for accuracy (at the cost of speed!).&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;linearConvection2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mesh_size_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mesh_size_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
@@ -528,8 +528,8 @@ For loops took 4.577128199976869 seconds
 &lt;span class=&#34;n&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;numpy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meshgrid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pos_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pos_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;surf2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;plot_surface&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cmap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;viridis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DLinearConvectionInitStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DLinearConvectionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DLinearConvectionInitStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DLinearConvectionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;p&gt;It&amp;rsquo;s interesting how the solution appears to be &amp;ldquo;diffusing&amp;rdquo;. This is due to numerical noise from the algorithm.&lt;/p&gt;
 &lt;h3 id=&#34;step-6-2d-convection&#34;&gt;&lt;strong&gt;Step 6: 2D Convection&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;professor-6&#34;&gt;Professor&lt;/h4&gt;
@@ -597,8 +597,8 @@ For loops took 4.577128199976869 seconds
 &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_xlabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$x$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_ylabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$y$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DNLConvectionInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DNLConvectionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DNLConvectionInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DNLConvectionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student-7&#34;&gt;Student&lt;/h4&gt;
 &lt;p&gt;These PDEs can be written concisely in tensor notation using Einstein&amp;rsquo;s summation convention:&lt;/p&gt;
 &lt;p&gt;$$ \partial_t V^{\alpha} + cV^{\mu}\partial_{\mu}V^{\alpha} = 0 $$&lt;/p&gt;
@@ -659,8 +659,8 @@ For loops took 4.577128199976869 seconds
 &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_xlabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$x$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_ylabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$y$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DNLConvectionInitStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DNLConvectionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DNLConvectionInitStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DNLConvectionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;step-7-2d-diffusion&#34;&gt;&lt;strong&gt;Step 7: 2D Diffusion&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;professor-7&#34;&gt;Professor&lt;/h4&gt;
 &lt;p&gt;Partial differential equation:&lt;/p&gt;
@@ -721,8 +721,8 @@ For loops took 4.577128199976869 seconds
     &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_ylabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$y$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
     
 &lt;span class=&#34;n&#34;&gt;diffuse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DDiffusionInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DDiffusionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DDiffusionInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DDiffusionProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student-8&#34;&gt;Student&lt;/h4&gt;
 &lt;p&gt;The current setup is also symmetric, so computing the second component of the velocity is redundant, since $u = v$ and they&amp;rsquo;re decoupled. I also prefer the rainbow colour map.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;diffusion2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mesh_size_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mesh_size_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
@@ -774,8 +774,8 @@ For loops took 4.577128199976869 seconds
 &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_xlabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$x$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_ylabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$y$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DDiffusionInitStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DDiffusionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DDiffusionInitStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DDiffusionStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;step-8-burgers-equation-in-2d&#34;&gt;&lt;strong&gt;Step 8: Burgers&#39; Equation in 2D&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;professor-8&#34;&gt;Professor&lt;/h4&gt;
 &lt;p&gt;Partial differential equations:&lt;/p&gt;
@@ -866,8 +866,8 @@ $$&lt;/p&gt;
 &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;plot_surface&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cmap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cm&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;viridis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rstride&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cstride&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_xlabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$x$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;ax&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_ylabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$y$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DBurgerInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DBurgerProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DBurgerInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DBurgerProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student-9&#34;&gt;Student&lt;/h4&gt;
 &lt;p&gt;Contour plots look better than surface plots.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;burgers2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mesh_size_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mesh_size_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
@@ -939,8 +939,8 @@ $$&lt;/p&gt;
 &lt;span class=&#34;n&#34;&gt;cbar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;colorbar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;cbar&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;set_label&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$u\_{\mathrm{final}}$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DBurgerInitStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DBurgerStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DBurgerInitStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DBurgerStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;step-9-2d-laplace-equation&#34;&gt;&lt;strong&gt;Step 9: 2D Laplace Equation&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;professor-9&#34;&gt;Professor&lt;/h4&gt;
 &lt;p&gt;Partial differential equation:&lt;/p&gt;
@@ -1022,8 +1022,8 @@ $$&lt;/p&gt;
                     
 &lt;span class=&#34;n&#34;&gt;contour&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plotContour2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pos_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pos_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pressure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Student&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zlabel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$p$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;surf&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plotSurface2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pos_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pos_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pressure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zlabel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$p$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DLaplaceContStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DLaplaceSurfStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DLaplaceContStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DLaplaceSurfStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;step-10-2d-poisson-equation&#34;&gt;&lt;strong&gt;Step 10: 2D Poisson Equation&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;professor-10&#34;&gt;Professor&lt;/h4&gt;
 &lt;p&gt;Partial differential equation:&lt;/p&gt;
@@ -1087,7 +1087,7 @@ $$&lt;/p&gt;
     
 &lt;span class=&#34;n&#34;&gt;surf&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plot2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Professor&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DPoissonProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DPoissonProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student-11&#34;&gt;Student&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;poisson2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mesh_size_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mesh_size_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;xrange&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;yrange&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;residual&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max_iter&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
     &lt;span class=&#34;n&#34;&gt;dx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;abs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;xrange&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;xrange&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mesh_size_x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -1126,8 +1126,8 @@ $$&lt;/p&gt;
                     
 &lt;span class=&#34;n&#34;&gt;contour&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plotContour2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pos_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pos_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pressure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Student&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zlabel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$p$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;surf&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;plotSurface2D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pos_x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pos_y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pressure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;zlabel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$p$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DPoissonContStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DPoissonSurfStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DPoissonContStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DPoissonSurfStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;step-11-cavity-flow-with-navier-stokes&#34;&gt;&lt;strong&gt;Step 11: Cavity Flow with Navier-Stokes&lt;/strong&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;professor-11&#34;&gt;Professor&lt;/h4&gt;
 &lt;p&gt;Partial differential equations:&lt;/p&gt;
@@ -1279,8 +1279,8 @@ $$&lt;/p&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;streamplot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xlabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;X&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ylabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Y&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DCavityProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DCavityStreamProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DCavityProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DCavityStreamProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student-12&#34;&gt;Student&lt;/h4&gt;
 &lt;p&gt;No noticeable improvements to be made, except the usual boundary condition computation out of the loop and recording time-evolution.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;pressureSource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rho&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
@@ -1379,8 +1379,8 @@ $$&lt;/p&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xlabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$x$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ylabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$y$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DCavityStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DCavityStreamStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DCavityStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DCavityStreamStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h3 id=&#34;step-12-channel-flow-with-navier-stokes&#34;&gt;Step 12: Channel Flow with Navier-Stokes&lt;/h3&gt;
 &lt;h4 id=&#34;professor-12&#34;&gt;Professor&lt;/h4&gt;
 &lt;p&gt;Partial differential equations:&lt;/p&gt;
@@ -1600,8 +1600,8 @@ $$&lt;/p&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;quiver&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;499
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DChannelInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DChannelProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DChannelInitProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DChannelProf.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;h4 id=&#34;student-13&#34;&gt;Student&lt;/h4&gt;
 &lt;p&gt;Most of the cavity flow code can be reused here, with some changes for the boundary conditions and the source term.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;pressureSource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rho&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
@@ -1732,7 +1732,7 @@ $$&lt;/p&gt;
 &lt;span class=&#34;n&#34;&gt;fig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;figure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;figsize&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dpi&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;300&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;quiver&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;X&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[::&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[::&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;numpy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;transpose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;numpy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;transpose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]))&lt;/span&gt;
 &lt;span class=&#34;n&#34;&gt;pyplot&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;Student&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/cfd-python/images/2DChannelStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/cfd-python/images/2DChannelStud.svg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m cured, let&amp;rsquo;s celebrate! 🍺&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;*hic*&lt;/code&gt; I&amp;rsquo;m singin&#39; in the rain. &lt;code&gt;*hic*&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;*hic*&lt;/code&gt; Just singin&#39; in the rain. &lt;code&gt;*hic*&lt;/code&gt;&lt;/p&gt;
@@ -1744,11 +1744,11 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>Academic Notes - Physics and Mathematics</title>
-        <link>https://godotmisogi.github.io/project/academics/</link>
+        <link>https://godotmisogi.github.io/blog-public/project/academics/</link>
         <pubDate>Sun, 27 Aug 2017 01:26:50 +0530</pubDate>
         
-        <guid>https://godotmisogi.github.io/project/academics/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/project/academics/SES.svg" alt="Featured image of post Academic Notes - Physics and Mathematics" /&gt;&lt;p&gt;I&amp;rsquo;ve been studying some physics for a while and decided to write solution manuals for reference in case I forget the approach to a problem later. They&amp;rsquo;re lazily written, hence some solutions might be incomplete, incorrect or have illogical statements. Here&amp;rsquo;s what I&amp;rsquo;ve compiled so far:&lt;/p&gt;
+        <guid>https://godotmisogi.github.io/blog-public/project/academics/</guid>
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/project/academics/SES.svg" alt="Featured image of post Academic Notes - Physics and Mathematics" /&gt;&lt;p&gt;I&amp;rsquo;ve been studying some physics for a while and decided to write solution manuals for reference in case I forget the approach to a problem later. They&amp;rsquo;re lazily written, hence some solutions might be incomplete, incorrect or have illogical statements. Here&amp;rsquo;s what I&amp;rsquo;ve compiled so far:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/GodotMisogi/physics-notes/blob/master/Quantum%20Field%20Theory%20for%20the%20Gifted%20Amateur%20-%20T.%20Lancaster%20%26%20S.%20J.%20Blundell/Lancaster%20Solutions.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Tom Lancaster et. al. - Quantum Field Theory for the Gifted Amateur&lt;/a&gt;&lt;/li&gt;
@@ -1772,17 +1772,17 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>AeroMIT - Graphics Design</title>
-        <link>https://godotmisogi.github.io/project/aeromit-design/</link>
+        <link>https://godotmisogi.github.io/blog-public/project/aeromit-design/</link>
         <pubDate>Tue, 11 Jul 2017 01:26:50 +0530</pubDate>
         
-        <guid>https://godotmisogi.github.io/project/aeromit-design/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/project/aeromit-design/recruitment-2017.png" alt="Featured image of post AeroMIT - Graphics Design" /&gt;&lt;p&gt;I never really saw myself ever getting involved in any kind of designing activities, as I don&amp;rsquo;t feel I&amp;rsquo;m artistic enough or have the required &lt;code&gt;a e s t h e t i c&lt;/code&gt; abilities. However, I was given the responsibility to design a couple of posters, presentations and brochures for my team AeroMIT, our university&amp;rsquo;s aeromodelling team. I created a couple of items which I think are all right&lt;/p&gt;
+        <guid>https://godotmisogi.github.io/blog-public/project/aeromit-design/</guid>
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/project/aeromit-design/recruitment-2017.png" alt="Featured image of post AeroMIT - Graphics Design" /&gt;&lt;p&gt;I never really saw myself ever getting involved in any kind of designing activities, as I don&amp;rsquo;t feel I&amp;rsquo;m artistic enough or have the required &lt;code&gt;a e s t h e t i c&lt;/code&gt; abilities. However, I was given the responsibility to design a couple of posters, presentations and brochures for my team AeroMIT, our university&amp;rsquo;s aeromodelling team. I created a couple of items which I think are all right&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Recruitment Poster 2017&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 70; flex-basis: 169px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/project/aeromit-design/recruitment-2017.png&#34; data-size=&#34;3508x4963&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/project/aeromit-design/recruitment-2017.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/project/aeromit-design/recruitment-2017_huf10d48540dc4e14582364de1c0536641_1145225_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/project/aeromit-design/recruitment-2017_huf10d48540dc4e14582364de1c0536641_1145225_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/recruitment-2017.png&#34; data-size=&#34;3508x4963&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/recruitment-2017.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/recruitment-2017_huf10d48540dc4e14582364de1c0536641_1145225_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/recruitment-2017_huf10d48540dc4e14582364de1c0536641_1145225_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;3508&#34;
 				height=&#34;4963&#34;
 				loading=&#34;lazy&#34;
@@ -1794,8 +1794,8 @@ $$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;AM-7 Aircraft Standee 2017&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 50; flex-basis: 120px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/project/aeromit-design/StandeeWeb.png&#34; data-size=&#34;2700x5400&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/project/aeromit-design/StandeeWeb.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/project/aeromit-design/StandeeWeb_hu99a7fd6672c6e4a85f7f40248a064bff_1627275_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/project/aeromit-design/StandeeWeb_hu99a7fd6672c6e4a85f7f40248a064bff_1627275_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/StandeeWeb.png&#34; data-size=&#34;2700x5400&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/StandeeWeb.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/StandeeWeb_hu99a7fd6672c6e4a85f7f40248a064bff_1627275_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/StandeeWeb_hu99a7fd6672c6e4a85f7f40248a064bff_1627275_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;2700&#34;
 				height=&#34;5400&#34;
 				loading=&#34;lazy&#34;
@@ -1807,8 +1807,8 @@ $$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Recruitment Poster 2016&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 74; flex-basis: 178px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/project/aeromit-design/recruitment-2016.png&#34; data-size=&#34;3508x4724&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/project/aeromit-design/recruitment-2016.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/project/aeromit-design/recruitment-2016_hu974f79b6c7e0166ab91acac1b6d88d1e_2227079_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/project/aeromit-design/recruitment-2016_hu974f79b6c7e0166ab91acac1b6d88d1e_2227079_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/recruitment-2016.png&#34; data-size=&#34;3508x4724&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/recruitment-2016.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/recruitment-2016_hu974f79b6c7e0166ab91acac1b6d88d1e_2227079_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/recruitment-2016_hu974f79b6c7e0166ab91acac1b6d88d1e_2227079_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;3508&#34;
 				height=&#34;4724&#34;
 				loading=&#34;lazy&#34;
@@ -1820,8 +1820,8 @@ $$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;AM-6 Aircraft Brochure 2016&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 129; flex-basis: 310px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/project/aeromit-design/brochure-p1.png&#34; data-size=&#34;2200x1700&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/project/aeromit-design/brochure-p1.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/project/aeromit-design/brochure-p1_hudac32b08fcec626586f7a3da6ae7d4b4_887839_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/project/aeromit-design/brochure-p1_hudac32b08fcec626586f7a3da6ae7d4b4_887839_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/brochure-p1.png&#34; data-size=&#34;2200x1700&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/brochure-p1.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/brochure-p1_hudac32b08fcec626586f7a3da6ae7d4b4_887839_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/brochure-p1_hudac32b08fcec626586f7a3da6ae7d4b4_887839_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;2200&#34;
 				height=&#34;1700&#34;
 				loading=&#34;lazy&#34;
@@ -1830,8 +1830,8 @@ $$&lt;/p&gt;
 		
 	&lt;/figure&gt;
 &lt;figure style=&#34;flex-grow: 129; flex-basis: 310px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/project/aeromit-design/brochure-p2.png&#34; data-size=&#34;2200x1700&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/project/aeromit-design/brochure-p2.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/project/aeromit-design/brochure-p2_hu3edd0eaec2dc042903c2f997e1ce732f_1125955_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/project/aeromit-design/brochure-p2_hu3edd0eaec2dc042903c2f997e1ce732f_1125955_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/brochure-p2.png&#34; data-size=&#34;2200x1700&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/brochure-p2.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/brochure-p2_hu3edd0eaec2dc042903c2f997e1ce732f_1125955_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/project/aeromit-design/brochure-p2_hu3edd0eaec2dc042903c2f997e1ce732f_1125955_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;2200&#34;
 				height=&#34;1700&#34;
 				loading=&#34;lazy&#34;
@@ -1843,11 +1843,11 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>Meshing Techniques - Cambered Airfoil</title>
-        <link>https://godotmisogi.github.io/post/meshing-airfoil/</link>
+        <link>https://godotmisogi.github.io/blog-public/post/meshing-airfoil/</link>
         <pubDate>Mon, 10 Jul 2017 22:55:50 +0530</pubDate>
         
-        <guid>https://godotmisogi.github.io/post/meshing-airfoil/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/post/meshing-airfoil/images/CFD3.jpg" alt="Featured image of post Meshing Techniques - Cambered Airfoil" /&gt;&lt;p&gt;Meshing is a crucial process in obtaining accurate results for various simulations across different fields. In computational fluid dynamics, various meshing techniques are used in grid generation for 2D analyses of airfoils. Some nice run-throughs exist on YouTube, but they mostly deal with symmetric airfoils such as the &lt;em&gt;beloved&lt;/em&gt; NACA 0012. I&amp;rsquo;ll attempt generating preliminary meshes over a cambered airfoil in this post and probably write a project once I&amp;rsquo;ve been able to perform flow analyses with accurate results.&lt;/p&gt;
+        <guid>https://godotmisogi.github.io/blog-public/post/meshing-airfoil/</guid>
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/meshing-airfoil/images/CFD3.jpg" alt="Featured image of post Meshing Techniques - Cambered Airfoil" /&gt;&lt;p&gt;Meshing is a crucial process in obtaining accurate results for various simulations across different fields. In computational fluid dynamics, various meshing techniques are used in grid generation for 2D analyses of airfoils. Some nice run-throughs exist on YouTube, but they mostly deal with symmetric airfoils such as the &lt;em&gt;beloved&lt;/em&gt; NACA 0012. I&amp;rsquo;ll attempt generating preliminary meshes over a cambered airfoil in this post and probably write a project once I&amp;rsquo;ve been able to perform flow analyses with accurate results.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Airfoil Selection:&lt;/strong&gt; A new airfoil I&amp;rsquo;ve been researching is the Selig S7075 for its good gliding/soaring characteristics and high efficiency at low Reynolds numbers. It&amp;rsquo;s a cambered airfoil with sharp trailing edge, and a maximum thickness-to-chord ratio of 9%  with the implementation of a boundary layer trip at 57.5% of the chord length. XFOIL analyses predict accurate results in agreement with Dr. Selig&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;http://m-selig.ae.illinois.edu/uiuc_lsat/Low-Speed-Airfoil-Data-V3.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;A Summary of Low-Speed Airfoil Data, Vol. 3&lt;/a&gt;.&lt;/p&gt;
@@ -1860,8 +1860,8 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 &lt;p&gt;&lt;strong&gt;C-Grid:&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 136; flex-basis: 327px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/C-Grid.png&#34; data-size=&#34;2212x1620&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/C-Grid.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/C-Grid_hu3aa8a81d3578fda3f5dcf88ea72e179c_1224764_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/post/meshing-airfoil/images/C-Grid_hu3aa8a81d3578fda3f5dcf88ea72e179c_1224764_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-Grid.png&#34; data-size=&#34;2212x1620&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-Grid.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-Grid_hu3aa8a81d3578fda3f5dcf88ea72e179c_1224764_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-Grid_hu3aa8a81d3578fda3f5dcf88ea72e179c_1224764_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;2212&#34;
 				height=&#34;1620&#34;
 				loading=&#34;lazy&#34;
@@ -1870,8 +1870,8 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 		
 	&lt;/figure&gt;
 &lt;figure style=&#34;flex-grow: 192; flex-basis: 462px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/C-GridBound.png&#34; data-size=&#34;3036x1574&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/C-GridBound.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/C-GridBound_hu5708e700d16a4af14a28d934e633156b_671250_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/post/meshing-airfoil/images/C-GridBound_hu5708e700d16a4af14a28d934e633156b_671250_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-GridBound.png&#34; data-size=&#34;3036x1574&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-GridBound.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-GridBound_hu5708e700d16a4af14a28d934e633156b_671250_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-GridBound_hu5708e700d16a4af14a28d934e633156b_671250_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;3036&#34;
 				height=&#34;1574&#34;
 				loading=&#34;lazy&#34;
@@ -1880,8 +1880,8 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 		
 	&lt;/figure&gt;
 &lt;figure style=&#34;flex-grow: 194; flex-basis: 466px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/C-GridLE.png&#34; data-size=&#34;3071x1579&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/C-GridLE.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/C-GridLE_hu93cda4ce8e7802ccdb7fc2b640934f54_478830_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/post/meshing-airfoil/images/C-GridLE_hu93cda4ce8e7802ccdb7fc2b640934f54_478830_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-GridLE.png&#34; data-size=&#34;3071x1579&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-GridLE.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-GridLE_hu93cda4ce8e7802ccdb7fc2b640934f54_478830_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/C-GridLE_hu93cda4ce8e7802ccdb7fc2b640934f54_478830_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;3071&#34;
 				height=&#34;1579&#34;
 				loading=&#34;lazy&#34;
@@ -1894,8 +1894,8 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 &lt;p&gt;&lt;strong&gt;O-Grid:&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 163; flex-basis: 391px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/O-Grid.png&#34; data-size=&#34;2435x1491&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/O-Grid.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/O-Grid_hu9286bb32c6a4183f6bdeeaf501e8943c_503926_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/post/meshing-airfoil/images/O-Grid_hu9286bb32c6a4183f6bdeeaf501e8943c_503926_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-Grid.png&#34; data-size=&#34;2435x1491&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-Grid.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-Grid_hu9286bb32c6a4183f6bdeeaf501e8943c_503926_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-Grid_hu9286bb32c6a4183f6bdeeaf501e8943c_503926_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;2435&#34;
 				height=&#34;1491&#34;
 				loading=&#34;lazy&#34;
@@ -1904,8 +1904,8 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 		
 	&lt;/figure&gt;
 &lt;figure style=&#34;flex-grow: 191; flex-basis: 460px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/O-GridBound.png&#34; data-size=&#34;3020x1575&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/O-GridBound.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/O-GridBound_hud41ea0f4ced6b20e35e6eee8e38eaa56_1462631_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/post/meshing-airfoil/images/O-GridBound_hud41ea0f4ced6b20e35e6eee8e38eaa56_1462631_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-GridBound.png&#34; data-size=&#34;3020x1575&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-GridBound.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-GridBound_hud41ea0f4ced6b20e35e6eee8e38eaa56_1462631_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-GridBound_hud41ea0f4ced6b20e35e6eee8e38eaa56_1462631_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;3020&#34;
 				height=&#34;1575&#34;
 				loading=&#34;lazy&#34;
@@ -1914,8 +1914,8 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 		
 	&lt;/figure&gt;
 &lt;figure style=&#34;flex-grow: 192; flex-basis: 461px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/O-GridLE.png&#34; data-size=&#34;3030x1576&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/O-GridLE.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/O-GridLE_hu38b4b2974bd84f6f94ddb77af4c9d1e3_1454377_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/post/meshing-airfoil/images/O-GridLE_hu38b4b2974bd84f6f94ddb77af4c9d1e3_1454377_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-GridLE.png&#34; data-size=&#34;3030x1576&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-GridLE.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-GridLE_hu38b4b2974bd84f6f94ddb77af4c9d1e3_1454377_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/O-GridLE_hu38b4b2974bd84f6f94ddb77af4c9d1e3_1454377_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;3030&#34;
 				height=&#34;1576&#34;
 				loading=&#34;lazy&#34;
@@ -1926,8 +1926,8 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;Bonus:&lt;/strong&gt; I was able to devise a blocking technique to generate a 3D C-grid about a rectangular wing with an SD6045 section as well.&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 146; flex-basis: 351px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD1.jpg&#34; data-size=&#34;2400x1640&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD1.jpg&#34;
-				srcset=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD1_huee04e72e1d725389917645cf17fd1ddb_1554287_480x0_resize_q75_box.jpg 480w, https://godotmisogi.github.io/post/meshing-airfoil/images/CFD1_huee04e72e1d725389917645cf17fd1ddb_1554287_1024x0_resize_q75_box.jpg 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD1.jpg&#34; data-size=&#34;2400x1640&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD1.jpg&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD1_huee04e72e1d725389917645cf17fd1ddb_1554287_480x0_resize_q75_box.jpg 480w, https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD1_huee04e72e1d725389917645cf17fd1ddb_1554287_1024x0_resize_q75_box.jpg 1024w&#34;
 				width=&#34;2400&#34;
 				height=&#34;1640&#34;
 				loading=&#34;lazy&#34;
@@ -1935,8 +1935,8 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 		&lt;/a&gt;
 		
 	&lt;/figure&gt; &lt;figure style=&#34;flex-grow: 169; flex-basis: 407px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD4.jpg&#34; data-size=&#34;2688x1584&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD4.jpg&#34;
-				srcset=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD4_hub69445c1b7a9a97db59249d858a3ee0d_2078075_480x0_resize_q75_box.jpg 480w, https://godotmisogi.github.io/post/meshing-airfoil/images/CFD4_hub69445c1b7a9a97db59249d858a3ee0d_2078075_1024x0_resize_q75_box.jpg 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD4.jpg&#34; data-size=&#34;2688x1584&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD4.jpg&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD4_hub69445c1b7a9a97db59249d858a3ee0d_2078075_480x0_resize_q75_box.jpg 480w, https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD4_hub69445c1b7a9a97db59249d858a3ee0d_2078075_1024x0_resize_q75_box.jpg 1024w&#34;
 				width=&#34;2688&#34;
 				height=&#34;1584&#34;
 				loading=&#34;lazy&#34;
@@ -1945,8 +1945,8 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 		
 	&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 187; flex-basis: 448px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD2.jpg&#34; data-size=&#34;2992x1600&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD2.jpg&#34;
-				srcset=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD2_hu9e885af0ba9c080d4e3d620bdb6d139f_1857448_480x0_resize_q75_box.jpg 480w, https://godotmisogi.github.io/post/meshing-airfoil/images/CFD2_hu9e885af0ba9c080d4e3d620bdb6d139f_1857448_1024x0_resize_q75_box.jpg 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD2.jpg&#34; data-size=&#34;2992x1600&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD2.jpg&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD2_hu9e885af0ba9c080d4e3d620bdb6d139f_1857448_480x0_resize_q75_box.jpg 480w, https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD2_hu9e885af0ba9c080d4e3d620bdb6d139f_1857448_1024x0_resize_q75_box.jpg 1024w&#34;
 				width=&#34;2992&#34;
 				height=&#34;1600&#34;
 				loading=&#34;lazy&#34;
@@ -1954,8 +1954,8 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
 		&lt;/a&gt;
 		
 	&lt;/figure&gt; &lt;figure style=&#34;flex-grow: 192; flex-basis: 461px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD3.jpg&#34; data-size=&#34;3000x1560&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD3.jpg&#34;
-				srcset=&#34;https://godotmisogi.github.io/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_480x0_resize_q75_box.jpg 480w, https://godotmisogi.github.io/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_1024x0_resize_q75_box.jpg 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD3.jpg&#34; data-size=&#34;3000x1560&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD3.jpg&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_480x0_resize_q75_box.jpg 480w, https://godotmisogi.github.io/blog-public/blog-public/post/meshing-airfoil/images/CFD3_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_1024x0_resize_q75_box.jpg 1024w&#34;
 				width=&#34;3000&#34;
 				height=&#34;1560&#34;
 				loading=&#34;lazy&#34;
@@ -1969,18 +1969,18 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
         </item>
         <item>
         <title>Derivation - Geodesic Equation</title>
-        <link>https://godotmisogi.github.io/post/derivation-geodesic-equation/</link>
+        <link>https://godotmisogi.github.io/blog-public/post/derivation-geodesic-equation/</link>
         <pubDate>Wed, 19 Apr 2017 21:53:06 +0530</pubDate>
         
-        <guid>https://godotmisogi.github.io/post/derivation-geodesic-equation/</guid>
+        <guid>https://godotmisogi.github.io/blog-public/post/derivation-geodesic-equation/</guid>
         <description>&lt;p&gt;Bernard F. Schutz&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;http://www.cambridge.org/us/academic/subjects/physics/cosmology-relativity-and-gravitation/first-course-general-relativity-2nd-edition?format=HB&amp;amp;isbn=9780521887052&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;A First Course in General Relativity&lt;/a&gt; provides a nice introduction to the difficult subject in my opinion. In Chapter 6, he mentions that one should derive the Euler-Lagrange equations to minimise the spacetime interval of a particle&amp;rsquo;s trajectory, obtaining the geodesic equation:&lt;/p&gt;
 &lt;p&gt;$$ \frac{\mathrm{d}}{\mathrm{d}\lambda}\left(\frac{\mathrm{d}x^{\gamma}}{\mathrm{d}\lambda}\right) + \Gamma^{\gamma}_{~\alpha\beta}\frac{\mathrm{d}x^{\alpha}}{\mathrm{d}\lambda}\frac{\mathrm{d}x^{\beta}}{\mathrm{d}\lambda} = 0 $$&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; At first I derived it from variational principles, but the Euler-Lagrange equations provide a faster route via means of a neat trick.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Motivation&lt;/strong&gt;: The main aim of this investigation is to find curves that parallel-transport tangent vectors. The following diagram should make this idea clearer:&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 89; flex-basis: 214px&#34;&gt;
-		&lt;a href=&#34;https://godotmisogi.github.io/post/derivation-geodesic-equation/Parallel_transport.png&#34; data-size=&#34;510x570&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/post/derivation-geodesic-equation/Parallel_transport.png&#34;
-				srcset=&#34;https://godotmisogi.github.io/post/derivation-geodesic-equation/Parallel_transport_huf7a23ab9577d57f62c7055dcd7470096_59986_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/post/derivation-geodesic-equation/Parallel_transport_huf7a23ab9577d57f62c7055dcd7470096_59986_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/derivation-geodesic-equation/Parallel_transport.png&#34; data-size=&#34;510x570&#34;&gt;&lt;img src=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/derivation-geodesic-equation/Parallel_transport.png&#34;
+				srcset=&#34;https://godotmisogi.github.io/blog-public/blog-public/post/derivation-geodesic-equation/Parallel_transport_huf7a23ab9577d57f62c7055dcd7470096_59986_480x0_resize_box_2.png 480w, https://godotmisogi.github.io/blog-public/blog-public/post/derivation-geodesic-equation/Parallel_transport_huf7a23ab9577d57f62c7055dcd7470096_59986_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;510&#34;
 				height=&#34;570&#34;
 				loading=&#34;lazy&#34;
@@ -2018,10 +2018,10 @@ The two types of meshes I&amp;rsquo;ll be trying to generate are an O-grid and a
         </item>
         <item>
         <title>Observation - Indian Classical Music</title>
-        <link>https://godotmisogi.github.io/post/indian-classical/</link>
+        <link>https://godotmisogi.github.io/blog-public/post/indian-classical/</link>
         <pubDate>Tue, 17 Jan 2017 22:55:27 +0530</pubDate>
         
-        <guid>https://godotmisogi.github.io/post/indian-classical/</guid>
+        <guid>https://godotmisogi.github.io/blog-public/post/indian-classical/</guid>
         <description>&lt;script src=&#34;abcjs-plugin-min.js&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt;
 &lt;p&gt;I&amp;rsquo;ve been a rock/metal guitarist for the past 9 or 10 years, mostly concentrating on Western music and its theory; I am by no means an expert, but I&amp;rsquo;m curious about music theory and like to learn its different applications/interpretations in various styles.&lt;/p&gt;
 &lt;hr&gt;
@@ -2138,11 +2138,11 @@ K: ADor
         </item>
         <item>
         <title>Dubby Pendy - A Double Pendulum Simulator</title>
-        <link>https://godotmisogi.github.io/post/dubby-pendy/</link>
+        <link>https://godotmisogi.github.io/blog-public/post/dubby-pendy/</link>
         <pubDate>Tue, 27 Dec 2016 16:54:58 +0530</pubDate>
         
-        <guid>https://godotmisogi.github.io/post/dubby-pendy/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/post/dubby-pendy/DubbyPendy.svg" alt="Featured image of post Dubby Pendy - A Double Pendulum Simulator" /&gt;&lt;p&gt;Learning about Lagrangian and Hamiltonian mechanics introduced me to an entirely new way of solving physics problems. The first time I&amp;rsquo;d read about this topic was in &lt;a class=&#34;link&#34; href=&#34;http://www.feynmanlectures.caltech.edu/II_19.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>https://godotmisogi.github.io/blog-public/post/dubby-pendy/</guid>
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/dubby-pendy/DubbyPendy.svg" alt="Featured image of post Dubby Pendy - A Double Pendulum Simulator" /&gt;&lt;p&gt;Learning about Lagrangian and Hamiltonian mechanics introduced me to an entirely new way of solving physics problems. The first time I&amp;rsquo;d read about this topic was in &lt;a class=&#34;link&#34; href=&#34;http://www.feynmanlectures.caltech.edu/II_19.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Principle of Least Action&lt;/a&gt; chapter in &lt;a class=&#34;link&#34; href=&#34;http://www.feynmanlectures.caltech.edu/II_toc.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Vol. 2 of The Feynman Lectures on Physics&lt;/a&gt;. I was introduced to a different perspective of viewing the physical world, perhaps a more general one than Newton&amp;rsquo;s laws.&lt;/p&gt;
 &lt;p&gt;A famous example of a system whose equations of motion can be more easily attained using Lagrangian or Hamiltonian mechanics is the double pendulum. I saw a &lt;a class=&#34;link&#34; href=&#34;http://scienceworld.wolfram.com/physics/DoublePendulum.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2258,11 +2258,11 @@ Your browser does not support the video tag.
         </item>
         <item>
         <title>Calculus of Variations - Induced Drag Over a Wing</title>
-        <link>https://godotmisogi.github.io/post/induced-drag/</link>
+        <link>https://godotmisogi.github.io/blog-public/post/induced-drag/</link>
         <pubDate>Mon, 26 Dec 2016 01:55:24 +0530</pubDate>
         
-        <guid>https://godotmisogi.github.io/post/induced-drag/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/post/induced-drag/AircraftStream.svg" alt="Featured image of post Calculus of Variations - Induced Drag Over a Wing" /&gt;&lt;p&gt;While reading through John D. Anderson Jr.&amp;rsquo;s derivation of minimum induced drag, I thought of a cool application of the calculus of variations in one of the equations to deduce the required condition.&lt;/p&gt;
+        <guid>https://godotmisogi.github.io/blog-public/post/induced-drag/</guid>
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/induced-drag/AircraftStream.svg" alt="Featured image of post Calculus of Variations - Induced Drag Over a Wing" /&gt;&lt;p&gt;While reading through John D. Anderson Jr.&amp;rsquo;s derivation of minimum induced drag, I thought of a cool application of the calculus of variations in one of the equations to deduce the required condition.&lt;/p&gt;
 &lt;p&gt;The equation that determines the downwash at a point is:&lt;/p&gt;
 &lt;p&gt;$$w(y_0) = -\frac{1}{4\pi }\int^{b/2}_{-b/2} \frac{(\mathrm{d}\Gamma/\mathrm{d}y)}{y_0 - y}\mathrm{d}y = \int^{b/2}_{-b/2} \mathcal{L}(\Gamma,\Gamma&#39;,y)~\mathrm{d}y$$&lt;/p&gt;
 &lt;p&gt;This effectively implies that the downwash can be expressed as a &lt;em&gt;functional&lt;/em&gt; of $\Gamma$, i.e. $w\left[\Gamma(y)\right]$, and one can find the functional derivative to find the extremal point. There also exists a constraint on this system, the total lift across the span must be constant:&lt;/p&gt;
@@ -2301,11 +2301,11 @@ Your browser does not support the video tag.
         </item>
         <item>
         <title>Investigation - The Roots of Unity</title>
-        <link>https://godotmisogi.github.io/post/roots-of-unity/</link>
+        <link>https://godotmisogi.github.io/blog-public/post/roots-of-unity/</link>
         <pubDate>Sun, 25 Dec 2016 02:43:36 +0530</pubDate>
         
-        <guid>https://godotmisogi.github.io/post/roots-of-unity/</guid>
-        <description>&lt;img src="https://godotmisogi.github.io/post/roots-of-unity/Roots2.svg" alt="Featured image of post Investigation - The Roots of Unity" /&gt;&lt;p&gt;During my second year of the International Baccalaureate: Diploma Programme, we were assigned the task of making a portfolio for a problem statement in Mathematics HL. While I don&amp;rsquo;t have the problem statement anymore, I&amp;rsquo;ll outline the major points of the task:&lt;/p&gt;
+        <guid>https://godotmisogi.github.io/blog-public/post/roots-of-unity/</guid>
+        <description>&lt;img src="https://godotmisogi.github.io/blog-public/post/roots-of-unity/Roots2.svg" alt="Featured image of post Investigation - The Roots of Unity" /&gt;&lt;p&gt;During my second year of the International Baccalaureate: Diploma Programme, we were assigned the task of making a portfolio for a problem statement in Mathematics HL. While I don&amp;rsquo;t have the problem statement anymore, I&amp;rsquo;ll outline the major points of the task:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Find the solutions to $z^n - 1 = 0,~ z \in \mathbb{C}$.&lt;/p&gt;
