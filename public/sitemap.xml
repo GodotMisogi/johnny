@@ -3,30 +3,45 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://godot-bloggy.xyz/categories/</loc>
-    <lastmod>2018-05-05T16:54:58+05:30</lastmod>
+    <lastmod>2021-04-06T21:53:06+05:30</lastmod>
+  </url><url>
+    <loc>https://godot-bloggy.xyz/categories/mathematics/</loc>
+    <lastmod>2021-04-06T21:53:06+05:30</lastmod>
+  </url><url>
+    <loc>https://godot-bloggy.xyz/post/nonlinear-dynamics/</loc>
+    <lastmod>2021-04-06T21:53:06+05:30</lastmod>
+  </url><url>
+    <loc>https://godot-bloggy.xyz/post/</loc>
+    <lastmod>2021-04-06T21:53:06+05:30</lastmod>
+  </url><url>
+    <loc>https://godot-bloggy.xyz/categories/programming/</loc>
+    <lastmod>2021-04-06T21:53:06+05:30</lastmod>
+  </url><url>
+    <loc>https://godot-bloggy.xyz/</loc>
+    <lastmod>2021-04-06T21:53:06+05:30</lastmod>
+  </url><url>
+    <loc>https://godot-bloggy.xyz/categories/aerodynamics/</loc>
+    <lastmod>2021-02-24T22:55:27+08:00</lastmod>
+  </url><url>
+    <loc>https://godot-bloggy.xyz/post/panel-methods/</loc>
+    <lastmod>2021-02-24T22:55:27+08:00</lastmod>
   </url><url>
     <loc>https://godot-bloggy.xyz/categories/computational-fluid-dynamics/</loc>
-    <lastmod>2018-05-05T16:54:58+05:30</lastmod>
+    <lastmod>2021-02-24T22:55:27+08:00</lastmod>
+  </url><url>
+    <loc>https://godot-bloggy.xyz/post/opt-problems/</loc>
+    <lastmod>2020-08-30T22:55:27+08:00</lastmod>
+  </url><url>
+    <loc>https://godot-bloggy.xyz/categories/physics/</loc>
+    <lastmod>2020-08-30T22:55:27+08:00</lastmod>
+  </url><url>
+    <loc>https://godot-bloggy.xyz/post/fluid-dynamics/</loc>
+    <lastmod>2019-09-30T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://godot-bloggy.xyz/post/cfd-python/</loc>
     <lastmod>2018-05-05T16:54:58+05:30</lastmod>
   </url><url>
-    <loc>https://godot-bloggy.xyz/categories/mathematics/</loc>
-    <lastmod>2018-05-05T16:54:58+05:30</lastmod>
-  </url><url>
-    <loc>https://godot-bloggy.xyz/post/</loc>
-    <lastmod>2018-05-05T16:54:58+05:30</lastmod>
-  </url><url>
-    <loc>https://godot-bloggy.xyz/categories/programming/</loc>
-    <lastmod>2018-05-05T16:54:58+05:30</lastmod>
-  </url><url>
-    <loc>https://godot-bloggy.xyz/</loc>
-    <lastmod>2018-05-05T16:54:58+05:30</lastmod>
-  </url><url>
     <loc>https://godot-bloggy.xyz/project/academics/</loc>
-    <lastmod>2017-08-27T01:26:50+05:30</lastmod>
-  </url><url>
-    <loc>https://godot-bloggy.xyz/categories/physics/</loc>
     <lastmod>2017-08-27T01:26:50+05:30</lastmod>
   </url><url>
     <loc>https://godot-bloggy.xyz/project/</loc>
@@ -43,9 +58,6 @@
   </url><url>
     <loc>https://godot-bloggy.xyz/project/aeromit-design/</loc>
     <lastmod>2017-07-11T01:26:50+05:30</lastmod>
-  </url><url>
-    <loc>https://godot-bloggy.xyz/categories/aerodynamics/</loc>
-    <lastmod>2017-07-10T22:55:50+05:30</lastmod>
   </url><url>
     <loc>https://godot-bloggy.xyz/post/meshing-airfoil/</loc>
     <lastmod>2017-07-10T22:55:50+05:30</lastmod>

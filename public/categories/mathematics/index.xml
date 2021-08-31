@@ -6,7 +6,47 @@
     <description>Recent content in Mathematics on ｢ALL FICTION｣</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sat, 05 May 2018 16:54:58 +0530</lastBuildDate><atom:link href="https://godot-bloggy.xyz/categories/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Apr 2021 21:53:06 +0530</lastBuildDate><atom:link href="https://godot-bloggy.xyz/categories/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nonlinear Dynamics — A Game of Computation (In Progress)</title>
+      <link>https://godot-bloggy.xyz/post/nonlinear-dynamics/</link>
+      <pubDate>Tue, 06 Apr 2021 21:53:06 +0530</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/nonlinear-dynamics/</guid>
+      <description>Volterra Equation Introduction The Volterra equation governs coupled population dynamics between two species under a predator-prey relationship in a given environment.
+Consider $x$ as the number of rabbits, and $y$ as the number of foxes. This is expressed in the form of the following autonomous system of ordinary differential equations.
+$$ \begin{aligned} \dot x &amp;amp; = \alpha x - \eta yx, &amp;amp; \alpha, \eta &amp;gt; 0 \\ \dot y &amp;amp; = -\beta y + \lambda xy, &amp;amp; \beta, \lambda &amp;gt; 0 \\ \end{aligned} $$</description>
+    </item>
+    
+    <item>
+      <title>Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)</title>
+      <link>https://godot-bloggy.xyz/post/panel-methods/</link>
+      <pubDate>Wed, 24 Feb 2021 22:55:27 +0800</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/panel-methods/</guid>
+      <description>References  Drela, Mark. Flight Vehicle Aerodynamics. The MIT Press, 2014. Drela, Mark and Giles, M. B. Viscous-Inviscid Analysis of Transonic and Low Reynolds Number Airfoils. AIAA Journal, 1986. Katz, Joseph and Plotkin, Allen. Low-Speed Aerodynamics - 2nd Edition. Cambridge University Press, 2001.  Viscous-Inviscid Panel Methods Boundary element methods express the solution of some PDE on a volume by reducing it to the specification on a surface. Panel methods in aerodynamics are special cases of such expressions, in which the governing equation is Laplace&amp;rsquo;s equation in a uniform flow in the case of a steady, inviscid, incompressible fluid.</description>
+    </item>
+    
+    <item>
+      <title>Gradient-Based Optimisation — Discrete Direct and Adjoint Methods (In Progress)</title>
+      <link>https://godot-bloggy.xyz/post/opt-problems/</link>
+      <pubDate>Sun, 30 Aug 2020 22:55:27 +0800</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/opt-problems/</guid>
+      <description>Optimisation problems are becoming a big meme, so let&amp;rsquo;s address some of the general ideas and how to compute them for discretised systems of equations.
+Problem Description Let the vector $\mathbf p_i \in \mathbb R^n$ be the state variable at the $i$th iteration, and the function as a matrix $\mathbf R \in \mathbb R^m \times \mathbb R^n$ which needs to be solved.
+$$ \mathbf R(\mathbf p) = \mathbf 0 $$</description>
+    </item>
+    
+    <item>
+      <title>Fluid Dynamics — A Flurry of Theory (In Progress)</title>
+      <link>https://godot-bloggy.xyz/post/fluid-dynamics/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://godot-bloggy.xyz/post/fluid-dynamics/</guid>
+      <description>References  Batchelor, G. K. An Introduction to Fluid Dynamics. Cambridge University Press, 1992. Drela, Mark. Flight Vehicle Aerodynamics. The MIT Press, 2014. Katz, Joseph and Plotkin, Allen. Low-Speed Aerodynamics - 2nd Edition. Cambridge University Press, 2001. Feynman, Richard P., Leighton, Robert B. and Sands, Matthew. The Feynman Lectures on Physics, Vol. 2: Mainly Electromagnetism and Matter. Basic Books, 2011. Balakrishnan, V. Selected Topics in Mathematical Physics. NPTEL, 2014.  Definitions The circulation $\Gamma$ of a vector field $\vec f(x^i)$ about a closed contour $C$ parametrised by a vector $d x_i$:</description>
+    </item>
+    
     <item>
       <title>Computational Fluid Dynamics — CFDPython</title>
       <link>https://godot-bloggy.xyz/post/cfd-python/</link>

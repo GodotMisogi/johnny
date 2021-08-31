@@ -1,8 +1,8 @@
 ---
 date: "2021-04-06T21:53:06+05:30"
-title: Nonlinear Dynamics — A Game of Computation?
-draft: true
-description: Playing around with nonlinear dynamics and populations.
+title: Nonlinear Dynamics — A Game of Computation (In Progress)
+draft: false
+description: Playing around with nonlinear dynamics and populations in Julia.
 slug: nonlinear-dynamics
 categories: 
     - Mathematics
@@ -78,7 +78,11 @@ prob = ODEProblem(volterra!, x0, tspan, ps)
 sol = solve(prob, maxiters = 500)
 ```
 
-Very short code! (But probably not shorter than the Haskell equivalent.)
+Very short code! 
+
+(_My second personality_: But probably not shorter than the Haskell equivalent.)
+
+(_My third personality to the second_: Weird flex, but ok.)
 
 ## Falkner-Skan Boundary Layer Equations
 
@@ -86,7 +90,7 @@ The Falkner-Skan transformation of the thin shear layer equations governing boun
 
 $$ f''' + \left(\frac{1 + a}{2}\right) f f'' + a\left[1 - (f')^2\right] = 0 $$
 
-with boundary conditions $f(0) = f'(0) = 0, ~ f'(\eta) = 1$, where $\eta$ is some specified upper bound. First, we define the function for the governing ODE: 
+with boundary conditions $f(0) = f'(0) = 0, ~ f'(\eta) = 1$, where $\eta$ is some specified upper bound. This can be expressed in terms of an autonomous system of first-order differential equations: $\dot{\mathbf x} = \mathbf f(\mathbf x, \mathbf p, η)$. First, we define the function for the governing ODE: 
 
 ```julia
 function falkner_skan_ODE!(du, x, p, η)
@@ -96,7 +100,7 @@ function falkner_skan_ODE!(du, x, p, η)
     du[2]   = S             
     du[3]   = -(1 + a) / 2 * F * S - a * (1 - U^2)
 
-    du
+    nothing
 end
 ```
 
@@ -108,7 +112,7 @@ function falkner_skan_BC!(R, x, p, η)
     R[2] = x[1][2]              # η = 0, F' = 0
     R[3] = x[end][2] - 1        # η = ηₑ, F' = 1
 
-    R
+    nothing
 end
 ```
 

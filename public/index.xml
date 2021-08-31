@@ -6,7 +6,495 @@
         <description>Recent content on ｢ALL FICTION｣</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-uk</language>
-        <lastBuildDate>Sat, 05 May 2018 16:54:58 +0530</lastBuildDate><atom:link href="https://godot-bloggy.xyz/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 06 Apr 2021 21:53:06 +0530</lastBuildDate><atom:link href="https://godot-bloggy.xyz/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Nonlinear Dynamics — A Game of Computation (In Progress)</title>
+        <link>https://godot-bloggy.xyz/post/nonlinear-dynamics/</link>
+        <pubDate>Tue, 06 Apr 2021 21:53:06 +0530</pubDate>
+        
+        <guid>https://godot-bloggy.xyz/post/nonlinear-dynamics/</guid>
+        <description>&lt;h2 id=&#34;volterra-equation&#34;&gt;Volterra Equation&lt;/h2&gt;
+&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;The Volterra equation governs coupled population dynamics between two species under a predator-prey relationship in a given environment.&lt;/p&gt;
+&lt;p&gt;Consider $x$ as the number of rabbits, and $y$ as the number of foxes. This is expressed in the form of the following autonomous system of ordinary differential equations.&lt;/p&gt;
+&lt;p&gt;$$ 
+\begin{aligned} 
+\dot x &amp;amp; = \alpha x - \eta yx, &amp;amp; \alpha, \eta &amp;gt; 0 \\ 
+\dot y &amp;amp; = -\beta y + \lambda xy, &amp;amp; \beta, \lambda &amp;gt; 0 \\ 
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;Physically, these equations can be read off in the following manner: The change in the population of rabbits depends on a rate $\alpha$ proportional to the current population, and decreases at a rate $\eta$ proportional to the populations of foxes and rabbits, and similarly for the change in the population of foxes.&lt;/p&gt;
+&lt;h3 id=&#34;critical-points&#34;&gt;Critical Points&lt;/h3&gt;
+&lt;p&gt;The critical points of the system are the points at which the right-hand-sides are simultaneously zero. In this case, it&amp;rsquo;s simple to evaluate by hand.&lt;/p&gt;
+&lt;p&gt;$$ 
+\begin{aligned} 
+x(\alpha - \eta y) &amp;amp; = 0 \\ 
+y(\lambda x - \beta) &amp;amp; = 0
+\end{aligned} \\ 
+\implies (x_c, y_c) = \left\{ (0, 0), \left(\frac{\beta}{\lambda}, \frac{\alpha}{\eta}\right) \right\}
+$$&lt;/p&gt;
+&lt;h4 id=&#34;stability&#34;&gt;Stability&lt;/h4&gt;
+&lt;p&gt;At $(x_c, y_c) = (0, 0)$, any perturbation in $x$ while keeping $y$ fixed results in an increase in $\dot x$, hence it is unstable in this direction, and vice versa for $y$ and $\dot y$. This results in the following phase? plot.&lt;/p&gt;
+&lt;p&gt;At $(x_c, y_c) = \left(\dfrac{\beta}{\lambda}, \dfrac{\alpha}{\eta}\right)$, we must evaluate the system by linearisation.&lt;/p&gt;
+&lt;h3 id=&#34;computation&#34;&gt;Computation&lt;/h3&gt;
+&lt;p&gt;Let&amp;rsquo;s do it &lt;del&gt;to&lt;/del&gt; in Julia.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span class=&#34;n&#34;&gt;f1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;α&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;η&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;α&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;η&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;f2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;β&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;λ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;β&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;λ&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;DifferentialEquations&lt;/code&gt; package in Julia makes this very easy to evaluate. As this is an initial value problem, the following functions show the required setup:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;volterra!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;α&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;η&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;β&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;λ&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;ps&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;α&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;η&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; 
+       &lt;span class=&#34;n&#34;&gt;β&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;λ&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;x0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;β&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;λ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;α&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;η&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We now set up a problem in the format of &lt;code&gt;DifferentialEquations&lt;/code&gt; and evaluate it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DifferentialEquations&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;tspan&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;500.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;prob&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ODEProblem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;volterra!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tspan&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ps&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;sol&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;solve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prob&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;maxiters&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;500&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Very short code!&lt;/p&gt;
+&lt;p&gt;(&lt;em&gt;My second personality&lt;/em&gt;: But probably not shorter than the Haskell equivalent.)&lt;/p&gt;
+&lt;p&gt;(&lt;em&gt;My third personality to the second&lt;/em&gt;: Weird flex, but ok.)&lt;/p&gt;
+&lt;h2 id=&#34;falkner-skan-boundary-layer-equations&#34;&gt;Falkner-Skan Boundary Layer Equations&lt;/h2&gt;
+&lt;p&gt;The Falkner-Skan transformation of the thin shear layer equations governing boundary layers is given by the following third-order differential equation:&lt;/p&gt;
+&lt;p&gt;$$ f&#39;&#39;&#39; + \left(\frac{1 + a}{2}\right) f f&#39;&#39; + a\left[1 - (f&#39;)^2\right] = 0 $$&lt;/p&gt;
+&lt;p&gt;with boundary conditions $f(0) = f&#39;(0) = 0, ~ f&#39;(\eta) = 1$, where $\eta$ is some specified upper bound. This can be expressed in terms of an autonomous system of first-order differential equations: $\dot{\mathbf x} = \mathbf f(\mathbf x, \mathbf p, η)$. First, we define the function for the governing ODE:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;falkner_skan_ODE!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;du&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;η&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;F&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;U&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;S&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;       &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;du&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;U&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;du&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;S&lt;/span&gt;             
+    &lt;span class=&#34;n&#34;&gt;du&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;F&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;S&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;U&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;^&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+    &lt;span class=&#34;nb&#34;&gt;nothing&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As this is a boundary value problem, in contrast to the previous initial value problem, another function is required to specify the boundary conditions. Note that the distinction between initial value and boundary value problems is &amp;ldquo;superficial&amp;rdquo;, and the mathematical treatment is generally identical as the formulation of space curves passing through specified points.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;falkner_skan_BC!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;η&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;              &lt;span class=&#34;c&#34;&gt;# η = 0, F = 0&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;              &lt;span class=&#34;c&#34;&gt;# η = 0, F&amp;#39; = 0&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;        &lt;span class=&#34;c&#34;&gt;# η = ηₑ, F&amp;#39; = 1&lt;/span&gt;
+
+    &lt;span class=&#34;nb&#34;&gt;nothing&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span class=&#34;n&#34;&gt;ηs&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;10.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;x0&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;5.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;2.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; 
+&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;     &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;prob&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BVProblem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;falkner_skan_ODE!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;falkner_skan_BC!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ηs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;sol&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;solve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prob&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;GeneralMIRK4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dt&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1e-1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;
+  
+  &lt;script src=&#34;https://cdn.plot.ly/plotly-latest.min.js&#34;&gt;&lt;/script&gt;
+
+
+
+&lt;div id=&#34;/post/nonlinear-dynamics/images/lol.json&#34; class=&#34;plotly&#34; style=&#34;width:100%&#34;&gt;&lt;/div&gt;
+&lt;script&gt;
+Plotly.d3.json(&#34;/post/nonlinear-dynamics/images/lol.json&#34;, function(err, fig) {
+    Plotly.plot(&#39;\/post\/nonlinear-dynamics\/images\/lol.json&#39;, fig.data, fig.layout, {responsive: true});
+});
+&lt;/script&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)</title>
+        <link>https://godot-bloggy.xyz/post/panel-methods/</link>
+        <pubDate>Wed, 24 Feb 2021 22:55:27 +0800</pubDate>
+        
+        <guid>https://godot-bloggy.xyz/post/panel-methods/</guid>
+        <description>&lt;img src="https://godot-bloggy.xyz/post/panel-methods/images/aeropython.jpg" alt="Featured image of post Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)" /&gt;&lt;h4 id=&#34;references&#34;&gt;References&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Drela, Mark. &lt;em&gt;Flight Vehicle Aerodynamics&lt;/em&gt;. The MIT Press, 2014.&lt;/li&gt;
+&lt;li&gt;Drela, Mark and Giles, M. B. &lt;em&gt;Viscous-Inviscid Analysis of Transonic and Low Reynolds Number Airfoils&lt;/em&gt;. AIAA Journal, 1986.&lt;/li&gt;
+&lt;li&gt;Katz, Joseph and Plotkin, Allen. &lt;em&gt;Low-Speed Aerodynamics - 2nd Edition.&lt;/em&gt; Cambridge University Press, 2001.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;viscous-inviscid-panel-methods&#34;&gt;Viscous-Inviscid Panel Methods&lt;/h1&gt;
+&lt;p&gt;Boundary element methods express the solution of some PDE on a volume by reducing it to the specification on a surface. Panel methods in aerodynamics are special cases of such expressions, in which the governing equation is Laplace&amp;rsquo;s equation in a uniform flow in the case of a steady, inviscid, incompressible fluid.&lt;/p&gt;
+&lt;!-- ## Channel Flow
+
+Yes.
+
+$$ 
+\begin{bmatrix} 
+    1 &amp; 0 &amp; (H + 2)\dfrac{\theta}{u_e} \\\\ 
+    \dfrac{-H}{H^\*}\dfrac{dH^\*}{dH} &amp; \dfrac{1}{H^\*}\dfrac{dH^\*}{dH} &amp; (1 - H)\dfrac{\theta}{u_e} \\\\ 
+    0 &amp; \dfrac{u_e}{\delta^\* - h} &amp; 1 
+\end{bmatrix}
+\begin{bmatrix} 
+    \dfrac{d\theta}{dx} \\\\ 
+    \dfrac{d\delta^\*}{dx} \\\\ 
+    \dfrac{du_e}{dx} 
+\end{bmatrix} = 
+\begin{bmatrix} 
+    \dfrac{c_f}{2} \\\\ 
+    \dfrac{2c_{\mathcal D}}{H^\*} - \dfrac{c_f}{2} \\\\ 
+    \dfrac{u_e}{\delta^\* - h}\dfrac{dh}{dx} 
+\end{bmatrix}
+$$ --&gt;
+&lt;h2 id=&#34;equivalent-inviscid-flow&#34;&gt;Equivalent Inviscid Flow&lt;/h2&gt;
+&lt;h3 id=&#34;governing-equation&#34;&gt;Governing equation&lt;/h3&gt;
+&lt;p&gt;The governing equation for this problem is Laplace&amp;rsquo;s equation in 2 dimensions:
+$$ \nabla^2 \phi = \nabla^2\left(\Phi + \Phi_\infty\right) = 0 $$&lt;/p&gt;
+&lt;p&gt;Note that the Laplace equation is an elliptic PDE, hence boundary conditions specified at any point in the domain affect the solution at all other points in the domain.&lt;/p&gt;
+&lt;p&gt;The &amp;ldquo;physically&amp;rdquo; motivated formulation for a closed, non-porous foil is the specification of Neumann boundary conditions, which state that the normal velocity through the foil is zero and the velocity vanishes at infinity:&lt;/p&gt;
+&lt;p&gt;$$\nabla \Phi^* \cdot \hat{\mathbf n} = \nabla (\Phi + \Phi_\infty) \cdot \hat{\mathbf n} = 0, \quad \lim_{n \to \infty} \nabla \Phi = \mathbf 0$$&lt;/p&gt;
+&lt;p&gt;This implies that the potential of the interior of the body is equal to some constant $c$:&lt;/p&gt;
+&lt;p&gt;$$ \Phi_\text{int}^* = (\Phi + \Phi_\infty) = c$$&lt;/p&gt;
+&lt;p&gt;The above condition is an alternative specification in the form of a Dirichlet boundary condition on the surface boundary $\partial S$, and turns out to be more computationally efficient as the operations are on scalars rather than vectors.&lt;/p&gt;
+&lt;h3 id=&#34;solution&#34;&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Using Green&amp;rsquo;s third identity, the solution on $\partial S$ is expressed in terms of sources $\sigma$ and doublets $\phi$ of varying strength in streamwise-normal ($\hat{\mathbf s}, \hat{\mathbf n}$) coordinates:&lt;/p&gt;
+&lt;p&gt;$$ \Phi^{*}_{\text{int}}(x,y) = \Phi_{\infty}(x,y) + \frac{1}{2\pi}\int_{\partial S} \left[\sigma \ln r - \phi \frac{\partial\ln r}{\partial n}\right]\ dS, \quad \sigma = \frac{\partial\phi}{\partial n} $$&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: Vortices are streamwise derivatives of doublets:&lt;/p&gt;
+&lt;p&gt;$$ \vec\gamma(s) = \hat{\mathbf n} \times \hat{\mathbf s}\frac{d\phi}{ds} $$&lt;/p&gt;
+&lt;h3 id=&#34;discretisation&#34;&gt;Discretisation&lt;/h3&gt;
+&lt;p&gt;Discretise the equation for a foil, in which $N$ panels are assigned to the foil, and $N_w$ panels are assigned to the wake.&lt;/p&gt;
+&lt;p&gt;Assigning each panel on the foil a constant doublet strength $\phi$, and assign all panels constant source strengths $\sigma$, giving the following:&lt;/p&gt;
+&lt;p&gt;$$ \Phi_{\infty}(x,y) + \sum_{j = 1}^N \left(\frac{\sigma}{\pi}\int_{\text{panel}}\ln r \ dS\right)_j - \sum_{j = 1}^N \left(\frac{\phi}{\pi}\int_{\text{panel}}\frac{\partial\ln r}{\partial n} \ dS\right)_j = \phi_p(x,y) $$&lt;/p&gt;
+&lt;p&gt;Let: 
+$$ B_j \equiv \frac{1}{\pi}\int_{\text{panel}}\ln r \ dS\bigg|_j, \quad A_j \equiv -\frac{1}{\pi}\int_{\text{panel}}\frac{\partial\ln r}{\partial n} \ dS\bigg|_j$$&lt;/p&gt;
+&lt;p&gt;For foil panels, we get the following system of equations:&lt;/p&gt;
+&lt;p&gt;$$ A \phi + \vec\Phi^{*} = \vec\Phi_{\infty} - B\sigma $$&lt;/p&gt;
+&lt;p&gt;Let $\vec U_s = \{~\vec U \cdot ~\hat s_i \mid 1 \leq i \leq N + N_w ~\}$.&lt;/p&gt;
+&lt;h3 id=&#34;kutta-condition&#34;&gt;Kutta Condition&lt;/h3&gt;
+&lt;p&gt;The Kutta condition ensures the flow leaves the trailing edge &amp;ldquo;smoothly&amp;rdquo;:&lt;/p&gt;
+&lt;p&gt;$$ \Delta \phi_W = \phi_N - \phi_1 $$&lt;/p&gt;
+&lt;p&gt;The Morino condition, which equates the potential difference at the upper and lower streamlines of the trailing edge, sometimes appears to be more accurate:&lt;/p&gt;
+&lt;p&gt;$$ \phi_1 - \phi_2 = \phi_N - \phi_{N-1} $$&lt;/p&gt;
+&lt;h3 id=&#34;cases&#34;&gt;Cases&lt;/h3&gt;
+&lt;p&gt;Now we deal with two cases:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Let $\Phi_{\infty}(x,y) = \Phi^{*}_\text{int}(x,y)$. This system is directly invertible for $\phi_j$ when $\sigma_j$ is specified as $\sigma_j = \vec U_\infty \cdot \hat n_j$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;$$ \vec\phi = (-A^{-1}B)\vec\sigma \equiv P\vec\sigma$$&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Let $\sigma_j = \Phi^{*}_\text{int} = 0$, then the system is also directly invertible for $\vec\phi$ at a lower cost:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;$$ \vec\phi = A^{-1} \vec\Phi_{\infty}(x,y)$$&lt;/p&gt;
+&lt;h2 id=&#34;real-viscous-flow&#34;&gt;Real Viscous Flow&lt;/h2&gt;
+&lt;h3 id=&#34;doublet-expressions&#34;&gt;Doublet Expressions&lt;/h3&gt;
+&lt;p&gt;For viscous modelling, we deal with the first case using the wall transpiration model on the EIF. First, we express the edge velocities over the panels, which are the tangential derivatives of the exterior potential, expressed as sum of the internal potential and the potential &amp;lsquo;jump&amp;rsquo; across the singularity distribution: $\Phi^{*}_\text{ext} = \Phi^{*}_\text{int} - \phi$. In case 1: $\Phi^{*}_\text{int} = c \in \mathbb R$, and $\phi = \Phi_{\infty} +???$.&lt;/p&gt;
+&lt;p&gt;$$ 
+\begin{aligned} 
+\vec u_e = 
+\begin{cases} 
+\vec U_s^f - \dfrac{d\phi}{ds} &amp;amp; \text{Airfoil} \\ 
+&amp;amp; \\ 
+\vec U_s^w - \dfrac{d}{ds}\left(A^w \phi + B^w \sigma \right) &amp;amp; \text{Wake} 
+\end{cases} 
+\end{aligned} 
+$$&lt;/p&gt;
+&lt;p&gt;Substituting the solution for $\phi$ from case 1, we obtain the following matrix expression:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\vec u_e &amp;amp; = \vec U_s - \frac{d}{ds} 
+\begin{bmatrix} P \\ 
+\hline A^w P + B^w
+\end{bmatrix} 
+\vec\sigma
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;Now express the sources in terms of the mass defect $m = u_e\delta^*$:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\sigma_j &amp;amp; = \left(\frac{dm}{ds}\right)_j \\ 
+\vec u_e &amp;amp; = \vec U_s - \frac{d}{ds}
+\begin{bmatrix}
+P \\ 
+\hline A^wP + B 
+\end{bmatrix}
+\frac{d\vec m}{ds}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;This gives a differential equation for $\vec u_e$.&lt;/p&gt;
+&lt;h3 id=&#34;difference-operators&#34;&gt;Difference Operators&lt;/h3&gt;
+&lt;p&gt;Define the following operator $\Delta^+\colon \mathbb R^n \to \mathbb R^{n-1}, n \in \mathbb N^+$ to evaluate forward differences:&lt;/p&gt;
+&lt;p&gt;$$ 
+\Delta^+ \equiv 
+\begin{bmatrix} 
+-1 &amp;amp; 1 &amp;amp; 0 &amp;amp; \ldots &amp;amp; 0 \\ 
+0 &amp;amp; -1 &amp;amp; 1 &amp;amp; \ldots &amp;amp; 0 \\ 
+\vdots &amp;amp; \ddots &amp;amp; \ddots &amp;amp; \ddots &amp;amp; \vdots \\ 
+0 &amp;amp; \ldots &amp;amp; -1 &amp;amp; 1 &amp;amp; 0 \\ 
+0 &amp;amp; \ldots &amp;amp; 0 &amp;amp; -1 &amp;amp; 1 
+\end{bmatrix} 
+$$&lt;/p&gt;
+&lt;p&gt;Difference operators can be used to generically compute $n$th order differences up to desired accuracy.&lt;/p&gt;
+&lt;p&gt;The following operator $\Delta^C\colon \mathbb R^n \to \mathbb R^n$ constructs central differences with forward and backward differencing at the endpoints:&lt;/p&gt;
+&lt;p&gt;$$
+\Delta^c \equiv
+\begin{bmatrix}
+-1 &amp;amp; 1 &amp;amp; 0 &amp;amp; \ldots &amp;amp; 0 \\ 
+-1/2 &amp;amp; 0 &amp;amp; 1/2 &amp;amp; \ldots &amp;amp; 0 \\ 
+\vdots &amp;amp; \ddots &amp;amp; \ddots &amp;amp; \ddots &amp;amp; \vdots \\ 
+0 &amp;amp; \ldots &amp;amp; -1/2 &amp;amp; 0 &amp;amp; 1/2 \\ 
+0 &amp;amp; \ldots &amp;amp; 0 &amp;amp; -1 &amp;amp; 1
+\end{bmatrix}
+$$&lt;/p&gt;
+&lt;h2 id=&#34;boundary-layer-equations&#34;&gt;Boundary Layer Equations&lt;/h2&gt;
+&lt;p&gt;The boundary layer equations are obtained via the defect formulation and the thin shear approximations of the Navier-Stokes equations.&lt;/p&gt;
+&lt;p&gt;$$ 
+\begin{aligned} 
+\frac{d\theta}{ds} + (H + 2 - M_e^2)\frac{1}{u_e}\frac{du_e}{ds} - \frac{c_f}{2} &amp;amp; = 0 \quad (\textsf{Momentum}) \\ 
+\frac{1}{\theta^*}\frac{d\theta^*}{ds} + \left(\frac{2H^{**}}{H^*} + 3 - M_e^2\right)\frac{1}{u_e}\frac{du_e}{ds} - 2c_\mathcal{D} &amp;amp; = 0 \quad (\textsf{Kinetic Energy})
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;where $H\equiv \delta^*/\theta$ is the momentum shape parameter, $c_f \equiv \tau_w/\frac{1}{2}\rho_e u_e^2$ is the shear stress coefficient normalised with respect to the freestream edge velocity, $M_e \equiv u_e/a_e$ is the local Mach number at the edge, $H^* \equiv \theta^*/\theta$ is the kinetic energy shape parameter, $H^{**} \equiv \delta^{**}/\theta$ is the density shape parameter, $c_\mathcal D \equiv \mathcal D / \rho_e u_e^3$ is the power dissipation coefficient.&lt;/p&gt;
+&lt;p&gt;$\textsf{Kinetic Energy} - H^*(\textsf{Momentum})$ gives the kinetic energy shape parameter equation:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\implies \theta\frac{dH^*}{ds} + \left[2H^{**} + H^*(1 - H)\right]\frac{\theta}{u_e}\frac{du_e}{ds} - 2c_\mathcal{D} + H^*\frac{c_f}{2} &amp;amp; = 0
+\end{aligned}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;closure-relations&#34;&gt;Closure Relations&lt;/h3&gt;
+&lt;p&gt;The following functional dependencies are used to close the system:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+H^* &amp;amp; = H^*(H) \\ 
+C_f &amp;amp; = C_f(H, Re_\theta) \\ 
+C_\mathcal D &amp;amp; = C_\mathcal D(H, Re_\theta)
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;where $H_k$ is the kinematic shape parameter, derived by Whitfield as:&lt;/p&gt;
+&lt;p&gt;$$ H_k = \frac{H - 0.290M_e^2}{1 + 0.113M_e^2} $$&lt;/p&gt;
+&lt;h4 id=&#34;laminar-closure&#34;&gt;Laminar Closure&lt;/h4&gt;
+&lt;p&gt;Falkner-Skan:&lt;/p&gt;
+&lt;h4 id=&#34;turbulent-closure&#34;&gt;Turbulent Closure&lt;/h4&gt;
+&lt;h3 id=&#34;turbulent-magic&#34;&gt;Turbulent Magic&lt;/h3&gt;
+&lt;p&gt;$$ \frac{\delta}{C_\tau} \frac{dC_\tau}{ds} = 4.2\left(\sqrt{C_{\tau_{EQ}}} - \sqrt{C_\tau}\right) $$&lt;/p&gt;
+&lt;h3 id=&#34;discretisation-1&#34;&gt;Discretisation&lt;/h3&gt;
+&lt;p&gt;The equations are discretised using central differencing, in which the variables are defined on the panel nodes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: Each singularity from the inviscid formulation is at the midpoint of each panel. The edge velocities from this computations are at the nodes, hence $N$ panels with $N+1$ edge velocities.&lt;/p&gt;
+&lt;p&gt;$$ \Delta x = \frac{x_{i+1} - x_{i-1}}{2}, ~x_a = \frac{x_{i+1} + x_{i-1}}{2} $$&lt;/p&gt;
+&lt;p&gt;Resulting in the following discrete BL equations:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\frac{\Delta\theta}{\Delta s} + \left(\frac{\delta_a^*}{\theta_a} + 2 - M_e^2\right)\frac{1}{u_{e_a}}\frac{\Delta u_e}{\Delta s} - \frac{c_{f_a}}{2} &amp;amp; = 0 \\ 
+\frac{\Delta H^*}{\Delta s} + H_a^*(1 - H_a)\frac{\theta_a}{u_{e_a}}\frac{\Delta u_e}{\Delta s} - 2c_{\mathcal{D}_a} + H_a^*\frac{c_{f_a}}{2} &amp;amp; = 0
+\end{aligned}
+$$&lt;/p&gt;
+&lt;h2 id=&#34;residual-equations&#34;&gt;Residual Equations&lt;/h2&gt;
+&lt;p&gt;$$ 
+\begin{aligned}
+\nabla^2 \phi &amp;amp; = 0, \quad \rho_e \mathbf u_e \cdot \mathbf n = \Lambda\\ 
+\frac{d\theta}{ds} + (H + 2 - M_e^2)\frac{1}{u_e}\frac{du_e}{ds} - \frac{c_f}{2} &amp;amp; = 0 \\ 
+\frac{1}{\theta^*}\frac{d\theta^*}{ds} + \left(\frac{2H^{**}}{H^*} + 3 - M_e^2\right)\frac{1}{u_e}\frac{du_e}{ds} - 2c_\mathcal{D} &amp;amp; = 0
+\end{aligned}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;discretisation-2&#34;&gt;Discretisation&lt;/h3&gt;
+&lt;p&gt;The discretised inviscid and viscous equations form the following system of equations to be solved for $m,~\theta,~\tilde n$.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned} 
+\mathbf u_e - \mathbf U_s + \frac{d}{ds}
+\begin{bmatrix} 
+P \\ 
+\hline A^wP + B 
+\end{bmatrix} \frac{\Delta (\mathbf u_e \boldsymbol\delta^*)}{\Delta s} &amp;amp; = \mathcal R_1(\mathbf m) \\ 
+\frac{\Delta\theta}{\theta} + \left(H + 2\right)\frac{\Delta u_e}{u_{e_a}} - \frac{c_{f_a}\Delta s}{2} &amp;amp; = \mathcal R_2(\mathbf m, \boldsymbol \theta, \tilde{\mathbf n}) \\ 
+\frac{\Delta H^*}{H^*_a} + \left(1 - H\right)\frac{\Delta u_e}{u_{e}} + \left(\frac{c_{f}}{2} - \frac{2C_{\mathcal D}}{H^*} \right) \frac{\Delta s}{\theta} &amp;amp; = \mathcal R_3(\mathbf m, \boldsymbol \theta, \tilde{\mathbf n})
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;The previous setup is sufficient for modelling flows with laminar boundary layers. The additional equations for modelling transition and turbulence are:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\frac{\Delta \tilde n}{\Delta s} - \frac{d\tilde n}{dRe_\theta}(H_{a})\frac{dRe_\theta}{ds}(H_{a}, \theta_{a}) &amp;amp; = R_{3,i}(\mathbf m, \boldsymbol \theta, \tilde{\mathbf n})
+\end{aligned}
+$$&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Gradient-Based Optimisation — Discrete Direct and Adjoint Methods (In Progress)</title>
+        <link>https://godot-bloggy.xyz/post/opt-problems/</link>
+        <pubDate>Sun, 30 Aug 2020 22:55:27 +0800</pubDate>
+        
+        <guid>https://godot-bloggy.xyz/post/opt-problems/</guid>
+        <description>&lt;img src="https://godot-bloggy.xyz/post/opt-problems/XDSM.svg" alt="Featured image of post Gradient-Based Optimisation — Discrete Direct and Adjoint Methods (In Progress)" /&gt;&lt;p&gt;Optimisation problems are becoming a big meme, so let&amp;rsquo;s address some of the general ideas and how to compute them for discretised systems of equations.&lt;/p&gt;
+&lt;h2 id=&#34;problem-description&#34;&gt;Problem Description&lt;/h2&gt;
+&lt;p&gt;Let the vector $\mathbf p_i \in \mathbb R^n$ be the state variable at the $i$th iteration, and the function as a matrix $\mathbf R \in \mathbb R^m \times \mathbb R^n$ which needs to be solved.&lt;/p&gt;
+&lt;p&gt;$$ \mathbf R(\mathbf p) = \mathbf 0 $$&lt;/p&gt;
+&lt;p&gt;Now say you want to know the values of $\mathbf p$, i.e. a root, which solves the system $\mathbf R = \mathbf 0$. The first step would be to consider some point close to the root $\mathbf p + \Delta \mathbf p$, then the system can be expanded in a Taylor series.&lt;/p&gt;
+&lt;p&gt;$$ \mathbf R(\mathbf p) \approx \mathbf R(\Delta \mathbf p) + \frac{\partial \mathbf R}{\partial \mathbf p}(\Delta \mathbf p) + \mathcal O(\Delta \mathbf p^2)$$&lt;/p&gt;
+&lt;h2 id=&#34;newton-method&#34;&gt;Newton Method&lt;/h2&gt;
+&lt;p&gt;The Newton method with a line-search performs the following algorithm:&lt;/p&gt;
+&lt;p&gt;$$ \mathbf p_{i+1} = \mathbf p_i - \alpha_i\mathbf J_i^{-1} \mathbf R(\mathbf p_i), \quad \mathbf J_i = \frac{\partial \mathbf R(\mathbf p_i)}{\partial \mathbf p_i} $$&lt;/p&gt;
+&lt;p&gt;assuming the existence of the inverse of the Jacobian $\mathbf J_i$, which is usually the case for physical problems (if not, re-evaluate your setup!). We would like $\mathbf p_{i+1} = 0$ in the fewest number of iterations or at the lowest speed. Hence $\mathbf p_i = \alpha_i\mathbf J_i^{-1} \mathbf R(\mathbf p_i)$. Evaluating the inverse of the Jacobian is impractical, but the required step $d\mathbf p_i$ can be determined by solving the following linear equation instead, which is simply multiplying both sides by $\mathbf J_i$.&lt;/p&gt;
+&lt;p&gt;$$ \beta_i \mathbf J_i d\mathbf p_i = -\mathbf R_i, \quad \text{where} \quad \beta_i = \frac{1}{\alpha_i} $$&lt;/p&gt;
+&lt;p&gt;The dimensionality of the problems could get confusing, so index notation with summation convention comes in handy:&lt;/p&gt;
+&lt;p&gt;$$ \frac{\partial R^{ijk}}{\partial p^{mn}} = \ldots$$&lt;/p&gt;
+&lt;p&gt;Let us naïvely solve the linear system, by using Julia&amp;rsquo;s &lt;code&gt;\&lt;/code&gt; function from the &lt;code&gt;LinearAlgebra&lt;/code&gt; package.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span class=&#34;c&#34;&gt;# Number of iterations&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;num_iters&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;
+
+&lt;span class=&#34;c&#34;&gt;# Newton step computation&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newton_step&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;∂R∂u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;jac&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂R∂u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;jac&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;\&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; 
+&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+
+&lt;span class=&#34;c&#34;&gt;# Newton method algorithm&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;kp&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num_iters&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;∂R∂T&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;compute_residual_and_grad&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T_truth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;βs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;q₀&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ΔT&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newton_step&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T_truth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;∂R∂T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ε&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;maximum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;abs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ΔT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+    &lt;span class=&#34;c&#34;&gt;# display(R)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Newton step error: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ε&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;T_truth&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ω&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ΔT&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are various numerical methods dedicated to solving linear systems, depending on the structure of the matrices. In computational fluid dynamics with structured grids, the matrix is usually regular, banded, and sparse. This is due to the adjacencies between elements being specified up to a given level of &amp;ldquo;depth&amp;rdquo;, which is called a stencil. So certain algorithms speed up the computations by taking advantage of this structure.&lt;/p&gt;
+&lt;h2 id=&#34;optimisations&#34;&gt;Optimisations&lt;/h2&gt;
+&lt;p&gt;The objective function for a gradient-based optimisation problem with an equality constraint (read holonomic, &lt;code&gt;bollu&lt;/code&gt;) $\mathbf R(\mathbf x, \mathbf p) = \mathbf 0$ requires evaluation of its total derivative.&lt;/p&gt;
+&lt;p&gt;$$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} + \frac{\partial \mathbf f}{\partial \mathbf p}\frac{d\mathbf p}{d\mathbf x} $$&lt;/p&gt;
+&lt;p&gt;The equality constraint trivially satisfies the following identity:&lt;/p&gt;
+&lt;p&gt;$$ \frac{d\mathbf R}{d\mathbf x} = \frac{\partial \mathbf R}{\partial \mathbf x} + \frac{\partial \mathbf R}{\partial \mathbf p}\frac{d\mathbf p}{d\mathbf x} = 0 $$&lt;/p&gt;
+&lt;p&gt;So you can substitute this into the total derivative expression:&lt;/p&gt;
+&lt;p&gt;$$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} + \frac{\partial \mathbf f}{\partial \mathbf p}\left[-\left(\frac{\partial \mathbf R}{\partial\mathbf p}\right)^{-1} \frac{\partial \mathbf R}{\partial \mathbf x}\right] $$&lt;/p&gt;
+&lt;p&gt;So there are two ways to avoid the problem of computing the inverse of $\partial \mathbf R/\partial \mathbf P$, which are called the &lt;em&gt;direct&lt;/em&gt; and &lt;em&gt;adjoint&lt;/em&gt; methods.&lt;/p&gt;
+&lt;h3 id=&#34;direct-method&#34;&gt;Direct Method&lt;/h3&gt;
+&lt;p&gt;Let&lt;/p&gt;
+&lt;p&gt;$$ \boldsymbol\psi = -\left(\frac{\partial \mathbf R}{\partial\mathbf p}\right)^{-1} \frac{\partial \mathbf R}{\partial \mathbf x} $$&lt;/p&gt;
+&lt;p&gt;The direct method hence solves the following linear system by left multiplication of $\partial \mathbf R / \partial \mathbf p$:
+$$
+\begin{aligned}
+\frac{\partial \mathbf R}{\partial \mathbf p}\boldsymbol \psi = -\frac{\partial \mathbf R}{\partial \mathbf x}, \quad \text{where} \quad \boldsymbol \psi = \frac{d \mathbf p}{d\mathbf x}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;Notice that this expression is almost identical to the Newton step, extended to total derivatives with respect to the design variables. The big Jacobian on the LHS is already computed from the Newton step, and only the RHS needs to be computed. If you have the factorisation of the Jacobian from the Newton step, it could be very efficient to simply reuse the factorisation and back-substitute to solve this equation.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;solve_direct&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;∂R∂x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;∂R∂u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;∂R∂u_sq&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂R∂u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])))&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hcat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂R∂u_sq&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;\&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂R∂x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;kp&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;eachindex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;...&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Hence the total derivative is:&lt;/p&gt;
+&lt;p&gt;$$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} + \frac{\partial \mathbf f}{\partial \mathbf p}\boldsymbol\psi $$&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span class=&#34;n&#34;&gt;total_derivative_direct&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂f∂x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ψ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;∂f∂u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+    &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;∂f∂x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂f∂u&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ψ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;kp&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;eachindex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂f∂x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;adjoint-method&#34;&gt;Adjoint Method&lt;/h3&gt;
+&lt;p&gt;Let&lt;/p&gt;
+&lt;p&gt;$$ \boldsymbol\phi^T = \frac{\partial \mathbf f}{\partial \mathbf p}\left(\frac{\partial \mathbf R}{\partial\mathbf p}\right)^{-1} $$&lt;/p&gt;
+&lt;p&gt;The adjoint method hence solves the following linear system by right multiplication of $\partial \mathbf R / \partial \mathbf p$:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\left(\frac{\partial \mathbf R}{\partial \mathbf p}\right)^T \boldsymbol\phi = \left(\frac{\partial \mathbf f}{\partial \mathbf p}\right)^T, \quad \text{where}\quad \boldsymbol \phi = \left(\frac{\partial \mathbf f}{\partial \mathbf R}\right)^T
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;The transposition operator $-^T\colon (\mathbb R^m \times \mathbb R^n) \to (\mathbb R^n \times \mathbb R^m)$ simply transposes the dimensions of a matrix or vector. Of course, here the linear system has to be square, so $m = n$.&lt;/p&gt;
+&lt;p&gt;Here is where the word &lt;em&gt;adjoint&lt;/em&gt; comes in. When you have a constraint expressed in the form of some nonlinear partial differential equation, the transpose operator is not applicable, and you have to actually apply the concept of adjoints. This concept exists at a much more abstract level in category theory and duality, which is the &amp;ldquo;next-best&amp;rdquo; thing when one is not able to find direct inverses. An example is the adjoint of the differential operator on an infinite-dimensional Hilbert space of functions.&lt;/p&gt;
+&lt;p&gt;In most cases, however, you would be dealing with some discretised version of the PDE, and the above will apply to the discretised equations, which are expressed in the form of a tensor. This setup is called the &lt;em&gt;discrete adjoint&lt;/em&gt; formulation, and is quite a general operation on nonlinear PDEs.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;solve_adjoint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;∂R∂u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dfdu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+    &lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂R∂u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])))&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;\&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dfdu&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Hence the total derivative is:&lt;/p&gt;
+&lt;p&gt;$$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} - \boldsymbol\phi^T\frac{\partial \mathbf R}{\partial \mathbf x} $$&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span class=&#34;n&#34;&gt;total_derivative_adjoint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂f∂x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;φ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;∂R∂x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
+    &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;∂f∂x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;permutedims&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;φ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; 
+                &lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂R∂x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂f∂x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; 
+                &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;kp&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;eachindex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;∂f∂x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;concept&#34;&gt;Concept&lt;/h3&gt;
+&lt;p&gt;So the main idea is that depending on the number of inputs and outputs, you choose the appropriate method which reduces the dimensionality of the linear system.&lt;/p&gt;
+&lt;p&gt;The complicated parts (read headaches) are actually the evaluations and constructions of the different Jacobians and their reshapings, all of which are needed regardless of whether the direct or adjoint method is used. You picks your linear system and you takes your computational cost.&lt;/p&gt;
+&lt;p&gt;Notice that we didn&amp;rsquo;t specify any restriction on the constraints. You could identically apply the same setup to $$\mathbf R(\mathbf x, \mathbf p_1, \mathbf p_2, \ldots, \mathbf p_n) = \begin{bmatrix} \mathbf R_1(\mathbf x, \mathbf p_1) \\ \mathbf R_2(\mathbf x, \mathbf p_2) \\ \vdots \\ \mathbf R_n(\mathbf x, \mathbf p_n) \end{bmatrix} = \mathbf 0$$&lt;/p&gt;
+&lt;p&gt;This setup is called a &lt;em&gt;coupled&lt;/em&gt; system, and the entire system is solved simultaneously for robustness and efficiency, either using the direct or adjoint methods. The &amp;ldquo;off-diagonal&amp;rdquo; block terms correspond to connections between different residual equations, and usually make the system sparse as many variables are not connected between different residual equations in physical models. The complexity of such systems is much greater, and is better left for another post.&lt;/p&gt;
+&lt;h2 id=&#34;stability&#34;&gt;Stability&lt;/h2&gt;
+&lt;p&gt;Even the order of accuracy of the Jacobians is not as important, as the point of the optimisation is to get a converged optimum, with converged residuals for the constraint. So you could spend less time doing more iterations with a greatly reduced cost for evaluating less accurate Jacobians and solving the linear system, if the residual constraint is the most time-consuming part. However, robustness of the solver for the residual equations becomes problematic.&lt;/p&gt;
+&lt;!-- ### Pseudo-Transient Continuation
+
+$$ \left(\frac{I}{\Delta t} + 1\right)? \mathbf J_i d\mathbf x_i = -\mathbf f_i $$ --&gt;
+&lt;!-- ## Unsteady Problems --&gt;</description>
+        </item>
+        <item>
+        <title>Fluid Dynamics — A Flurry of Theory (In Progress)</title>
+        <link>https://godot-bloggy.xyz/post/fluid-dynamics/</link>
+        <pubDate>Mon, 30 Sep 2019 00:00:00 +0800</pubDate>
+        
+        <guid>https://godot-bloggy.xyz/post/fluid-dynamics/</guid>
+        <description>&lt;h4 id=&#34;references&#34;&gt;References&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Batchelor, G. K. &lt;em&gt;An Introduction to Fluid Dynamics.&lt;/em&gt; Cambridge University Press, 1992.&lt;/li&gt;
+&lt;li&gt;Drela, Mark. &lt;em&gt;Flight Vehicle Aerodynamics&lt;/em&gt;. The MIT Press, 2014.&lt;/li&gt;
+&lt;li&gt;Katz, Joseph and Plotkin, Allen. &lt;em&gt;Low-Speed Aerodynamics - 2nd Edition.&lt;/em&gt; Cambridge University Press, 2001.&lt;/li&gt;
+&lt;li&gt;Feynman, Richard P., Leighton, Robert B. and Sands, Matthew. &lt;em&gt;The Feynman Lectures on Physics, Vol. 2: Mainly Electromagnetism and Matter&lt;/em&gt;. Basic Books, 2011.&lt;/li&gt;
+&lt;li&gt;Balakrishnan, V. &lt;em&gt;Selected Topics in Mathematical Physics&lt;/em&gt;. NPTEL, 2014.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;definitions&#34;&gt;Definitions&lt;/h2&gt;
+&lt;p&gt;The &lt;strong&gt;circulation&lt;/strong&gt; $\Gamma$ of a vector field $\vec f(x^i)$ about a closed contour $C$ parametrised by a vector $d x_i$:&lt;/p&gt;
+&lt;p&gt;$$ \Gamma \equiv \oint_C \vec f(x^i)\ dx_i $$&lt;/p&gt;
+&lt;p&gt;Note that the dimension of the vector space is irrelevant.&lt;/p&gt;
+&lt;p&gt;This is related to &lt;strong&gt;Stokes&#39; theorem&lt;/strong&gt;, which indicates the &amp;lsquo;total&amp;rsquo; curl of the vector field for an open surface $\partial \mathcal S$:&lt;/p&gt;
+&lt;p&gt;$$ \oint_C \vec f \cdot d\vec l = \iint_{\partial \mathcal S} \left(\nabla \times \vec f\right)\cdot \vec n\ d\mathcal S $$&lt;/p&gt;
+&lt;p&gt;Similarly, the total &amp;lsquo;emittance&amp;rsquo; of $\vec f$ over a closed surface $S$ is related to the &amp;lsquo;total&amp;rsquo; divergence of a vector field from a volume $\mathcal V$ via &lt;strong&gt;Gauss&#39; theorem&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;$$ \iint_{\mathcal S} \vec f \cdot d\vec {\mathcal S} = \iiint_{\mathcal V}\nabla \cdot \vec f \ d\mathcal V $$&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; Gauss&#39; and Stokes&#39; theorems are properties of integrals, and are not particularly related to vector spaces as such. They are independent of tensor rank and dimensionality (consider the higher-dimensional tensor $f^{ijk}$ instead of just the vector $f^i$, nothing changes except the equations become identities on the components with the free indices).&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;material/Lagrangian/etc&amp;hellip; derivative&lt;/strong&gt; $D/Dt$ is an operator expressing the chain rule on any tensor field that signifies the time rate of change of the tensor if it is dependent on space-time macroscopic velocity field variations. In a flat spacetime:&lt;/p&gt;
+&lt;p&gt;$$ \frac{D}{Dt} \equiv \frac{\partial}{\partial t} + v^i\frac{\partial}{\partial x_i} $$&lt;/p&gt;
+&lt;p&gt;This can be defined more generally on a smooth manifold by upgrading the spatial partial derivatives to covariant derivatives.&lt;/p&gt;
+&lt;p&gt;The conservation of an &lt;em&gt;extensive property&lt;/em&gt; $N$ as it travels through a defined &lt;strong&gt;control volume&lt;/strong&gt; $\mathcal V$, in which the conservation is described in terms of an &lt;em&gt;intensive property&lt;/em&gt; $\eta$ (such as the density or any equivalent macroscopic property corresponding to a continuum formulation), is dictated by the &lt;strong&gt;Reynolds&#39; transport theorem&lt;/strong&gt; in the following temporal formulation:&lt;/p&gt;
+&lt;p&gt;$$ \frac{DN}{Dt} = \iiint_{\mathcal V} \frac{\partial \eta}{\partial t}\ d\mathcal{V} + \iint_{\mathcal S} \eta \vec V \cdot d\vec{\mathcal S} $$&lt;/p&gt;
+&lt;p&gt;The surface integral can usually be converted into a differential form over the volume via Gauss&#39; theorem.&lt;/p&gt;
+&lt;h4 id=&#34;fluid--dynamics&#34;&gt;Fluid  Dynamics&lt;/h4&gt;
+&lt;p&gt;A &lt;strong&gt;fluid&lt;/strong&gt; is defined as a continuum of particles such that its microscopic properties average into macroscopic properties that approximate its behaviour as a single element, a behaviour characterised by negligibly resistive non-retention of shape when deformed.&lt;/p&gt;
+&lt;p&gt;The definitions of circulation and the material derivative are sufficient to derive &lt;strong&gt;Kelvin&amp;rsquo;s circulation theorem&lt;/strong&gt; for velocity fields $\vec V$ along a fluid curve $C$, defined as a curve which always passes through the same fluid elements:&lt;/p&gt;
+&lt;p&gt;$$ \frac{D\Gamma}{Dt} = \frac{D}{Dt}\oint_C \vec V \cdot d\vec l = \oint_C \frac{D\vec V}{Dt} \cdot d\vec l + \oint_C \vec V \cdot \frac{D}{dt} d\vec l$$&lt;/p&gt;
+&lt;p&gt;$$ \implies \frac{D\Gamma}{Dt} = \oint_C \vec a \cdot d\vec l, \quad \because \frac{D\vec V}{Dt} = \vec a,\quad \oint_C \vec V \cdot d\vec V = 0 $$&lt;/p&gt;
+&lt;p&gt;The differential form of the &lt;strong&gt;continuity equation&lt;/strong&gt; representing the conservation of mass $M$, with a macroscopic property called the &lt;strong&gt;density&lt;/strong&gt; $\rho$, via the Reynolds&#39; transport theorem is:&lt;/p&gt;
+&lt;p&gt;$$ \frac{DM}{Dt} = \frac{\partial \rho}{\partial t} + \nabla\cdot (\rho \vec V) $$&lt;/p&gt;
+&lt;p&gt;For a control volume with no time-varying source or sink of mass, $dM/dt = 0$, which gives the usual continuity equation analysed in fluid mechanics. An &lt;strong&gt;incompressible flow&lt;/strong&gt; is defined as a flow in which the changes in density with respect to space and time are negligible.&lt;/p&gt;
+&lt;p&gt;The differential form of the &lt;strong&gt;incompressible Navier-Stokes equations&lt;/strong&gt; in an external time-independent gravitational field $\vec g$ with non-conservative body forces $\vec f$ is:&lt;/p&gt;
+&lt;p&gt;$$ \nabla \cdot \vec V = 0 $$&lt;/p&gt;
+&lt;p&gt;$$ \rho \frac{D\vec V}{Dt} = -\nabla p + \rho \vec g + \nabla \cdot \hat \tau + \rho\vec f$$&lt;/p&gt;
+&lt;p&gt;The energy equation reduces to Bernoulli&amp;rsquo;s equation (mentioned later), which can be derived from the momentum equation above, hence it need not be considered.&lt;/p&gt;
+&lt;p&gt;For a Newtonian fluid, the stresses are considered to be linearly proportional to the velocity gradient near a wall, with a constant $\mu$ called &lt;strong&gt;viscosity&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;$$ \tau = \mu \frac{\partial u}{\partial x} $$&lt;/p&gt;
+&lt;p&gt;Hence the stress tensor is (explicitly showing the Kronecker product $\otimes$):&lt;/p&gt;
+&lt;p&gt;$$\hat \tau = \mu\left[\nabla \otimes \vec V +  \left(\nabla \otimes \vec V\right)^T  - \frac{2\nu}{3} \hat I\right]$$&lt;/p&gt;
+&lt;p&gt;where $\nu \equiv \nabla \cdot \vec V$, called the &lt;strong&gt;dilatation strain rate&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Non-dimensionalisation schemes are important in fluid dynamics because they remove the dependence of the equations on intrinsic fluid properties, such as $\rho,\ \mu$ and reference length scales such as $L$ and $|\vec V|$ for flow over objects.&lt;/p&gt;
+&lt;p&gt;If the flow is inviscid, the time derivatives and the stress terms drop out, giving the &lt;strong&gt;incompressible Euler equations&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;$$ \nabla \cdot \vec V = 0 $$&lt;/p&gt;
+&lt;p&gt;$$ \rho(\vec V \cdot \nabla \vec V) = -\nabla p + \rho\vec g + \vec f$$&lt;/p&gt;
+&lt;p&gt;Assume that the external gravitational field is conservative, and hence is expressible as a scalar potential $\vec g = -\nabla \xi$, as is usually done in physics. Assuming no non-conservative body forces, Kelvin&amp;rsquo;s circulation theorem provides the following statement of angular momentum conservation:&lt;/p&gt;
+&lt;p&gt;$$ \frac{D\Gamma}{Dt} = \oint_C \nabla\left(\frac{-p}{\rho}\right) \cdot d\vec l + \frac{1}{\rho}\oint_C \vec g \cdot d\vec l = 0 $$&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;vorticity&lt;/strong&gt; $\omega$ is defined as the curl of the velocity field $\vec V$, specifically: $ \omega \equiv \nabla \times \vec V $. Assume the flow is irrotational, i.e. $\omega = 0$, and there are no body forces, because the assumptions aren&amp;rsquo;t enough. Using Stokes&#39; theorem, $\Gamma = 0$. This describes a &lt;em&gt;conservative&lt;/em&gt; vector field, which can be expressed in the form of a scalar potential $\vec V = \nabla \phi$, when inserted into the continuity equation gives &lt;strong&gt;Laplace&amp;rsquo;s equation&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;$$ \nabla^2 \phi = 0 $$&lt;/p&gt;
+&lt;p&gt;As the real and imaginary parts of an analytic function of a complex variable $z$ independently satisfy Laplace&amp;rsquo;s equation, another Laplace equation can be constructed by considering $\phi$ as the real part and using the Cauchy-Riemann conditions in Cartesian coordinates:&lt;/p&gt;
+&lt;p&gt;$$ \vec V = (u(x,y), v(x,y)), \quad u = \frac{\partial \phi}{\partial x} = \frac{\partial \psi}{\partial y},\quad v = \frac{\partial \phi}{\partial y} = -\frac{\partial \psi}{\partial x} $$&lt;/p&gt;
+&lt;p&gt;where $\psi$ is called a &lt;strong&gt;stream function&lt;/strong&gt;, mainly used in two-dimensional flows. This leads to the construction of a &lt;strong&gt;complex potential&lt;/strong&gt; $\Psi(z) = \phi + i \psi $. The derivative of this with respect to $z$ gives you the &lt;strong&gt;complex velocity&lt;/strong&gt; $u - iv$. The stream function can also be constructed by the following definition of a &lt;strong&gt;streamline&lt;/strong&gt; in three dimensions, a line which satsfies the equations:&lt;/p&gt;
+&lt;p&gt;$$ \vec V \times d\vec l = 0 $$&lt;/p&gt;
+&lt;p&gt;In two dimensions, say the $x$-$y$ plane, which physically relates the changes in velocity with respect to changes in space:&lt;/p&gt;
+&lt;p&gt;$$ \frac{dy}{dx} = \frac{v(x,y)}{u(x,y)} \iff u\ dy - v\ dx = 0$$&lt;/p&gt;
+&lt;p&gt;The second expression is an exact differential $d\psi =0$ if and only if the previous conditions for $\psi$ are satisfied. Note that the contours generated by $\phi$ and $\psi$ are orthogonal.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Vortex lines&lt;/strong&gt; can be defined analogously to the definition of the streamline:&lt;/p&gt;
+&lt;p&gt;$$ \omega \times d\vec l = 0 $$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Non-dimensionalisation&lt;/strong&gt; is a key concept in which the equations of motion are multiplied/divided by reference scales corresponding to certain physical quantities in external flows. In general, these are the length, speed, time, pressure and body forces.&lt;/p&gt;
+&lt;p&gt;$$ x^{i*} = \frac{x^i}{L}, \ u^{i*} = \frac{u^i}{V}, \ t^* = \frac{t}{T}, \ p^* = \frac{p}{p_0}, \ f^{i*} = \frac{f^i}{f_0} $$&lt;/p&gt;
+&lt;p&gt;The corresponding derivatives in non-dimensional terms can be obtained via the chain rule, which results in the equations of motion as follows:&lt;/p&gt;
+&lt;p&gt;$$ \frac{V}{L}\left(\frac{\partial u^{i*}}{\partial x^{i*}}\right) = 0 $$&lt;/p&gt;
+&lt;h4 id=&#34;aside-mathematical-generality&#34;&gt;Aside: Mathematical Generality&lt;/h4&gt;
+&lt;p&gt;Electromagnetics and fluid dynamics are usually about almost exclusively solving partial differential equations, either analytically or numerically. The Laplace equation also governs the basic laws of electrostatics, which can be derived from Maxwell&amp;rsquo;s equations. So let&amp;rsquo;s look at some basic solutions first for the &lt;strong&gt;Poisson equation&lt;/strong&gt; with a source $\rho$, a more general form of Laplace&amp;rsquo;s equation first in $N$ dimensions:&lt;/p&gt;
+&lt;p&gt;$$ \nabla_N^2 \phi(\vec x) = \rho(\vec x) $$&lt;/p&gt;
+&lt;p&gt;This can be solved via the method of Green functions:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\nabla_N^2 G(\vec x, \vec x_0) &amp;amp; = \delta(\vec x - \vec x_0) \\ 
+\int_{-\infty}^{\infty} \left[\nabla_N^2 G(\vec x, \vec x_0)\right]  e^{i\vec k \cdot \vec x}\ d\vec x &amp;amp; = \int_{-\infty}^{\infty} \delta(\vec x - \vec x_0) e^{i\vec k \cdot \vec x}\ d\vec x \\ 
+|\vec k|^2 G(\vec k, \vec x_0) &amp;amp; = e^{i \vec k \cdot \vec x_0} \\ 
+\implies G(\vec x, \vec x_0) &amp;amp; = \frac{1}{(2\pi)^N}\int_{-\infty}^{\infty} \frac{e^{-i \vec k \cdot (\vec x -\vec x_0)}}{|\vec k|^2} \ d\vec k 
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;Laplace&amp;rsquo;s equation is spherically symmetric in $N$ dimensions (evident from the $|\vec k|^2$ term), so expressing the integral in a $N$-spherical polar coordinate system will be more convenient. This is singular with multiple poles at $\vec k = \vec 0$, so the contour must be deformed in the complex plane.&lt;/p&gt;
+&lt;p&gt;$$ G(\vec x, \vec x_0) = \frac{1}{(2\pi)^N} \int_0^{2\pi} \int_{0}^{\infty} \frac{e^{-ik_r r\cos\theta}}{|r|^2}r\ dr d\theta $$&lt;/p&gt;
+&lt;h4 id=&#34;potential-flows&#34;&gt;Potential Flows&lt;/h4&gt;
+&lt;p&gt;So a majority of basic (and unrealistic!) fluid flows can be generated by solving Laplace&amp;rsquo;s equation for $\psi$ (the streamlines) using certain boundary conditions and declarations of $u, v$, which is somewhat of an inverse problem. The incompressible Euler equation is then used to evaluate the pressure. Sometimes coordinate transformations would be required to integrate the PDEs more easily, but they might introduce scale factors. Note that the cases analysed are 2D, but can be generalised readily. As von Neumann said, analysis under so many assumptions makes this turns this exercise into the study of &amp;lsquo;dry water&amp;rsquo;.&lt;/p&gt;
+&lt;p&gt;Laplace&amp;rsquo;s equation is linear, so any superposition of different solutions will give you a new function describing a more general flow. A common point of analysis in potential flows is the &lt;strong&gt;stagnation point&lt;/strong&gt;, at which $u(x,y) = v(x,y) = 0$. This is equivalent to finding the extrema of the solutions to the potential or stream functions, and the minima correspond to stagnation points. The streamline corresponding to the stagnation point is where the velocity vanishes, called a &lt;strong&gt;dividing streamline&lt;/strong&gt;. It can be considered as a boundary with no normal velocity component of a specific shape, which corresponds to the solution of a flow around this boundary. This is a Neumann boundary condition:&lt;/p&gt;
+&lt;p&gt;$$ \nabla \phi \cdot \hat n = 0 $$&lt;/p&gt;
+&lt;p&gt;Usually in aerodynamic flows, the &lt;strong&gt;pressure coefficient&lt;/strong&gt; is an important quantity to measure local pressure $p$ at some point compared to the freestream pressure $p_{\infty}$, using the Bernoulli equation in an external flow with freestream speed $V_{\infty}$:&lt;/p&gt;
+&lt;p&gt;$$ C_p \equiv \frac{p - p_{\infty}}{\frac{1}{2}\rho V_{\infty}^2} = 1 - \left(\frac{V}{V_{\infty}}\right)^2 $$&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Computational Fluid Dynamics — CFDPython</title>
         <link>https://godot-bloggy.xyz/post/cfd-python/</link>
         <pubDate>Sat, 05 May 2018 16:54:58 +0530</pubDate>

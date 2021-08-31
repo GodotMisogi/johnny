@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-uk">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='A desperate attempt to come up with something original in aerodynamics using studies from physics, only having found it to be already discovered in the 1960s.'><title>Variational Calculus — Induced Drag Over a Wing</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='The holy grail of fast and accurate aerodynamic analyses over airfoils.'><title>Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)</title>
 
-<link rel='canonical' href='https://godot-bloggy.xyz/post/induced-drag/'>
+<link rel='canonical' href='https://godot-bloggy.xyz/post/panel-methods/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Variational Calculus — Induced Drag Over a Wing'>
-<meta property='og:description' content='A desperate attempt to come up with something original in aerodynamics using studies from physics, only having found it to be already discovered in the 1960s.'>
-<meta property='og:url' content='https://godot-bloggy.xyz/post/induced-drag/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)'>
+<meta property='og:description' content='The holy grail of fast and accurate aerodynamic analyses over airfoils.'>
+<meta property='og:url' content='https://godot-bloggy.xyz/post/panel-methods/'>
 <meta property='og:site_name' content='｢ALL FICTION｣'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2016-12-26T01:55:24&#43;05:30'/><meta property='article:modified_time' content='2016-12-26T01:55:24&#43;05:30'/><meta property='og:image' content='https://godot-bloggy.xyz/post/induced-drag/AircraftStream.svg' />
-<meta name="twitter:site" content="GodotMisogi"><meta name="twitter:title" content="Variational Calculus — Induced Drag Over a Wing">
-<meta name="twitter:description" content="A desperate attempt to come up with something original in aerodynamics using studies from physics, only having found it to be already discovered in the 1960s."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://godot-bloggy.xyz/post/induced-drag/AircraftStream.svg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-02-24T22:55:27&#43;08:00'/><meta property='article:modified_time' content='2021-02-24T22:55:27&#43;08:00'/><meta property='og:image' content='https://godot-bloggy.xyz/post/panel-methods/images/aeropython.jpg' />
+<meta name="twitter:site" content="GodotMisogi"><meta name="twitter:title" content="Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)">
+<meta name="twitter:description" content="The holy grail of fast and accurate aerodynamic analyses over airfoils."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://godot-bloggy.xyz/post/panel-methods/images/aeropython.jpg' />
     <link rel="shortcut icon" href="/punpun1.jpg" />
 
 <script type="application/javascript">
@@ -225,9 +225,13 @@ if (!doNotTrack) {
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/post/induced-drag/">
-                
-                    <img src="/post/induced-drag/AircraftStream.svg" loading="lazy" alt="Featured image of post Variational Calculus — Induced Drag Over a Wing" />
+            <a href="/post/panel-methods/">
+                <img src="/post/panel-methods/images/aeropython_hu9407da34f33fa1ef28ea754b1f43ea28_133965_800x0_resize_q75_box.jpg"
+                        srcset="/post/panel-methods/images/aeropython_hu9407da34f33fa1ef28ea754b1f43ea28_133965_800x0_resize_q75_box.jpg 800w, /post/panel-methods/images/aeropython_hu9407da34f33fa1ef28ea754b1f43ea28_133965_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="493" 
+                        loading="lazy"
+                        alt="Featured image of post Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)" />
                 
             </a>
         </div>
@@ -241,6 +245,14 @@ if (!doNotTrack) {
                 Aerodynamics
             </a>
         
+            <a href="/categories/computational-fluid-dynamics/" >
+                Computational Fluid Dynamics
+            </a>
+        
+            <a href="/categories/programming/" >
+                Programming
+            </a>
+        
             <a href="/categories/mathematics/" >
                 Mathematics
             </a>
@@ -249,12 +261,12 @@ if (!doNotTrack) {
     
 
     <h2 class="article-title">
-        <a href="/post/induced-drag/">Variational Calculus — Induced Drag Over a Wing</a>
+        <a href="/post/panel-methods/">Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)</a>
     </h2>
 
     
     <h3 class="article-subtitle">
-        A desperate attempt to come up with something original in aerodynamics using studies from physics, only having found it to be already discovered in the 1960s.
+        The holy grail of fast and accurate aerodynamic analyses over airfoils.
     </h3>
     <footer class="article-time">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -265,46 +277,208 @@ if (!doNotTrack) {
 
 
 
-        <time class="article-time--published">Dec 26, 2016</time>
+        <time class="article-time--published">Feb 24, 2021</time>
     </footer></div>
 </header>
 
     <section class="article-content">
-    <p>While reading through John D. Anderson Jr.&rsquo;s derivation of minimum induced drag, I thought of a cool application of the calculus of variations in one of the equations to deduce the required condition.</p>
-<p>The equation that determines the downwash at a point is:</p>
-<p>$$w(y_0) = -\frac{1}{4\pi }\int^{b/2}_{-b/2} \frac{(\mathrm{d}\Gamma/\mathrm{d}y)}{y_0 - y}\mathrm{d}y = \int^{b/2}_{-b/2} \mathcal{L}(\Gamma,\Gamma',y)~\mathrm{d}y$$</p>
-<p>This effectively implies that the downwash can be expressed as a <em>functional</em> of $\Gamma$, i.e. $w\left[\Gamma(y)\right]$, and one can find the functional derivative to find the extremal point. There also exists a constraint on this system, the total lift across the span must be constant:</p>
-<p>$$ L = \rho_{\infty} V_{\infty}\int^{b/2}_{-b/2} \Gamma(y)~\mathrm{d}y = \int^{b/2}_{-b/2} \mathcal{G}(\Gamma,\Gamma',y)~\mathrm{d}y$$</p>
-<p>The Euler-Lagrange equations thus take the following form:</p>
-<p>$$ \frac{\partial{\mathcal{L}}}{\partial{\Gamma}} - \frac{\mathrm{d}}{\mathrm{d}y}\left(\frac{\partial{\mathcal{L}}}{\partial{\Gamma'}}\right) + \lambda\left[\frac{\partial{\mathcal{G}}}{\partial{\Gamma}} - \frac{\mathrm{d}}{\mathrm{d}y}\left(\frac{\partial{\mathcal{G}}}{\partial{\Gamma'}}\right)\right]= 0 $$</p>
-<p>Substituting the expressions:</p>
-<p>$$ -\frac{1}{4\pi  (y_0 - y)^2} + \rho_{\infty}V_{\infty}\lambda = 0$$</p>
-<p>This doesn&rsquo;t contain any useful information about the downwash. Let&rsquo;s try something else.</p>
-<p>Trying to minimise the induced drag formula directly as given by Anderson:</p>
-<p>$$ C_{D,i} = \frac{2}{V_{\infty}S}\int^{b/2}_{-b/2} \Gamma(x)\alpha_{i}(x)~\mathrm{d}x = \frac{1}{2\pi V_{\infty}^2 S}\int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\frac{\Gamma(x)\Gamma'(y)}{x - y}~\mathrm{d}y~\mathrm{d}x $$</p>
-<p>Getting rid of the constants and performing a variation on the coefficient of induced drag, we get:</p>
-<p>$$ \delta C_{D,i} = \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\left(\delta\Gamma(x)\frac{\Gamma'(y)}{x - y} + \delta\Gamma'(y)\frac{\Gamma(x)}{x - y}\right) ~\mathrm{d}y~\mathrm{d}x $$</p>
-<p>Performing integration by parts on the second expression, keeping in mind that the first term of the evaluation disappears because the circulation at the endpoints (the boundary conditions of this problem) is zero:</p>
-<p>$$ = \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(x)\frac{\Gamma'(y)}{x - y}~\mathrm{d}y~\mathrm{d}x - \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(y)\cdot\frac{\mathrm{d}}{\mathrm{d}y}\left(\frac{\Gamma(x)}{x-y}\right)~\mathrm{d}y~\mathrm{d}x$$</p>
-<p>A little rearranging provides the more useful form:</p>
-<p>$$ = \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(x)\frac{\Gamma'(y)}{x - y}~\mathrm{d}y~\mathrm{d}x + \int^{b/2}_{-b/2}\delta\Gamma(y)\cdot\frac{\mathrm{d}}{\mathrm{d}y}\int^{b/2}_{-b/2}\frac{\Gamma(x)}{y-x}~\mathrm{d}x~\mathrm{d}y$$</p>
-<p>A change of variables $y-x = q$ is useful to evaluate the last integral:</p>
-<p>$$ \frac{\mathrm{d}}{\mathrm{d}y}\int^{b/2}_{-b/2}\frac{\Gamma(x)}{y-x}~\mathrm{d}x = \frac{\mathrm{d}}{\mathrm{d}y}\int^{y-b/2}_{y+b/2}\frac{\Gamma(y-q)}{q}~\mathrm{d}q$$</p>
-<p>Feynman&rsquo;s favourite trick, differentiating under the integral sign:</p>
-<p>$$ \frac{\mathrm{d}}{\mathrm{d}y}\int^{y-b/2}_{y+b/2}\frac{\Gamma(y-q)}{q}~\mathrm{d}q = \cancel{\frac{\Gamma(b/2)}{y-b/2}} - \cancel{\frac{\Gamma(-b/2)}{y+b/2}} + \int^{y-b/2}_{y+b/2}\frac{\partial}{\partial y}\frac{\Gamma(y-q)}{q}~\mathrm{d}q $$</p>
-<p>Mapping the variables back:</p>
-<p>$$ \int^{y-b/2}_{y+b/2}\frac{\partial}{\partial y}\frac{\Gamma(y-q)}{q}~\mathrm{d}q = \int^{b/2}_{-b/2}\frac{\Gamma'(x)}{y-x}~\mathrm{d}x$$</p>
-<p>Substituting this into the original expression:</p>
-<p>$$ = \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(x)\frac{\Gamma'(y)}{x - y}~\mathrm{d}y~\mathrm{d}x + \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(y)\frac{\Gamma'(x)}{y - x}~\mathrm{d}x~\mathrm{d}y $$</p>
-<p>Switching the variables of integration in the second expression, we get:</p>
-<p>$$\delta C_{D,i} = 2\int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(x)\frac{\Gamma'(y)}{x - y}~\mathrm{d}y~\mathrm{d}x $$</p>
-<p>Reintroducing the constants and combining this with the constraint, $\delta C_{D,i} - \lambda\delta L = 0 $ becomes:</p>
-<p>$$ \int^{b/2}_{-b/2}\delta\Gamma(x)~\mathrm{d}x \left[\int^{b/2}_{-b/2}\frac{2\Gamma'(y)}{x - y}~\mathrm{d}y\ - {2\pi\lambda}\right] = 0 $$</p>
-<p>Using the constraint on the lift across the wing, this results in:</p>
-<p>$$ \int^{b/2}_{-b/2}\frac{\Gamma'(y)}{x - y}~\mathrm{d}y\ = \pi\lambda $$</p>
-<p>The first term is part of the integral from the downwash expression at the beginning of the post, indicating that the downwash across the lifting line for minimum induced drag is constant:</p>
-<p>$$ w = -\frac{\lambda}{4} = w_0 $$</p>
-<p>The same result as seen in Anderson, more rigorously!</p>
+    <h4 id="references">References</h4>
+<ol>
+<li>Drela, Mark. <em>Flight Vehicle Aerodynamics</em>. The MIT Press, 2014.</li>
+<li>Drela, Mark and Giles, M. B. <em>Viscous-Inviscid Analysis of Transonic and Low Reynolds Number Airfoils</em>. AIAA Journal, 1986.</li>
+<li>Katz, Joseph and Plotkin, Allen. <em>Low-Speed Aerodynamics - 2nd Edition.</em> Cambridge University Press, 2001.</li>
+</ol>
+<h1 id="viscous-inviscid-panel-methods">Viscous-Inviscid Panel Methods</h1>
+<p>Boundary element methods express the solution of some PDE on a volume by reducing it to the specification on a surface. Panel methods in aerodynamics are special cases of such expressions, in which the governing equation is Laplace&rsquo;s equation in a uniform flow in the case of a steady, inviscid, incompressible fluid.</p>
+<!-- ## Channel Flow
+
+Yes.
+
+$$ 
+\begin{bmatrix} 
+    1 & 0 & (H + 2)\dfrac{\theta}{u_e} \\\\ 
+    \dfrac{-H}{H^\*}\dfrac{dH^\*}{dH} & \dfrac{1}{H^\*}\dfrac{dH^\*}{dH} & (1 - H)\dfrac{\theta}{u_e} \\\\ 
+    0 & \dfrac{u_e}{\delta^\* - h} & 1 
+\end{bmatrix}
+\begin{bmatrix} 
+    \dfrac{d\theta}{dx} \\\\ 
+    \dfrac{d\delta^\*}{dx} \\\\ 
+    \dfrac{du_e}{dx} 
+\end{bmatrix} = 
+\begin{bmatrix} 
+    \dfrac{c_f}{2} \\\\ 
+    \dfrac{2c_{\mathcal D}}{H^\*} - \dfrac{c_f}{2} \\\\ 
+    \dfrac{u_e}{\delta^\* - h}\dfrac{dh}{dx} 
+\end{bmatrix}
+$$ -->
+<h2 id="equivalent-inviscid-flow">Equivalent Inviscid Flow</h2>
+<h3 id="governing-equation">Governing equation</h3>
+<p>The governing equation for this problem is Laplace&rsquo;s equation in 2 dimensions:
+$$ \nabla^2 \phi = \nabla^2\left(\Phi + \Phi_\infty\right) = 0 $$</p>
+<p>Note that the Laplace equation is an elliptic PDE, hence boundary conditions specified at any point in the domain affect the solution at all other points in the domain.</p>
+<p>The &ldquo;physically&rdquo; motivated formulation for a closed, non-porous foil is the specification of Neumann boundary conditions, which state that the normal velocity through the foil is zero and the velocity vanishes at infinity:</p>
+<p>$$\nabla \Phi^* \cdot \hat{\mathbf n} = \nabla (\Phi + \Phi_\infty) \cdot \hat{\mathbf n} = 0, \quad \lim_{n \to \infty} \nabla \Phi = \mathbf 0$$</p>
+<p>This implies that the potential of the interior of the body is equal to some constant $c$:</p>
+<p>$$ \Phi_\text{int}^* = (\Phi + \Phi_\infty) = c$$</p>
+<p>The above condition is an alternative specification in the form of a Dirichlet boundary condition on the surface boundary $\partial S$, and turns out to be more computationally efficient as the operations are on scalars rather than vectors.</p>
+<h3 id="solution">Solution</h3>
+<p>Using Green&rsquo;s third identity, the solution on $\partial S$ is expressed in terms of sources $\sigma$ and doublets $\phi$ of varying strength in streamwise-normal ($\hat{\mathbf s}, \hat{\mathbf n}$) coordinates:</p>
+<p>$$ \Phi^{*}_{\text{int}}(x,y) = \Phi_{\infty}(x,y) + \frac{1}{2\pi}\int_{\partial S} \left[\sigma \ln r - \phi \frac{\partial\ln r}{\partial n}\right]\ dS, \quad \sigma = \frac{\partial\phi}{\partial n} $$</p>
+<p><em>Note</em>: Vortices are streamwise derivatives of doublets:</p>
+<p>$$ \vec\gamma(s) = \hat{\mathbf n} \times \hat{\mathbf s}\frac{d\phi}{ds} $$</p>
+<h3 id="discretisation">Discretisation</h3>
+<p>Discretise the equation for a foil, in which $N$ panels are assigned to the foil, and $N_w$ panels are assigned to the wake.</p>
+<p>Assigning each panel on the foil a constant doublet strength $\phi$, and assign all panels constant source strengths $\sigma$, giving the following:</p>
+<p>$$ \Phi_{\infty}(x,y) + \sum_{j = 1}^N \left(\frac{\sigma}{\pi}\int_{\text{panel}}\ln r \ dS\right)_j - \sum_{j = 1}^N \left(\frac{\phi}{\pi}\int_{\text{panel}}\frac{\partial\ln r}{\partial n} \ dS\right)_j = \phi_p(x,y) $$</p>
+<p>Let: 
+$$ B_j \equiv \frac{1}{\pi}\int_{\text{panel}}\ln r \ dS\bigg|_j, \quad A_j \equiv -\frac{1}{\pi}\int_{\text{panel}}\frac{\partial\ln r}{\partial n} \ dS\bigg|_j$$</p>
+<p>For foil panels, we get the following system of equations:</p>
+<p>$$ A \phi + \vec\Phi^{*} = \vec\Phi_{\infty} - B\sigma $$</p>
+<p>Let $\vec U_s = \{~\vec U \cdot ~\hat s_i \mid 1 \leq i \leq N + N_w ~\}$.</p>
+<h3 id="kutta-condition">Kutta Condition</h3>
+<p>The Kutta condition ensures the flow leaves the trailing edge &ldquo;smoothly&rdquo;:</p>
+<p>$$ \Delta \phi_W = \phi_N - \phi_1 $$</p>
+<p>The Morino condition, which equates the potential difference at the upper and lower streamlines of the trailing edge, sometimes appears to be more accurate:</p>
+<p>$$ \phi_1 - \phi_2 = \phi_N - \phi_{N-1} $$</p>
+<h3 id="cases">Cases</h3>
+<p>Now we deal with two cases:</p>
+<ol>
+<li>Let $\Phi_{\infty}(x,y) = \Phi^{*}_\text{int}(x,y)$. This system is directly invertible for $\phi_j$ when $\sigma_j$ is specified as $\sigma_j = \vec U_\infty \cdot \hat n_j$.</li>
+</ol>
+<p>$$ \vec\phi = (-A^{-1}B)\vec\sigma \equiv P\vec\sigma$$</p>
+<ol start="2">
+<li>Let $\sigma_j = \Phi^{*}_\text{int} = 0$, then the system is also directly invertible for $\vec\phi$ at a lower cost:</li>
+</ol>
+<p>$$ \vec\phi = A^{-1} \vec\Phi_{\infty}(x,y)$$</p>
+<h2 id="real-viscous-flow">Real Viscous Flow</h2>
+<h3 id="doublet-expressions">Doublet Expressions</h3>
+<p>For viscous modelling, we deal with the first case using the wall transpiration model on the EIF. First, we express the edge velocities over the panels, which are the tangential derivatives of the exterior potential, expressed as sum of the internal potential and the potential &lsquo;jump&rsquo; across the singularity distribution: $\Phi^{*}_\text{ext} = \Phi^{*}_\text{int} - \phi$. In case 1: $\Phi^{*}_\text{int} = c \in \mathbb R$, and $\phi = \Phi_{\infty} +???$.</p>
+<p>$$ 
+\begin{aligned} 
+\vec u_e = 
+\begin{cases} 
+\vec U_s^f - \dfrac{d\phi}{ds} &amp; \text{Airfoil} \\ 
+&amp; \\ 
+\vec U_s^w - \dfrac{d}{ds}\left(A^w \phi + B^w \sigma \right) &amp; \text{Wake} 
+\end{cases} 
+\end{aligned} 
+$$</p>
+<p>Substituting the solution for $\phi$ from case 1, we obtain the following matrix expression:</p>
+<p>$$
+\begin{aligned}
+\vec u_e &amp; = \vec U_s - \frac{d}{ds} 
+\begin{bmatrix} P \\ 
+\hline A^w P + B^w
+\end{bmatrix} 
+\vec\sigma
+\end{aligned}
+$$</p>
+<p>Now express the sources in terms of the mass defect $m = u_e\delta^*$:</p>
+<p>$$
+\begin{aligned}
+\sigma_j &amp; = \left(\frac{dm}{ds}\right)_j \\ 
+\vec u_e &amp; = \vec U_s - \frac{d}{ds}
+\begin{bmatrix}
+P \\ 
+\hline A^wP + B 
+\end{bmatrix}
+\frac{d\vec m}{ds}
+\end{aligned}
+$$</p>
+<p>This gives a differential equation for $\vec u_e$.</p>
+<h3 id="difference-operators">Difference Operators</h3>
+<p>Define the following operator $\Delta^+\colon \mathbb R^n \to \mathbb R^{n-1}, n \in \mathbb N^+$ to evaluate forward differences:</p>
+<p>$$ 
+\Delta^+ \equiv 
+\begin{bmatrix} 
+-1 &amp; 1 &amp; 0 &amp; \ldots &amp; 0 \\ 
+0 &amp; -1 &amp; 1 &amp; \ldots &amp; 0 \\ 
+\vdots &amp; \ddots &amp; \ddots &amp; \ddots &amp; \vdots \\ 
+0 &amp; \ldots &amp; -1 &amp; 1 &amp; 0 \\ 
+0 &amp; \ldots &amp; 0 &amp; -1 &amp; 1 
+\end{bmatrix} 
+$$</p>
+<p>Difference operators can be used to generically compute $n$th order differences up to desired accuracy.</p>
+<p>The following operator $\Delta^C\colon \mathbb R^n \to \mathbb R^n$ constructs central differences with forward and backward differencing at the endpoints:</p>
+<p>$$
+\Delta^c \equiv
+\begin{bmatrix}
+-1 &amp; 1 &amp; 0 &amp; \ldots &amp; 0 \\ 
+-1/2 &amp; 0 &amp; 1/2 &amp; \ldots &amp; 0 \\ 
+\vdots &amp; \ddots &amp; \ddots &amp; \ddots &amp; \vdots \\ 
+0 &amp; \ldots &amp; -1/2 &amp; 0 &amp; 1/2 \\ 
+0 &amp; \ldots &amp; 0 &amp; -1 &amp; 1
+\end{bmatrix}
+$$</p>
+<h2 id="boundary-layer-equations">Boundary Layer Equations</h2>
+<p>The boundary layer equations are obtained via the defect formulation and the thin shear approximations of the Navier-Stokes equations.</p>
+<p>$$ 
+\begin{aligned} 
+\frac{d\theta}{ds} + (H + 2 - M_e^2)\frac{1}{u_e}\frac{du_e}{ds} - \frac{c_f}{2} &amp; = 0 \quad (\textsf{Momentum}) \\ 
+\frac{1}{\theta^*}\frac{d\theta^*}{ds} + \left(\frac{2H^{**}}{H^*} + 3 - M_e^2\right)\frac{1}{u_e}\frac{du_e}{ds} - 2c_\mathcal{D} &amp; = 0 \quad (\textsf{Kinetic Energy})
+\end{aligned}
+$$</p>
+<p>where $H\equiv \delta^*/\theta$ is the momentum shape parameter, $c_f \equiv \tau_w/\frac{1}{2}\rho_e u_e^2$ is the shear stress coefficient normalised with respect to the freestream edge velocity, $M_e \equiv u_e/a_e$ is the local Mach number at the edge, $H^* \equiv \theta^*/\theta$ is the kinetic energy shape parameter, $H^{**} \equiv \delta^{**}/\theta$ is the density shape parameter, $c_\mathcal D \equiv \mathcal D / \rho_e u_e^3$ is the power dissipation coefficient.</p>
+<p>$\textsf{Kinetic Energy} - H^*(\textsf{Momentum})$ gives the kinetic energy shape parameter equation:</p>
+<p>$$
+\begin{aligned}
+\implies \theta\frac{dH^*}{ds} + \left[2H^{**} + H^*(1 - H)\right]\frac{\theta}{u_e}\frac{du_e}{ds} - 2c_\mathcal{D} + H^*\frac{c_f}{2} &amp; = 0
+\end{aligned}
+$$</p>
+<h3 id="closure-relations">Closure Relations</h3>
+<p>The following functional dependencies are used to close the system:</p>
+<p>$$
+\begin{aligned}
+H^* &amp; = H^*(H) \\ 
+C_f &amp; = C_f(H, Re_\theta) \\ 
+C_\mathcal D &amp; = C_\mathcal D(H, Re_\theta)
+\end{aligned}
+$$</p>
+<p>where $H_k$ is the kinematic shape parameter, derived by Whitfield as:</p>
+<p>$$ H_k = \frac{H - 0.290M_e^2}{1 + 0.113M_e^2} $$</p>
+<h4 id="laminar-closure">Laminar Closure</h4>
+<p>Falkner-Skan:</p>
+<h4 id="turbulent-closure">Turbulent Closure</h4>
+<h3 id="turbulent-magic">Turbulent Magic</h3>
+<p>$$ \frac{\delta}{C_\tau} \frac{dC_\tau}{ds} = 4.2\left(\sqrt{C_{\tau_{EQ}}} - \sqrt{C_\tau}\right) $$</p>
+<h3 id="discretisation-1">Discretisation</h3>
+<p>The equations are discretised using central differencing, in which the variables are defined on the panel nodes.</p>
+<p><strong>Note</strong>: Each singularity from the inviscid formulation is at the midpoint of each panel. The edge velocities from this computations are at the nodes, hence $N$ panels with $N+1$ edge velocities.</p>
+<p>$$ \Delta x = \frac{x_{i+1} - x_{i-1}}{2}, ~x_a = \frac{x_{i+1} + x_{i-1}}{2} $$</p>
+<p>Resulting in the following discrete BL equations:</p>
+<p>$$
+\begin{aligned}
+\frac{\Delta\theta}{\Delta s} + \left(\frac{\delta_a^*}{\theta_a} + 2 - M_e^2\right)\frac{1}{u_{e_a}}\frac{\Delta u_e}{\Delta s} - \frac{c_{f_a}}{2} &amp; = 0 \\ 
+\frac{\Delta H^*}{\Delta s} + H_a^*(1 - H_a)\frac{\theta_a}{u_{e_a}}\frac{\Delta u_e}{\Delta s} - 2c_{\mathcal{D}_a} + H_a^*\frac{c_{f_a}}{2} &amp; = 0
+\end{aligned}
+$$</p>
+<h2 id="residual-equations">Residual Equations</h2>
+<p>$$ 
+\begin{aligned}
+\nabla^2 \phi &amp; = 0, \quad \rho_e \mathbf u_e \cdot \mathbf n = \Lambda\\ 
+\frac{d\theta}{ds} + (H + 2 - M_e^2)\frac{1}{u_e}\frac{du_e}{ds} - \frac{c_f}{2} &amp; = 0 \\ 
+\frac{1}{\theta^*}\frac{d\theta^*}{ds} + \left(\frac{2H^{**}}{H^*} + 3 - M_e^2\right)\frac{1}{u_e}\frac{du_e}{ds} - 2c_\mathcal{D} &amp; = 0
+\end{aligned}
+$$</p>
+<h3 id="discretisation-2">Discretisation</h3>
+<p>The discretised inviscid and viscous equations form the following system of equations to be solved for $m,~\theta,~\tilde n$.</p>
+<p>$$
+\begin{aligned} 
+\mathbf u_e - \mathbf U_s + \frac{d}{ds}
+\begin{bmatrix} 
+P \\ 
+\hline A^wP + B 
+\end{bmatrix} \frac{\Delta (\mathbf u_e \boldsymbol\delta^*)}{\Delta s} &amp; = \mathcal R_1(\mathbf m) \\ 
+\frac{\Delta\theta}{\theta} + \left(H + 2\right)\frac{\Delta u_e}{u_{e_a}} - \frac{c_{f_a}\Delta s}{2} &amp; = \mathcal R_2(\mathbf m, \boldsymbol \theta, \tilde{\mathbf n}) \\ 
+\frac{\Delta H^*}{H^*_a} + \left(1 - H\right)\frac{\Delta u_e}{u_{e}} + \left(\frac{c_{f}}{2} - \frac{2C_{\mathcal D}}{H^*} \right) \frac{\Delta s}{\theta} &amp; = \mathcal R_3(\mathbf m, \boldsymbol \theta, \tilde{\mathbf n})
+\end{aligned}
+$$</p>
+<p>The previous setup is sufficient for modelling flows with laminar boundary layers. The additional equations for modelling transition and turbulence are:</p>
+<p>$$
+\begin{aligned}
+\frac{\Delta \tilde n}{\Delta s} - \frac{d\tilde n}{dRe_\theta}(H_{a})\frac{dRe_\theta}{ds}(H_{a}, \theta_{a}) &amp; = R_{3,i}(\mathbf m, \boldsymbol \theta, \tilde{\mathbf n})
+\end{aligned}
+$$</p>
 
 </section>
 
@@ -361,52 +535,6 @@ if (!doNotTrack) {
                 
                     
 <article class="has-image">
-    <a href="/post/panel-methods/">
-        
-        
-            <div class="article-image">
-                <img src="/post/panel-methods/images/aeropython.ef8537f0e4805c93f164a1b955fe5faf_hu9407da34f33fa1ef28ea754b1f43ea28_133965_250x150_fill_q75_box_smart1.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy" 
-                        data-key="panel-methods" 
-                        data-hash="md5-74U38OSAXJPxZKG5Vf5frw==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/fluid-dynamics/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Fluid Dynamics — A Flurry of Theory (In Progress)</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/nonlinear-dynamics/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Nonlinear Dynamics — A Game of Computation (In Progress)</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="has-image">
     <a href="/post/opt-problems/">
         
         
@@ -437,6 +565,52 @@ if (!doNotTrack) {
 
         <div class="article-details">
             <h2 class="article-title">Computational Fluid Dynamics — CFDPython</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/nonlinear-dynamics/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Nonlinear Dynamics — A Game of Computation (In Progress)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/fluid-dynamics/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fluid Dynamics — A Flurry of Theory (In Progress)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/post/meshing-airfoil/">
+        
+        
+            <div class="article-image">
+                <img src="/post/meshing-airfoil/images/CFD3.eea265f08945877a697b0069ff348081_hu3306ae7fc88c6138b46f7caf3ef330ad_1528818_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="meshing-airfoil" 
+                        data-hash="md5-7qJl8IlFh3ppewBp/zSAgQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Meshing Techniques — Cambered Airfoil</h2>
         </div>
     </a>
 </article>

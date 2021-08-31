@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en-uk">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Demystifying the hype of the Newton method for optimisations, with relevant implementations.'><title>Gradient-Based Optimisation — Discrete Direct and Adjoint Methods (In Progress)</title>
+
+<link rel='canonical' href='https://godot-bloggy.xyz/post/opt-problems/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Gradient-Based Optimisation — Discrete Direct and Adjoint Methods (In Progress)'>
+<meta property='og:description' content='Demystifying the hype of the Newton method for optimisations, with relevant implementations.'>
+<meta property='og:url' content='https://godot-bloggy.xyz/post/opt-problems/'>
+<meta property='og:site_name' content='｢ALL FICTION｣'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2020-08-30T22:55:27&#43;08:00'/><meta property='article:modified_time' content='2020-08-30T22:55:27&#43;08:00'/><meta property='og:image' content='https://godot-bloggy.xyz/post/opt-problems/XDSM.svg' />
+<meta name="twitter:site" content="GodotMisogi"><meta name="twitter:title" content="Gradient-Based Optimisation — Discrete Direct and Adjoint Methods (In Progress)">
+<meta name="twitter:description" content="Demystifying the hype of the Newton method for optimisations, with relevant implementations."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://godot-bloggy.xyz/post/opt-problems/XDSM.svg' />
+    <link rel="shortcut icon" href="/punpun1.jpg" />
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-89998292-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "light");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column compact article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/punpun1_huab25ab071e0e366f9d0ed5a1d3b49099_44920_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🎓</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://godot-bloggy.xyz/">｢ALL FICTION｣</a></h1>
+        <h2 class="site-description">Arjit Seth</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/project'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M15 3v4a1 1 0 0 0 1 1h4" />
+  <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" />
+  <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
+</svg>
+                
+                <span>Projects</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/music'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-headphones" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="13" rx="2" width="5" height="7" />
+  <rect x="15" y="13" rx="2" width="5" height="7" />
+  <path d="M4 15v-3a8 8 0 0 1 16 0v3" />
+</svg>
+                
+                <span>Music</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/cv'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Curriculum Vitae</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='https://github.com/GodotMisogi'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+                
+                <span>GitHub</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://godot-bloggy.xyz/" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/opt-problems/">
+                
+                    <img src="/post/opt-problems/XDSM.svg" loading="lazy" alt="Featured image of post Gradient-Based Optimisation — Discrete Direct and Adjoint Methods (In Progress)" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/physics/" >
+                Physics
+            </a>
+        
+            <a href="/categories/mathematics/" >
+                Mathematics
+            </a>
+        
+            <a href="/categories/programming/" >
+                Programming
+            </a>
+        
+            <a href="/categories/computational-fluid-dynamics/" >
+                Computational Fluid Dynamics
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/opt-problems/">Gradient-Based Optimisation — Discrete Direct and Adjoint Methods (In Progress)</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        Demystifying the hype of the Newton method for optimisations, with relevant implementations.
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">Aug 30, 2020</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p>Optimisation problems are becoming a big meme, so let&rsquo;s address some of the general ideas and how to compute them for discretised systems of equations.</p>
+<h2 id="problem-description">Problem Description</h2>
+<p>Let the vector $\mathbf p_i \in \mathbb R^n$ be the state variable at the $i$th iteration, and the function as a matrix $\mathbf R \in \mathbb R^m \times \mathbb R^n$ which needs to be solved.</p>
+<p>$$ \mathbf R(\mathbf p) = \mathbf 0 $$</p>
+<p>Now say you want to know the values of $\mathbf p$, i.e. a root, which solves the system $\mathbf R = \mathbf 0$. The first step would be to consider some point close to the root $\mathbf p + \Delta \mathbf p$, then the system can be expanded in a Taylor series.</p>
+<p>$$ \mathbf R(\mathbf p) \approx \mathbf R(\Delta \mathbf p) + \frac{\partial \mathbf R}{\partial \mathbf p}(\Delta \mathbf p) + \mathcal O(\Delta \mathbf p^2)$$</p>
+<h2 id="newton-method">Newton Method</h2>
+<p>The Newton method with a line-search performs the following algorithm:</p>
+<p>$$ \mathbf p_{i+1} = \mathbf p_i - \alpha_i\mathbf J_i^{-1} \mathbf R(\mathbf p_i), \quad \mathbf J_i = \frac{\partial \mathbf R(\mathbf p_i)}{\partial \mathbf p_i} $$</p>
+<p>assuming the existence of the inverse of the Jacobian $\mathbf J_i$, which is usually the case for physical problems (if not, re-evaluate your setup!). We would like $\mathbf p_{i+1} = 0$ in the fewest number of iterations or at the lowest speed. Hence $\mathbf p_i = \alpha_i\mathbf J_i^{-1} \mathbf R(\mathbf p_i)$. Evaluating the inverse of the Jacobian is impractical, but the required step $d\mathbf p_i$ can be determined by solving the following linear equation instead, which is simply multiplying both sides by $\mathbf J_i$.</p>
+<p>$$ \beta_i \mathbf J_i d\mathbf p_i = -\mathbf R_i, \quad \text{where} \quad \beta_i = \frac{1}{\alpha_i} $$</p>
+<p>The dimensionality of the problems could get confusing, so index notation with summation convention comes in handy:</p>
+<p>$$ \frac{\partial R^{ijk}}{\partial p^{mn}} = \ldots$$</p>
+<p>Let us naïvely solve the linear system, by using Julia&rsquo;s <code>\</code> function from the <code>LinearAlgebra</code> package.</p>
+<div class="highlight"><pre class="chroma"><code class="language-julia" data-lang="julia"><span class="c"># Number of iterations</span>
+<span class="n">num_iters</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c"># Newton step computation</span>
+<span class="k">function</span> <span class="n">newton_step</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">∂R∂u</span><span class="p">)</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+    <span class="n">l</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="n">jac</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">(</span><span class="n">∂R∂u</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="n">l</span><span class="p">))</span>
+    <span class="n">reshape</span><span class="p">(</span><span class="n">jac</span> <span class="o">\</span> <span class="o">-</span><span class="n">R</span><span class="p">[</span><span class="o">:</span><span class="p">],</span> <span class="n">size</span><span class="p">(</span><span class="n">u</span><span class="p">))</span> 
+<span class="k">end</span>
+
+<span class="c"># Newton method algorithm</span>
+<span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">num_iters</span>
+    <span class="n">R</span><span class="p">,</span> <span class="n">∂R∂T</span> <span class="o">=</span> <span class="n">compute_residual_and_grad</span><span class="p">(</span><span class="n">T_truth</span><span class="p">,</span> <span class="n">βs</span><span class="p">,</span> <span class="n">q₀</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span>
+    <span class="n">ΔT</span> <span class="o">=</span> <span class="n">newton_step</span><span class="p">(</span><span class="n">T_truth</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">∂R∂T</span><span class="p">)</span>
+    <span class="n">ε</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">maximum</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">ΔT</span><span class="p">))</span>
+    <span class="c"># display(R)</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&#34;Newton step error: </span><span class="si">$</span><span class="p">(</span><span class="n">ε</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="s">&#34;</span><span class="p">)</span>
+    <span class="n">T_truth</span> <span class="o">.+=</span> <span class="n">ω</span> <span class="o">*</span> <span class="n">ΔT</span>
+<span class="k">end</span>
+</code></pre></div><p>There are various numerical methods dedicated to solving linear systems, depending on the structure of the matrices. In computational fluid dynamics with structured grids, the matrix is usually regular, banded, and sparse. This is due to the adjacencies between elements being specified up to a given level of &ldquo;depth&rdquo;, which is called a stencil. So certain algorithms speed up the computations by taking advantage of this structure.</p>
+<h2 id="optimisations">Optimisations</h2>
+<p>The objective function for a gradient-based optimisation problem with an equality constraint (read holonomic, <code>bollu</code>) $\mathbf R(\mathbf x, \mathbf p) = \mathbf 0$ requires evaluation of its total derivative.</p>
+<p>$$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} + \frac{\partial \mathbf f}{\partial \mathbf p}\frac{d\mathbf p}{d\mathbf x} $$</p>
+<p>The equality constraint trivially satisfies the following identity:</p>
+<p>$$ \frac{d\mathbf R}{d\mathbf x} = \frac{\partial \mathbf R}{\partial \mathbf x} + \frac{\partial \mathbf R}{\partial \mathbf p}\frac{d\mathbf p}{d\mathbf x} = 0 $$</p>
+<p>So you can substitute this into the total derivative expression:</p>
+<p>$$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} + \frac{\partial \mathbf f}{\partial \mathbf p}\left[-\left(\frac{\partial \mathbf R}{\partial\mathbf p}\right)^{-1} \frac{\partial \mathbf R}{\partial \mathbf x}\right] $$</p>
+<p>So there are two ways to avoid the problem of computing the inverse of $\partial \mathbf R/\partial \mathbf P$, which are called the <em>direct</em> and <em>adjoint</em> methods.</p>
+<h3 id="direct-method">Direct Method</h3>
+<p>Let</p>
+<p>$$ \boldsymbol\psi = -\left(\frac{\partial \mathbf R}{\partial\mathbf p}\right)^{-1} \frac{\partial \mathbf R}{\partial \mathbf x} $$</p>
+<p>The direct method hence solves the following linear system by left multiplication of $\partial \mathbf R / \partial \mathbf p$:
+$$
+\begin{aligned}
+\frac{\partial \mathbf R}{\partial \mathbf p}\boldsymbol \psi = -\frac{\partial \mathbf R}{\partial \mathbf x}, \quad \text{where} \quad \boldsymbol \psi = \frac{d \mathbf p}{d\mathbf x}
+\end{aligned}
+$$</p>
+<p>Notice that this expression is almost identical to the Newton step, extended to total derivatives with respect to the design variables. The big Jacobian on the LHS is already computed from the Newton step, and only the RHS needs to be computed. If you have the factorisation of the Jacobian from the Newton step, it could be very efficient to simply reuse the factorisation and back-substitute to solve this equation.</p>
+<div class="highlight"><pre class="chroma"><code class="language-julia" data-lang="julia"><span class="k">function</span> <span class="n">solve_direct</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">∂R∂x</span><span class="p">,</span> <span class="n">∂R∂u</span><span class="p">)</span>
+    <span class="n">∂R∂u_sq</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">(</span><span class="n">∂R∂u</span><span class="p">,</span> <span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="o">:</span><span class="p">]),</span> <span class="n">length</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="o">:</span><span class="p">])))</span>
+    <span class="n">reshape</span><span class="p">(</span><span class="n">hcat</span><span class="p">((</span><span class="n">∂R∂u_sq</span> <span class="o">\</span> <span class="o">-</span><span class="p">(</span><span class="n">∂R∂x</span><span class="p">)[</span><span class="o">:</span><span class="p">,</span><span class="o">:</span><span class="p">,</span><span class="n">i</span><span class="p">][</span><span class="o">:</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="n">eachindex</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">...</span><span class="p">),</span> <span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">...</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="k">end</span>
+</code></pre></div><p>Hence the total derivative is:</p>
+<p>$$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} + \frac{\partial \mathbf f}{\partial \mathbf p}\boldsymbol\psi $$</p>
+<div class="highlight"><pre class="chroma"><code class="language-julia" data-lang="julia"><span class="n">total_derivative_direct</span><span class="p">(</span><span class="n">∂f∂x</span><span class="p">,</span> <span class="n">ψ</span><span class="p">,</span> <span class="n">∂f∂u</span><span class="p">)</span> 
+    <span class="o">=</span> <span class="n">∂f∂x</span> <span class="o">+</span> <span class="p">[</span> <span class="n">sum</span><span class="p">(</span><span class="n">∂f∂u</span> <span class="o">*</span> <span class="n">ψ</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="kp">in</span> <span class="n">eachindex</span><span class="p">(</span><span class="n">∂f∂x</span><span class="p">)</span> <span class="p">]</span>
+</code></pre></div><h3 id="adjoint-method">Adjoint Method</h3>
+<p>Let</p>
+<p>$$ \boldsymbol\phi^T = \frac{\partial \mathbf f}{\partial \mathbf p}\left(\frac{\partial \mathbf R}{\partial\mathbf p}\right)^{-1} $$</p>
+<p>The adjoint method hence solves the following linear system by right multiplication of $\partial \mathbf R / \partial \mathbf p$:</p>
+<p>$$
+\begin{aligned}
+\left(\frac{\partial \mathbf R}{\partial \mathbf p}\right)^T \boldsymbol\phi = \left(\frac{\partial \mathbf f}{\partial \mathbf p}\right)^T, \quad \text{where}\quad \boldsymbol \phi = \left(\frac{\partial \mathbf f}{\partial \mathbf R}\right)^T
+\end{aligned}
+$$</p>
+<p>The transposition operator $-^T\colon (\mathbb R^m \times \mathbb R^n) \to (\mathbb R^n \times \mathbb R^m)$ simply transposes the dimensions of a matrix or vector. Of course, here the linear system has to be square, so $m = n$.</p>
+<p>Here is where the word <em>adjoint</em> comes in. When you have a constraint expressed in the form of some nonlinear partial differential equation, the transpose operator is not applicable, and you have to actually apply the concept of adjoints. This concept exists at a much more abstract level in category theory and duality, which is the &ldquo;next-best&rdquo; thing when one is not able to find direct inverses. An example is the adjoint of the differential operator on an infinite-dimensional Hilbert space of functions.</p>
+<p>In most cases, however, you would be dealing with some discretised version of the PDE, and the above will apply to the discretised equations, which are expressed in the form of a tensor. This setup is called the <em>discrete adjoint</em> formulation, and is quite a general operation on nonlinear PDEs.</p>
+<div class="highlight"><pre class="chroma"><code class="language-julia" data-lang="julia"><span class="k">function</span> <span class="n">solve_adjoint</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">∂R∂u</span><span class="p">,</span> <span class="n">dfdu</span><span class="p">)</span> 
+    <span class="n">reshape</span><span class="p">(</span><span class="n">∂R∂u</span><span class="p">,</span> <span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="o">:</span><span class="p">]),</span> <span class="n">length</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="o">:</span><span class="p">])))</span><span class="o">&#39;</span> <span class="o">\</span> <span class="o">-</span><span class="p">(</span><span class="n">dfdu</span><span class="p">)</span><span class="o">&#39;</span><span class="p">[</span><span class="o">:</span><span class="p">]</span>
+<span class="k">end</span>
+</code></pre></div><p>Hence the total derivative is:</p>
+<p>$$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} - \boldsymbol\phi^T\frac{\partial \mathbf R}{\partial \mathbf x} $$</p>
+<div class="highlight"><pre class="chroma"><code class="language-julia" data-lang="julia"><span class="n">total_derivative_adjoint</span><span class="p">(</span><span class="n">∂f∂x</span><span class="p">,</span> <span class="nb">φ</span><span class="p">,</span> <span class="n">∂R∂x</span><span class="p">)</span> 
+    <span class="o">=</span> <span class="n">∂f∂x</span> <span class="o">+</span> <span class="p">[</span> <span class="n">sum</span><span class="p">(</span><span class="n">permutedims</span><span class="p">(</span><span class="nb">φ</span><span class="p">)</span> <span class="o">*</span> 
+                <span class="n">reshape</span><span class="p">(</span><span class="n">∂R∂x</span><span class="p">,</span> <span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="o">:</span><span class="p">]),</span> <span class="n">length</span><span class="p">(</span><span class="n">∂f∂x</span><span class="p">)))[</span><span class="o">:</span><span class="p">,</span><span class="n">n</span><span class="p">])</span> 
+                <span class="k">for</span> <span class="n">n</span> <span class="kp">in</span> <span class="n">eachindex</span><span class="p">(</span><span class="n">∂f∂x</span><span class="p">)</span> <span class="p">]</span>
+</code></pre></div><h3 id="concept">Concept</h3>
+<p>So the main idea is that depending on the number of inputs and outputs, you choose the appropriate method which reduces the dimensionality of the linear system.</p>
+<p>The complicated parts (read headaches) are actually the evaluations and constructions of the different Jacobians and their reshapings, all of which are needed regardless of whether the direct or adjoint method is used. You picks your linear system and you takes your computational cost.</p>
+<p>Notice that we didn&rsquo;t specify any restriction on the constraints. You could identically apply the same setup to $$\mathbf R(\mathbf x, \mathbf p_1, \mathbf p_2, \ldots, \mathbf p_n) = \begin{bmatrix} \mathbf R_1(\mathbf x, \mathbf p_1) \\ \mathbf R_2(\mathbf x, \mathbf p_2) \\ \vdots \\ \mathbf R_n(\mathbf x, \mathbf p_n) \end{bmatrix} = \mathbf 0$$</p>
+<p>This setup is called a <em>coupled</em> system, and the entire system is solved simultaneously for robustness and efficiency, either using the direct or adjoint methods. The &ldquo;off-diagonal&rdquo; block terms correspond to connections between different residual equations, and usually make the system sparse as many variables are not connected between different residual equations in physical models. The complexity of such systems is much greater, and is better left for another post.</p>
+<h2 id="stability">Stability</h2>
+<p>Even the order of accuracy of the Jacobians is not as important, as the point of the optimisation is to get a converged optimum, with converged residuals for the constraint. So you could spend less time doing more iterations with a greatly reduced cost for evaluating less accurate Jacobians and solving the linear system, if the residual constraint is the most time-consuming part. However, robustness of the solver for the residual equations becomes problematic.</p>
+<!-- ### Pseudo-Transient Continuation
+
+$$ \left(\frac{I}{\Delta t} + 1\right)? \mathbf J_i d\mathbf x_i = -\mathbf f_i $$ -->
+<!-- ## Unsteady Problems -->
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/post/panel-methods/">
+        
+        
+            <div class="article-image">
+                <img src="/post/panel-methods/images/aeropython.ef8537f0e4805c93f164a1b955fe5faf_hu9407da34f33fa1ef28ea754b1f43ea28_133965_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="panel-methods" 
+                        data-hash="md5-74U38OSAXJPxZKG5Vf5frw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/post/cfd-python/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/post/cfd-python/images/2DPoissonSurfStud.svg" loading="lazy" data-key="cfd-python" data-hash="/post/cfd-python/images/2DPoissonSurfStud.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Computational Fluid Dynamics — CFDPython</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/nonlinear-dynamics/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Nonlinear Dynamics — A Game of Computation (In Progress)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/fluid-dynamics/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fluid Dynamics — A Flurry of Theory (In Progress)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/project/academics/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/project/academics/SES.svg" loading="lazy" data-key="" data-hash="/project/academics/SES.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Academic Notes — Physics and Mathematics</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "godotmisogi" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2016 - 
+        
+        2021 ｢ALL FICTION｣
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

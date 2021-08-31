@@ -1,23 +1,22 @@
 ---
-date: "2021-05-14T00:00:00+08:00"
-title: A Flurry of Fluid Dynamics
-draft: true
-description: A quick introduction to fluid dynamics.
+date: "2019-09-30T00:00:00+08:00"
+title: Fluid Dynamics — A Flurry of Theory (In Progress)
+draft: false
+description: An over-condensed introduction to fluid dynamics for quick reference.
 image: 
 slug: fluid-dynamics
 categories: 
-    - Aerodynamics
-    - Computational Fluid Dynamics
-    - Programming
+    - Physics
     - Mathematics
+    - Aerodynamics
 ---
 
 #### References
 
 1. Batchelor, G. K. _An Introduction to Fluid Dynamics._ Cambridge University Press, 1992.
 2. Drela, Mark. _Flight Vehicle Aerodynamics_. The MIT Press, 2014.
-3. Katz, Joseph, Plotkin, Allen. _Low-Speed Aerodynamics - 2nd Edition._ Cambridge University Press, 2001.
-4. Feynman, Richard P., Leighton, Robert B., Sands, Matthew. _The Feynman Lectures on Physics, Vol. 2: Mainly Electromagnetism and Matter_. Basic Books, 2011.
+3. Katz, Joseph and Plotkin, Allen. _Low-Speed Aerodynamics - 2nd Edition._ Cambridge University Press, 2001.
+4. Feynman, Richard P., Leighton, Robert B. and Sands, Matthew. _The Feynman Lectures on Physics, Vol. 2: Mainly Electromagnetism and Matter_. Basic Books, 2011.
 5. Balakrishnan, V. _Selected Topics in Mathematical Physics_. NPTEL, 2014.
  
 ## Definitions
@@ -30,13 +29,13 @@ Note that the dimension of the vector space is irrelevant.
 
 This is related to **Stokes' theorem**, which indicates the 'total' curl of the vector field for an open surface $\partial \mathcal S$:
 
-$$ \oint_C \vec f \cdot d\vec l = \iint_{\partial \mathcal S} \left(\nabla \times \vec f\right)\cdot \vec n\ d\mathcal S $$\
+$$ \oint_C \vec f \cdot d\vec l = \iint_{\partial \mathcal S} \left(\nabla \times \vec f\right)\cdot \vec n\ d\mathcal S $$
 
 Similarly, the total 'emittance' of $\vec f$ over a closed surface $S$ is related to the 'total' divergence of a vector field from a volume $\mathcal V$ via **Gauss' theorem**:
 
 $$ \iint_{\mathcal S} \vec f \cdot d\vec {\mathcal S} = \iiint_{\mathcal V}\nabla \cdot \vec f \ d\mathcal V $$
 
-_Note:_ Gauss' and Stokes' theorems are properties of integrals, and are not particularly related to vector spaces as such; they are independent of tensor dimensionality.
+_Note:_ Gauss' and Stokes' theorems are properties of integrals, and are not particularly related to vector spaces as such. They are independent of tensor rank and dimensionality (consider the higher-dimensional tensor $f^{ijk}$ instead of just the vector $f^i$, nothing changes except the equations become identities on the components with the free indices).
 
 The **material/Lagrangian/etc... derivative** $D/Dt$ is an operator expressing the chain rule on any tensor field that signifies the time rate of change of the tensor if it is dependent on space-time macroscopic velocity field variations. In a flat spacetime:
 

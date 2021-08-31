@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en-uk">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='A desperate attempt to come up with something original in aerodynamics using studies from physics, only having found it to be already discovered in the 1960s.'><title>Variational Calculus — Induced Drag Over a Wing</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Playing around with nonlinear dynamics and populations in Julia.'><title>Nonlinear Dynamics — A Game of Computation (In Progress)</title>
 
-<link rel='canonical' href='https://godot-bloggy.xyz/post/induced-drag/'>
+<link rel='canonical' href='https://godot-bloggy.xyz/post/nonlinear-dynamics/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Variational Calculus — Induced Drag Over a Wing'>
-<meta property='og:description' content='A desperate attempt to come up with something original in aerodynamics using studies from physics, only having found it to be already discovered in the 1960s.'>
-<meta property='og:url' content='https://godot-bloggy.xyz/post/induced-drag/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Nonlinear Dynamics — A Game of Computation (In Progress)'>
+<meta property='og:description' content='Playing around with nonlinear dynamics and populations in Julia.'>
+<meta property='og:url' content='https://godot-bloggy.xyz/post/nonlinear-dynamics/'>
 <meta property='og:site_name' content='｢ALL FICTION｣'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2016-12-26T01:55:24&#43;05:30'/><meta property='article:modified_time' content='2016-12-26T01:55:24&#43;05:30'/><meta property='og:image' content='https://godot-bloggy.xyz/post/induced-drag/AircraftStream.svg' />
-<meta name="twitter:site" content="GodotMisogi"><meta name="twitter:title" content="Variational Calculus — Induced Drag Over a Wing">
-<meta name="twitter:description" content="A desperate attempt to come up with something original in aerodynamics using studies from physics, only having found it to be already discovered in the 1960s."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://godot-bloggy.xyz/post/induced-drag/AircraftStream.svg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-04-06T21:53:06&#43;05:30'/><meta property='article:modified_time' content='2021-04-06T21:53:06&#43;05:30'/>
+<meta name="twitter:site" content="GodotMisogi"><meta name="twitter:title" content="Nonlinear Dynamics — A Game of Computation (In Progress)">
+<meta name="twitter:description" content="Playing around with nonlinear dynamics and populations in Julia.">
     <link rel="shortcut icon" href="/punpun1.jpg" />
 
 <script type="application/javascript">
@@ -222,39 +221,31 @@ if (!doNotTrack) {
         </a>
     </div>
 
-    <article class="has-image main-article">
+    <article class="main-article">
     <header class="article-header">
-        <div class="article-image">
-            <a href="/post/induced-drag/">
-                
-                    <img src="/post/induced-drag/AircraftStream.svg" loading="lazy" alt="Featured image of post Variational Calculus — Induced Drag Over a Wing" />
-                
-            </a>
-        </div>
-    
 
     <div class="article-details">
     
     <header class="article-category">
         
-            <a href="/categories/aerodynamics/" >
-                Aerodynamics
-            </a>
-        
             <a href="/categories/mathematics/" >
                 Mathematics
+            </a>
+        
+            <a href="/categories/programming/" >
+                Programming
             </a>
         
     </header>
     
 
     <h2 class="article-title">
-        <a href="/post/induced-drag/">Variational Calculus — Induced Drag Over a Wing</a>
+        <a href="/post/nonlinear-dynamics/">Nonlinear Dynamics — A Game of Computation (In Progress)</a>
     </h2>
 
     
     <h3 class="article-subtitle">
-        A desperate attempt to come up with something original in aerodynamics using studies from physics, only having found it to be already discovered in the 1960s.
+        Playing around with nonlinear dynamics and populations in Julia.
     </h3>
     <footer class="article-time">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -265,46 +256,97 @@ if (!doNotTrack) {
 
 
 
-        <time class="article-time--published">Dec 26, 2016</time>
+        <time class="article-time--published">Apr 06, 2021</time>
     </footer></div>
 </header>
 
     <section class="article-content">
-    <p>While reading through John D. Anderson Jr.&rsquo;s derivation of minimum induced drag, I thought of a cool application of the calculus of variations in one of the equations to deduce the required condition.</p>
-<p>The equation that determines the downwash at a point is:</p>
-<p>$$w(y_0) = -\frac{1}{4\pi }\int^{b/2}_{-b/2} \frac{(\mathrm{d}\Gamma/\mathrm{d}y)}{y_0 - y}\mathrm{d}y = \int^{b/2}_{-b/2} \mathcal{L}(\Gamma,\Gamma',y)~\mathrm{d}y$$</p>
-<p>This effectively implies that the downwash can be expressed as a <em>functional</em> of $\Gamma$, i.e. $w\left[\Gamma(y)\right]$, and one can find the functional derivative to find the extremal point. There also exists a constraint on this system, the total lift across the span must be constant:</p>
-<p>$$ L = \rho_{\infty} V_{\infty}\int^{b/2}_{-b/2} \Gamma(y)~\mathrm{d}y = \int^{b/2}_{-b/2} \mathcal{G}(\Gamma,\Gamma',y)~\mathrm{d}y$$</p>
-<p>The Euler-Lagrange equations thus take the following form:</p>
-<p>$$ \frac{\partial{\mathcal{L}}}{\partial{\Gamma}} - \frac{\mathrm{d}}{\mathrm{d}y}\left(\frac{\partial{\mathcal{L}}}{\partial{\Gamma'}}\right) + \lambda\left[\frac{\partial{\mathcal{G}}}{\partial{\Gamma}} - \frac{\mathrm{d}}{\mathrm{d}y}\left(\frac{\partial{\mathcal{G}}}{\partial{\Gamma'}}\right)\right]= 0 $$</p>
-<p>Substituting the expressions:</p>
-<p>$$ -\frac{1}{4\pi  (y_0 - y)^2} + \rho_{\infty}V_{\infty}\lambda = 0$$</p>
-<p>This doesn&rsquo;t contain any useful information about the downwash. Let&rsquo;s try something else.</p>
-<p>Trying to minimise the induced drag formula directly as given by Anderson:</p>
-<p>$$ C_{D,i} = \frac{2}{V_{\infty}S}\int^{b/2}_{-b/2} \Gamma(x)\alpha_{i}(x)~\mathrm{d}x = \frac{1}{2\pi V_{\infty}^2 S}\int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\frac{\Gamma(x)\Gamma'(y)}{x - y}~\mathrm{d}y~\mathrm{d}x $$</p>
-<p>Getting rid of the constants and performing a variation on the coefficient of induced drag, we get:</p>
-<p>$$ \delta C_{D,i} = \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\left(\delta\Gamma(x)\frac{\Gamma'(y)}{x - y} + \delta\Gamma'(y)\frac{\Gamma(x)}{x - y}\right) ~\mathrm{d}y~\mathrm{d}x $$</p>
-<p>Performing integration by parts on the second expression, keeping in mind that the first term of the evaluation disappears because the circulation at the endpoints (the boundary conditions of this problem) is zero:</p>
-<p>$$ = \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(x)\frac{\Gamma'(y)}{x - y}~\mathrm{d}y~\mathrm{d}x - \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(y)\cdot\frac{\mathrm{d}}{\mathrm{d}y}\left(\frac{\Gamma(x)}{x-y}\right)~\mathrm{d}y~\mathrm{d}x$$</p>
-<p>A little rearranging provides the more useful form:</p>
-<p>$$ = \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(x)\frac{\Gamma'(y)}{x - y}~\mathrm{d}y~\mathrm{d}x + \int^{b/2}_{-b/2}\delta\Gamma(y)\cdot\frac{\mathrm{d}}{\mathrm{d}y}\int^{b/2}_{-b/2}\frac{\Gamma(x)}{y-x}~\mathrm{d}x~\mathrm{d}y$$</p>
-<p>A change of variables $y-x = q$ is useful to evaluate the last integral:</p>
-<p>$$ \frac{\mathrm{d}}{\mathrm{d}y}\int^{b/2}_{-b/2}\frac{\Gamma(x)}{y-x}~\mathrm{d}x = \frac{\mathrm{d}}{\mathrm{d}y}\int^{y-b/2}_{y+b/2}\frac{\Gamma(y-q)}{q}~\mathrm{d}q$$</p>
-<p>Feynman&rsquo;s favourite trick, differentiating under the integral sign:</p>
-<p>$$ \frac{\mathrm{d}}{\mathrm{d}y}\int^{y-b/2}_{y+b/2}\frac{\Gamma(y-q)}{q}~\mathrm{d}q = \cancel{\frac{\Gamma(b/2)}{y-b/2}} - \cancel{\frac{\Gamma(-b/2)}{y+b/2}} + \int^{y-b/2}_{y+b/2}\frac{\partial}{\partial y}\frac{\Gamma(y-q)}{q}~\mathrm{d}q $$</p>
-<p>Mapping the variables back:</p>
-<p>$$ \int^{y-b/2}_{y+b/2}\frac{\partial}{\partial y}\frac{\Gamma(y-q)}{q}~\mathrm{d}q = \int^{b/2}_{-b/2}\frac{\Gamma'(x)}{y-x}~\mathrm{d}x$$</p>
-<p>Substituting this into the original expression:</p>
-<p>$$ = \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(x)\frac{\Gamma'(y)}{x - y}~\mathrm{d}y~\mathrm{d}x + \int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(y)\frac{\Gamma'(x)}{y - x}~\mathrm{d}x~\mathrm{d}y $$</p>
-<p>Switching the variables of integration in the second expression, we get:</p>
-<p>$$\delta C_{D,i} = 2\int^{b/2}_{-b/2}\int^{b/2}_{-b/2}\delta\Gamma(x)\frac{\Gamma'(y)}{x - y}~\mathrm{d}y~\mathrm{d}x $$</p>
-<p>Reintroducing the constants and combining this with the constraint, $\delta C_{D,i} - \lambda\delta L = 0 $ becomes:</p>
-<p>$$ \int^{b/2}_{-b/2}\delta\Gamma(x)~\mathrm{d}x \left[\int^{b/2}_{-b/2}\frac{2\Gamma'(y)}{x - y}~\mathrm{d}y\ - {2\pi\lambda}\right] = 0 $$</p>
-<p>Using the constraint on the lift across the wing, this results in:</p>
-<p>$$ \int^{b/2}_{-b/2}\frac{\Gamma'(y)}{x - y}~\mathrm{d}y\ = \pi\lambda $$</p>
-<p>The first term is part of the integral from the downwash expression at the beginning of the post, indicating that the downwash across the lifting line for minimum induced drag is constant:</p>
-<p>$$ w = -\frac{\lambda}{4} = w_0 $$</p>
-<p>The same result as seen in Anderson, more rigorously!</p>
+    <h2 id="volterra-equation">Volterra Equation</h2>
+<h3 id="introduction">Introduction</h3>
+<p>The Volterra equation governs coupled population dynamics between two species under a predator-prey relationship in a given environment.</p>
+<p>Consider $x$ as the number of rabbits, and $y$ as the number of foxes. This is expressed in the form of the following autonomous system of ordinary differential equations.</p>
+<p>$$ 
+\begin{aligned} 
+\dot x &amp; = \alpha x - \eta yx, &amp; \alpha, \eta &gt; 0 \\ 
+\dot y &amp; = -\beta y + \lambda xy, &amp; \beta, \lambda &gt; 0 \\ 
+\end{aligned}
+$$</p>
+<p>Physically, these equations can be read off in the following manner: The change in the population of rabbits depends on a rate $\alpha$ proportional to the current population, and decreases at a rate $\eta$ proportional to the populations of foxes and rabbits, and similarly for the change in the population of foxes.</p>
+<h3 id="critical-points">Critical Points</h3>
+<p>The critical points of the system are the points at which the right-hand-sides are simultaneously zero. In this case, it&rsquo;s simple to evaluate by hand.</p>
+<p>$$ 
+\begin{aligned} 
+x(\alpha - \eta y) &amp; = 0 \\ 
+y(\lambda x - \beta) &amp; = 0
+\end{aligned} \\ 
+\implies (x_c, y_c) = \left\{ (0, 0), \left(\frac{\beta}{\lambda}, \frac{\alpha}{\eta}\right) \right\}
+$$</p>
+<h4 id="stability">Stability</h4>
+<p>At $(x_c, y_c) = (0, 0)$, any perturbation in $x$ while keeping $y$ fixed results in an increase in $\dot x$, hence it is unstable in this direction, and vice versa for $y$ and $\dot y$. This results in the following phase? plot.</p>
+<p>At $(x_c, y_c) = \left(\dfrac{\beta}{\lambda}, \dfrac{\alpha}{\eta}\right)$, we must evaluate the system by linearisation.</p>
+<h3 id="computation">Computation</h3>
+<p>Let&rsquo;s do it <del>to</del> in Julia.</p>
+<div class="highlight"><pre class="chroma"><code class="language-julia" data-lang="julia"><span class="n">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">α</span><span class="p">,</span> <span class="n">η</span><span class="p">)</span> <span class="o">=</span> <span class="n">α</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">η</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+<span class="n">f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">λ</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">β</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">λ</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+</code></pre></div><p>The <code>DifferentialEquations</code> package in Julia makes this very easy to evaluate. As this is an initial value problem, the following functions show the required setup:</p>
+<div class="highlight"><pre class="chroma"><code class="language-julia" data-lang="julia"><span class="k">function</span> <span class="n">volterra!</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ps</span><span class="p">)</span>
+    <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">f1</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ps</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">ps</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">f2</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ps</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">ps</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="n">R</span>
+<span class="k">end</span>
+
+<span class="n">α</span><span class="p">,</span> <span class="n">η</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="p">[</span> <span class="n">α</span> <span class="n">η</span><span class="p">;</span> 
+       <span class="n">β</span> <span class="n">λ</span> <span class="p">]</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="p">[</span> <span class="n">β</span><span class="o">/</span><span class="n">λ</span><span class="p">,</span> <span class="n">α</span><span class="o">/</span><span class="n">η</span> <span class="p">]</span>
+</code></pre></div><p>We now set up a problem in the format of <code>DifferentialEquations</code> and evaluate it:</p>
+<div class="highlight"><pre class="chroma"><code class="language-julia" data-lang="julia"><span class="k">using</span> <span class="n">DifferentialEquations</span>
+
+<span class="n">tspan</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">500.0</span><span class="p">)</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">ODEProblem</span><span class="p">(</span><span class="n">volterra!</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tspan</span><span class="p">,</span> <span class="n">ps</span><span class="p">)</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="n">maxiters</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span>
+</code></pre></div><p>Very short code!</p>
+<p>(<em>My second personality</em>: But probably not shorter than the Haskell equivalent.)</p>
+<p>(<em>My third personality to the second</em>: Weird flex, but ok.)</p>
+<h2 id="falkner-skan-boundary-layer-equations">Falkner-Skan Boundary Layer Equations</h2>
+<p>The Falkner-Skan transformation of the thin shear layer equations governing boundary layers is given by the following third-order differential equation:</p>
+<p>$$ f''' + \left(\frac{1 + a}{2}\right) f f'' + a\left[1 - (f')^2\right] = 0 $$</p>
+<p>with boundary conditions $f(0) = f'(0) = 0, ~ f'(\eta) = 1$, where $\eta$ is some specified upper bound. This can be expressed in terms of an autonomous system of first-order differential equations: $\dot{\mathbf x} = \mathbf f(\mathbf x, \mathbf p, η)$. First, we define the function for the governing ODE:</p>
+<div class="highlight"><pre class="chroma"><code class="language-julia" data-lang="julia"><span class="k">function</span> <span class="n">falkner_skan_ODE!</span><span class="p">(</span><span class="n">du</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">η</span><span class="p">)</span>
+    <span class="n">F</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">a</span>       <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">du</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   <span class="o">=</span> <span class="n">U</span>
+    <span class="n">du</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>   <span class="o">=</span> <span class="n">S</span>             
+    <span class="n">du</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">F</span> <span class="o">*</span> <span class="n">S</span> <span class="o">-</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">U</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="nb">nothing</span>
+<span class="k">end</span>
+</code></pre></div><p>As this is a boundary value problem, in contrast to the previous initial value problem, another function is required to specify the boundary conditions. Note that the distinction between initial value and boundary value problems is &ldquo;superficial&rdquo;, and the mathematical treatment is generally identical as the formulation of space curves passing through specified points.</p>
+<div class="highlight"><pre class="chroma"><code class="language-julia" data-lang="julia"><span class="k">function</span> <span class="n">falkner_skan_BC!</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">η</span><span class="p">)</span>
+    <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>              <span class="c"># η = 0, F = 0</span>
+    <span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>              <span class="c"># η = 0, F&#39; = 0</span>
+    <span class="n">R</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="k">end</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>        <span class="c"># η = ηₑ, F&#39; = 1</span>
+
+    <span class="nb">nothing</span>
+<span class="k">end</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-julia" data-lang="julia"><span class="n">ηs</span>    <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="n">x0</span>    <span class="o">=</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span> 
+<span class="n">a</span>     <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span>
+<span class="n">prob</span>  <span class="o">=</span> <span class="n">BVProblem</span><span class="p">(</span><span class="n">falkner_skan_ODE!</span><span class="p">,</span> <span class="n">falkner_skan_BC!</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">ηs</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">sol</span>   <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">prob</span><span class="p">,</span> <span class="n">GeneralMIRK4</span><span class="p">(),</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">1e-1</span><span class="p">)</span>
+</code></pre></div><p>
+  
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+
+<div id="/post/nonlinear-dynamics/images/lol.json" class="plotly" style="width:100%"></div>
+<script>
+Plotly.d3.json("/post/nonlinear-dynamics/images/lol.json", function(err, fig) {
+    Plotly.plot('\/post\/nonlinear-dynamics\/images\/lol.json', fig.data, fig.layout, {responsive: true});
+});
+</script></p>
 
 </section>
 
@@ -382,30 +424,6 @@ if (!doNotTrack) {
 </article>
                 
                     
-<article class="">
-    <a href="/post/fluid-dynamics/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Fluid Dynamics — A Flurry of Theory (In Progress)</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
-    <a href="/post/nonlinear-dynamics/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Nonlinear Dynamics — A Game of Computation (In Progress)</h2>
-        </div>
-    </a>
-</article>
-                
-                    
 <article class="has-image">
     <a href="/post/opt-problems/">
         
@@ -437,6 +455,36 @@ if (!doNotTrack) {
 
         <div class="article-details">
             <h2 class="article-title">Computational Fluid Dynamics — CFDPython</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/fluid-dynamics/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Fluid Dynamics — A Flurry of Theory (In Progress)</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/project/academics/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/project/academics/SES.svg" loading="lazy" data-key="" data-hash="/project/academics/SES.svg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Academic Notes — Physics and Mathematics</h2>
         </div>
     </a>
 </article>

@@ -1,7 +1,7 @@
 ---
 date: "2021-02-24T22:55:27+08:00"
-title: Aerodynamics — Viscous-Inviscid Panel Methods
-draft: true
+title: Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)
+draft: false
 description: The holy grail of fast and accurate aerodynamic analyses over airfoils.
 image: images/aeropython.jpg
 slug: panel-methods
@@ -12,11 +12,15 @@ categories:
     - Mathematics
 ---
 
+#### References
+
+1. Drela, Mark. _Flight Vehicle Aerodynamics_. The MIT Press, 2014.
+2. Drela, Mark and Giles, M. B. _Viscous-Inviscid Analysis of Transonic and Low Reynolds Number Airfoils_. AIAA Journal, 1986.
+3. Katz, Joseph and Plotkin, Allen. _Low-Speed Aerodynamics - 2nd Edition._ Cambridge University Press, 2001.
+
 # Viscous-Inviscid Panel Methods
 
-Physics: Steady, inviscid, incompressible flow.
-
-Panel methods are special cases of general boundary element methods, in which the solution of some PDE on a volume is reduced to the specification on a surface.
+Boundary element methods express the solution of some PDE on a volume by reducing it to the specification on a surface. Panel methods in aerodynamics are special cases of such expressions, in which the governing equation is Laplace's equation in a uniform flow in the case of a steady, inviscid, incompressible fluid.
 
 <!-- ## Channel Flow
 
@@ -157,7 +161,8 @@ This gives a differential equation for $\vec u_e$.
 
 Define the following operator $\Delta^+\colon \mathbb R^n \to \mathbb R^{n-1}, n \in \mathbb N^+$ to evaluate forward differences:
 
-$$ \Delta^+ \equiv 
+$$ 
+\Delta^+ \equiv 
 \begin{bmatrix} 
 -1 \& 1 \& 0 \& \ldots \& 0 \\\\ 
 0 \& -1 \& 1 \& \ldots \& 0 \\\\ 
@@ -172,16 +177,14 @@ Difference operators can be used to generically compute $n$th order differences 
 The following operator $\Delta^C\colon \mathbb R^n \to \mathbb R^n$ constructs central differences with forward and backward differencing at the endpoints:
 
 $$
-\begin{aligned}
-    \Delta^c \equiv
-    \begin{bmatrix}
-        -1 & 1 & 0 & \ldots & 0 \\\\ 
-        -1/2 & 0 & 1/2 & \ldots & 0 \\\\ 
-        \vdots & \ddots & \ddots & \ddots & \vdots \\\\ 
-        0 & \ldots & -1/2 & 0 & 1/2 \\\\ 
-        0 & \ldots & 0 & -1 & 1
-    \end{bmatrix}
-\end{aligned}
+\Delta^c \equiv
+\begin{bmatrix}
+  -1 & 1 & 0 & \ldots & 0 \\\\ 
+  -1/2 & 0 & 1/2 & \ldots & 0 \\\\ 
+  \vdots & \ddots & \ddots & \ddots & \vdots \\\\ 
+  0 & \ldots & -1/2 & 0 & 1/2 \\\\ 
+  0 & \ldots & 0 & -1 & 1
+\end{bmatrix}
 $$
 
 ## Boundary Layer Equations
@@ -190,8 +193,8 @@ The boundary layer equations are obtained via the defect formulation and the thi
 
 $$ 
 \begin{aligned} 
-   \frac{d\theta}{ds} + (H + 2 - M_e^2)\frac{1}{u_e}\frac{du_e}{ds} - \frac{c_f}{2} & = 0 \\\\ 
-   \frac{1}{\theta^\*}\frac{d\theta^\*}{ds} + \left(\frac{2H^{\*\*}}{H^\*} + 3 - M_e^2\right)\frac{1}{u_e}\frac{du_e}{ds} - 2c_\mathcal{D} & = 0
+   \frac{d\theta}{ds} + (H + 2 - M_e^2)\frac{1}{u_e}\frac{du_e}{ds} - \frac{c_f}{2} & = 0 \quad (\textsf{Momentum}) \\\\ 
+   \frac{1}{\theta^\*}\frac{d\theta^\*}{ds} + \left(\frac{2H^{\*\*}}{H^\*} + 3 - M_e^2\right)\frac{1}{u_e}\frac{du_e}{ds} - 2c_\mathcal{D} & = 0 \quad (\textsf{Kinetic Energy})
 \end{aligned}
 $$
 

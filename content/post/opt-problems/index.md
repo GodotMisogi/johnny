@@ -1,7 +1,7 @@
 ---
-date: "2021-02-24T22:55:27+08:00"
-title: Gradient-Based Optimization — Discrete Direct and Adjoint Methods
-draft: true
+date: "2020-08-30T22:55:27+08:00"
+title: Gradient-Based Optimisation — Discrete Direct and Adjoint Methods (In Progress)
+draft: false
 slug: opt-problems
 description: Demystifying the hype of the Newton method for optimisations, with relevant implementations.
 image: XDSM.svg
@@ -12,7 +12,7 @@ categories:
     - Computational Fluid Dynamics
 ---
 
-Optimisation problems are becoming a big meme, so let's address some of the general ideas and how to compute them on discretised systems of equations.
+Optimisation problems are becoming a big meme, so let's address some of the general ideas and how to compute them for discretised systems of equations.
 
 ## Problem Description
 
@@ -36,7 +36,7 @@ $$ \beta_i \mathbf J_i d\mathbf p_i = -\mathbf R_i, \quad \text{where} \quad \be
 
 The dimensionality of the problems could get confusing, so index notation with summation convention comes in handy:
 
-$$ \frac{\partial R_{ijk}}{\partial p_{mn}} = $$
+$$ \frac{\partial R^{ijk}}{\partial p^{mn}} = \ldots$$
 
 Let us naïvely solve the linear system, by using Julia's `\` function from the `LinearAlgebra` package.
 
@@ -129,9 +129,9 @@ $$
 
 The transposition operator $-^T\colon (\mathbb R^m \times \mathbb R^n) \to (\mathbb R^n \times \mathbb R^m)$ simply transposes the dimensions of a matrix or vector. Of course, here the linear system has to be square, so $m = n$.
 
-Here is where the word _adjoint_ comes in. When you have a constraint expressed in the form of some nonlinear partial differential equation, the transpose operator is not applicable, and you have to actually apply the concept of adjoints. This concept exists at a much more abstract level in category theory and duality, in which one is not able to find direct inverses? An example is the adjoint of the differential operator on an infinite-dimensional Hilbert space of functions.
+Here is where the word _adjoint_ comes in. When you have a constraint expressed in the form of some nonlinear partial differential equation, the transpose operator is not applicable, and you have to actually apply the concept of adjoints. This concept exists at a much more abstract level in category theory and duality, which is the "next-best" thing when one is not able to find direct inverses. An example is the adjoint of the differential operator on an infinite-dimensional Hilbert space of functions.
 
-In most cases, however, you would be dealing with some discretised version of the PDE, and the above will apply to the discretised equations, which are expressed in the form of a matrix. This setup is called the _discrete adjoint_ formulation, and is quite a general operation on nonlinear PDEs.
+In most cases, however, you would be dealing with some discretised version of the PDE, and the above will apply to the discretised equations, which are expressed in the form of a tensor. This setup is called the _discrete adjoint_ formulation, and is quite a general operation on nonlinear PDEs.
 
 ```julia
 function solve_adjoint(u, ∂R∂u, dfdu) 
@@ -164,6 +164,8 @@ This setup is called a _coupled_ system, and the entire system is solved simulta
 
 Even the order of accuracy of the Jacobians is not as important, as the point of the optimisation is to get a converged optimum, with converged residuals for the constraint. So you could spend less time doing more iterations with a greatly reduced cost for evaluating less accurate Jacobians and solving the linear system, if the residual constraint is the most time-consuming part. However, robustness of the solver for the residual equations becomes problematic.
 
-### Pseudo-Transient Continuation
+<!-- ### Pseudo-Transient Continuation
 
-$$ \left(\frac{I}{\Delta t} + 1\right)? \mathbf J_i d\mathbf x_i = -\mathbf f_i $$
+$$ \left(\frac{I}{\Delta t} + 1\right)? \mathbf J_i d\mathbf x_i = -\mathbf f_i $$ -->
+
+<!-- ## Unsteady Problems -->
