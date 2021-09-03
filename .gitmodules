@@ -1,6 +1,3 @@
 [submodule "themes/hugo-theme-stack"]
 	path = themes/hugo-theme-stack
 	url = https://github.com/GodotMisogi/hugo-theme-stack
-[submodule "public"]
-	path = public
-	url = https://github.com/GodotMisogi/blog-public
