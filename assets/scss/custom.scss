@@ -3,28 +3,28 @@
     --body-text-color: #999999;
 }
 
-.container {
-    &.extended {
-        @media (min-width: $on-tablet) {
-                    max-width: 1200px;
-                }
-            }
-    &.compact {
-        @media (min-width: $on-tablet) {
-                    max-width: 1200px;
-                }
-            }
-        }
+// .container {
+//     &.extended {
+//         @media (min-width: $on-tablet) {
+//                     max-width: 1200px;
+//                 }
+//             }
+//     &.compact {
+//         @media (min-width: $on-tablet) {
+//                     max-width: 1200px;
+//                 }
+//             }
+//         }
 
 .left-sidebar {
     .site-info {
         .site-avatar {
-        .site-logo {
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 100%;
-                    box-shadow: var(--shadow-l1);
-                }
+            .site-logo {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 100%;
+                        box-shadow: var(--shadow-l1);
+                    }
         }
     }
 }
