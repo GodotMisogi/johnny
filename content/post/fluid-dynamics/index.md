@@ -51,7 +51,7 @@ The surface integral can usually be converted into a differential form over the 
 
 #### Fluid  Dynamics
 
-A **fluid** is defined as a continuum of particles such that its microscopic properties average into macroscopic properties that approximate its behaviour as a single element, a behaviour characterised by negligibly resistive non-retention of shape when deformed.
+A **fluid** is defined as a continuum of particles such that its microscopic properties average into macroscopic properties that approximate its behaviour as a single element, a behaviour characterised by negligibly resistive non-retention of shape when deformed. This continuum approximation is applicable when analysing flows over length scales much larger (say a ratio of $10^{3}$ at least?) than the molecular mean free path of the fluid.
 
 The definitions of circulation and the material derivative are sufficient to derive **Kelvin's circulation theorem** for velocity fields $\vec V$ along a fluid curve $C$, defined as a curve which always passes through the same fluid elements:
 
@@ -59,11 +59,11 @@ $$ \frac{D\Gamma}{Dt} = \frac{D}{Dt}\oint_C \vec V \cdot d\vec l = \oint_C \frac
 
 $$ \implies \frac{D\Gamma}{Dt} = \oint_C \vec a \cdot d\vec l, \quad \because \frac{D\vec V}{Dt} = \vec a,\quad \oint_C \vec V \cdot d\vec V = 0 $$
 
-The differential form of the **continuity equation** representing the conservation of mass $M$, with a macroscopic property called the **density** $\rho$, via the Reynolds' transport theorem is:
+The differential form of the expression of **continuity** representing the conservation of mass $M$, with a macroscopic property called the **density** $\rho$, via the Reynolds' transport theorem is:
 
 $$ \frac{DM}{Dt} = \frac{\partial \rho}{\partial t} + \nabla\cdot (\rho \vec V) $$
 
-For a control volume with no time-varying source or sink of mass, $dM/dt = 0$, which gives the usual continuity equation analysed in fluid mechanics. An **incompressible flow** is defined as a flow in which the changes in density with respect to space and time are negligible.
+For a control volume with no space-time-varying source or sink of mass, $dM/dt = 0$, which gives the usual continuity equation analysed in fluid mechanics. An **incompressible flow** is defined as a flow in which the changes in density with respect to space and time are negligible.
 
 The differential form of the **incompressible Navier-Stokes equations** in an external time-independent gravitational field $\vec g$ with non-conservative body forces $\vec f$ is:
     
@@ -85,7 +85,7 @@ where $\nu \equiv \nabla \cdot \vec V$, called the **dilatation strain rate**.
 
 Non-dimensionalisation schemes are important in fluid dynamics because they remove the dependence of the equations on intrinsic fluid properties, such as $\rho,\ \mu$ and reference length scales such as $L$ and $|\vec V|$ for flow over objects.
 
-If the flow is inviscid, the time derivatives and the stress terms drop out, giving the **incompressible Euler equations**:
+If the flow is steady and inviscid, the time derivatives and the stress terms drop out, giving the **incompressible Euler equations**:
 
 $$ \nabla \cdot \vec V = 0 $$
 
