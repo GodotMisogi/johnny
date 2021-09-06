@@ -2,7 +2,7 @@
 date: "2021-09-03T12:54:58+08:00"
 title: "Category Theory — Back to School"
 draft: true
-description: Category theory is a progressive scam for re-studying arithmetic, algebra, calculus, number theory, and category theory.
+description: Category theory is a progressive scam for re-studying arithmetic, algebra, calculus, and category theory.
 slug: category-theory
 image: 
 categories:
@@ -94,7 +94,8 @@ The multiplication map is list concatenation, and the unit map is creation of a 
 ```haskell
 instance Monad List where
     join :: List (List a) -> List a
-    join Cons (Cons y ys) zs = 
+    join Cons (Cons y ys) Nil         = Cons y ys
+    join Cons (Cons y ys) (Cons z zs) = 
     
     return :: a -> Cons a Nil
     return y = Cons y Nil
@@ -143,17 +144,17 @@ The end is a terminal wedge, and the coend is an initial cowedge? These are deno
 $$\begin{aligned} \mathrm{End_\mathbf C} & = \int_{A \in \mathrm{Obj}(\mathbf C)} \mathcal F (A, A) \\\\ \mathrm{Coend_\mathbf C} & = \int^{A \in \mathrm{Obj}(\mathbf C)} \mathcal F (A, A)
 \end{aligned}$$
 
-These may look complicated, but they are basically the equivalent of an integral (limit of a product or a sum).
+These may look complicated, but they are basically the equivalents of integrals, viz. the limit of a product or a sum.
 
 (Surprisingly, a very interesting concept called a _Kan extension_ can be defined in terms of an end.)
 
-Hence we have been scammed to re-learn calculus.
-
+> **Hence we have been scammed to re-learn calculus.**
+<!-- 
 ## Number Theory
 
 ### Lawvere Theories
 
-> **Hence we have been scammed to re-learn number theory.**
+> **Hence we have been scammed to re-learn number theory.** -->
 
 ## Category Theory
 
