@@ -48,8 +48,8 @@ At $(x_c, y_c) = \left(\dfrac{\beta}{\lambda}, \dfrac{\alpha}{\eta}\right)$, we 
 
 Let's do it ~~to~~ in Julia.
 ```julia
-f1(x, y, α, η) = α * x - η * x * y
-f2(x, y, β, λ) = -β * x + λ * x * y
+f1(x, y, α, η) =  α * x - η * y * x
+f2(x, y, β, λ) = -β * y + λ * x * y
 ```
 
 The `DifferentialEquations` package in Julia makes this very easy to evaluate. As this is an initial value problem, the following functions show the required setup:
@@ -84,13 +84,20 @@ Very short code!
 
 (_My third personality to the second_: Weird flex, but ok.)
 
+<center>
+{{< load-plotly >}}
+{{< plotly json="/post/nonlinear-dynamics/images/wabbitsfoxes.json" >}}
+</center>
+
+Notice how, after the maximum population of rabbits in a period, the population of foxes increases while the population of rabbits decreases to a local minimum. The foxes then quickly die off to a minimum and the population of rabbits increases, repeating the cycle. 
+
 ## Falkner-Skan Boundary Layer Equations
 
 The Falkner-Skan transformation of the thin shear layer equations governing boundary layers is given by the following third-order differential equation:
 
 $$ f''' + \left(\frac{1 + a}{2}\right) f f'' + a\left[1 - (f')^2\right] = 0 $$
 
-with boundary conditions $f(0) = f'(0) = 0, ~ f'(\eta) = 1$, where $\eta$ is some specified upper bound. This can be expressed in terms of an autonomous system of first-order differential equations: $\dot{\mathbf x} = \mathbf f(\mathbf x, \mathbf p, η)$. First, we define the function for the governing ODE: 
+with boundary conditions $f(0) = f'(0) = 0, ~ f'(\eta) = 1$, where $\eta$ is some specified upper bound. This can be expressed in terms of an autonomous system of first-order differential equations: $\dot{\mathbf x} = \mathbf f(\mathbf x, \mathbf p, η)$ by setting each derivative as an independent variable. So we define the function for the governing ODE: 
 
 ```julia
 function falkner_skan_ODE!(du, x, p, η)
@@ -104,7 +111,7 @@ function falkner_skan_ODE!(du, x, p, η)
 end
 ```
 
-As this is a boundary value problem, in contrast to the previous initial value problem, another function is required to specify the boundary conditions. Note that the distinction between initial value and boundary value problems is "superficial", and the mathematical treatment is generally identical as the formulation of space curves passing through specified points.
+As this is a boundary value problem, in contrast to the previous initial value problem, another function is required to specify the boundary conditions. Note that the distinction between initial value and boundary value problems is "superficial", and the mathematical treatment is generally identical as the formulation of 'space' curves passing through specified points.
 
 ```julia
 function falkner_skan_BC!(R, x, p, η)
@@ -116,15 +123,19 @@ function falkner_skan_BC!(R, x, p, η)
 end
 ```
 
+Now we feed the functions to `DifferentialEquations`, using a Mono-Implicit Runge-Kutta integration scheme to solve the discretised equations as a fully implicit system.
 
 ```julia
 ηs    = (0.0, 10.0)
 x0    = [5.0, 2.0, 0.0] 
-a     = [0.1]
-prob  = BVProblem(falkner_skan_ODE!, falkner_skan_BC!, x0, ηs, a)
-sol   = solve(prob, GeneralMIRK4(), dt = 1e-1)
-```
+as    = range(-0.2, 0.2, length = 10)
 
+prob  = BVProblem.(Ref(falkner_skan_ODE!), Ref(falkner_skan_BC!), Ref(x0), Ref(ηs), as, syms = Ref([:y, :δ]))
+sol   = solve.(prob, Ref(GeneralMIRK4()), dt = 2e-1)
+```
+<center>
 {{< load-plotly >}}
 {{< plotly json="/post/nonlinear-dynamics/images/lol.json" >}}
+</center>
 
+Here we can observe an inflection point at some specific value of $U/U_e$. Can we figure this out analytically?
