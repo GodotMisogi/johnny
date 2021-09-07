@@ -12,7 +12,7 @@ categories:
 
 ## Introduction
 
-I studied category theory with `Vyn` from Bartosz Milewski's book/blog _Category Theory For Programmers_ in 2020, after a brief introduction from my course in _Advanced Algebra_ at HKUST. Eventually we realised it's just a scam to study mathematical concepts from primary school to itself. I list the concepts from memory which I usually find difficult to recall here, with attempted proofs without reference. The concepts are presented in the temporal sequence of standard mathematical education.
+I studied category theory with `Vyn` from Bartosz Milewski's book/blog _Category Theory For Programmers_ in 2020, after a brief introduction from my course in _Advanced Algebra_ at HKUST. Eventually we realised it's just a scam to study mathematical concepts starting from primary school to itself. I list the concepts from memory which I usually find difficult to recall here, with attempted proofs without reference. The concepts are presented in the temporal sequence of standard mathematical education.
 
 Some notation:
 
@@ -20,6 +20,8 @@ Some notation:
 2. Objects and morphisms of a category $\mathbf C$ will be denoted as $\mathrm{Obj}(\mathbf C),~\mathrm{Mor}(\mathbf C)$ respectively.
 3. Functor $\mathcal F$-mappings of objects $A \in \mathrm{Obj}(\mathbf C)$ will be denoted with curly brackets, $\mathcal F(A)$, and of morphisms $f \in \mathrm{Mor}(\mathbf C)$ with square brackets, $\mathcal F[f]$.
 4. The category of functors between two categories will be notated in brackets, e.g. $[\mathbf{Grp},\mathbf{Set}]$ for the category of functors from the category of groups to the category of sets.
+
+Milewski provides a nice programmatic interpretation of functors as, to paraphrase, "contextual wrappers" around morphisms between objects. Haskell examples are useful for illustrative purposes, and have been presented whenever appropriate to elucidate this idea.
 
 ## Arithmetic
 
@@ -39,7 +41,7 @@ _Lemma_. (Yoneda) The set of natural transformations $\alpha$ is in one-to-one c
 
 _Proof_. 
 
-$$\begin{CD} \mathcal C(A, A) @>{\alpha_A}>> \mathcal C(A, B)\end{CD}$$
+<!-- $$\begin{CD} \mathcal C(A, A) @>{\alpha_A}>> \mathcal C(A, B)\end{CD}$$ -->
 
 ```
 Hom(A, A) —Hom(A, f)→ Hom(A, B)S
@@ -66,6 +68,13 @@ A product is defined by the following diagram, which applies a complicated techn
 
 **Example.** (Coproduct) Disjoint union of two sets?
 
+In Haskell, the coproduct is represented as a sum type with the "divider" syntax `|`, for example with the `Maybe` and `Either` types:
+
+```haskell
+data Maybe a = Just a | Nothing
+data Either a b = Left a | Right b
+```
+
 > **Hence we have been scammed to re-learn arithmetic.**
 
 ## Algebra
@@ -76,9 +85,11 @@ In algebra, a monoid is defined by an associative multiplication $\mu$ and a uni
 
 ### Monads
 
-In the words of Saunders Mac Lane: "A monad is just a monoid in the category of endofunctors". This (intentionally obfuscating) definition is ubiquitous for scaring programmers, and perhaps anyone unfamiliar with category theory. 
+In the words of Saunders Mac Lane: "A monad is just a monoid in the category of endofunctors". This (intentionally obfuscating) definition is ubiquitous for scaring programmers, and perhaps anyone unfamiliar with category theory. Here we attack the problem directly using the definitions.
 
-Milewski provides a nice programmatic interpretation of functors as, to paraphrase, "contextual wrappers" around objects. Haskell examples are useful here for illustration, and `List` is the canonical example of a monad.
+**Example.** (List monad)
+
+`List` is the canonical example of a monad as a polymorphic recursive sum type.
 ```haskell
 data List a = Nil | Cons a (List a)
 ```
@@ -90,20 +101,41 @@ instance Functor List where
     fmap f (Cons y ys) = Cons (f y) (fmap f ys) 
 ```
 
-The multiplication map is list concatenation, and the unit map is creation of a single-element list from the argument.
+And now we define the monoidal laws for appending two lists by recursion:
+```haskell
+instance Monoid List where
+    mappend :: List a -> List a -> List a
+    mappend ys Nil         = ys
+    mappend Nil zs         = zs
+    mappend (Cons y ys) zs = Cons y (mappend ys zs)
+    
+    mempty :: List a
+    mempty = Nil
+```
+
+The monoidal multiplication $M \otimes M \to M \in \mathrm{Mor}(\mathbf C)$. Now consider the category of endofunctors $[\mathbf C, \mathbf C]$ as a monoidal category, in which the monoidal product is composition of the endofunctors $\mathcal T \circ \mathcal T \to \mathcal T \in \mathrm{Mor}([\mathbf C, \mathbf C])$.
+
+The multiplication map is list concatenation, and the unit map is creation of a single-element list from the argument. To define the monad, we just need to use the monoidal laws with composition and recursion.
+
 ```haskell
 instance Monad List where
     join :: List (List a) -> List a
-    join Cons (Cons y ys) Nil         = Cons y ys
-    join Cons (Cons y ys) (Cons z zs) = 
-    
-    return :: a -> Cons a Nil
-    return y = Cons y Nil
+    join Nil           = mempty
+    join (Cons ys zss) = mappend ys (join zss)
+
+    return :: a -> List a
+    return y = Cons y mempty
 ```
 
-It is conceptually simpler to understand in terms of a Kleisli category $\mathbf C^{\mathcal T}$ which is constructed using an endofunctor $\mathcal T \in [\mathbf C, \mathbf C]$, where the objects are $\mathrm{Obj}(\mathbf C^\mathcal T) = \mathrm{Obj}(\mathbf C)$ and morphisms are $A \to \mathcal T(B) \in \mathrm{Mor}(\mathbf C^\mathcal T)$ for $A,B \in \mathrm{Obj}(\mathbf C)$.
+It is conceptually simpler to understand the use of a monad in terms of a Kleisli category $\mathbf C^{\mathcal T}$ which is constructed using an endofunctor $\mathcal T \in [\mathbf C, \mathbf C]$, where the objects are $\mathrm{Obj}(\mathbf C^\mathcal T) = \mathrm{Obj}(\mathbf C)$ and morphisms are $A \to \mathcal T(B) \in \mathrm{Mor}(\mathbf C^\mathcal T)$ for $A,B \in \mathrm{Obj}(\mathbf C)$.
 
 Monads are extremely useful for separating pure computation from impure work (such as logging or any other operations involving side-effects). Following this style in any language is very useful for debugging and writing error-free code.
+
+**Example.** (State monad?)
+
+```haskell
+data State s a = State (s -> a) s
+```
 
 ### Equivalence of Adjunctions and Unit-Counit Pairs
 
@@ -119,9 +151,21 @@ A _unit_ is defined as a natural transformation $\eta \colon \Delta_I \to \mathc
 
 ### Algebras and Coalgebras
 
-Algebras and coalgebras are special categories defined using monads. They are canonically defined using the following diagrams for objects and morphisms:
+Algebras and coalgebras are special categories defined using monads, with definitions as maps $\mathcal T(a) \to a$ and $a \to \mathcal T(a)$ respectfully. Certain categories are defined by using the following diagrams for objects and morphisms:
 
-**Example.** (List catamorphism) `fold` 
+**Example.** (Fold catamorphism for list monad)
+
+```haskell
+foldl :: (a -> a -> a) -> a -> List a -> a
+foldl f x Nil = x
+foldl f x (Cons y ys) = foldl f (f x y) ys
+```
+
+Using this, the definition of the monadic law `join` for `List` reduces to a special case of applying the monoidal laws to `foldl`:
+```haskell
+join :: List (List a) -> List a
+join = foldl mappend mempty
+```
 
 > **Hence we have been scammed to re-learn algebra.**
 

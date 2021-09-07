@@ -1,6 +1,6 @@
 ---
 date: "2021-02-24T22:55:27+08:00"
-title: Aerodynamics — Viscous-Inviscid Panel Methods (In Progress)
+title: Aerodynamics — Viscous-Inviscid Interacting Panel Methods (In Progress)
 draft: false
 description: The holy grail of fast and accurate aerodynamic analyses over airfoils.
 image: images/aeropython.jpg
@@ -159,7 +159,7 @@ This gives a differential equation for $\vec u_e$.
 
 ### Difference Operators
 
-Define the following operator $\Delta^+\colon \mathbb R^n \to \mathbb R^{n-1}, n \in \mathbb N^+$ to evaluate forward differences:
+Define the following operator $\Delta^+\colon \mathbb R^n \to \mathbb R^{n-1}, n \in \mathbb N^+$ to evaluate forward differences with matrix representation:
 
 $$ 
 \Delta^+ \equiv 
@@ -189,7 +189,7 @@ $$
 
 ## Boundary Layer Equations
 
-The boundary layer equations are obtained via the defect formulation and the thin shear approximations of the Navier-Stokes equations.
+The thin shear boundary layer equations are obtained via the defect formulation and the thin shear approximations of the Navier-Stokes equations.
 
 $$ 
 \begin{aligned} 
