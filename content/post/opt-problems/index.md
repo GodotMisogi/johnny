@@ -36,66 +36,66 @@ $$ \beta_i \mathbf J_i d\mathbf p_i = -\mathbf R_i, \quad \text{where} \quad \be
 
 The dimensionality of the problems could get confusing, so index notation with summation convention comes in handy:
 
-$$ \frac{\partial R^{ijk}}{\partial p^{mn}} = \ldots$$
+$$ \frac{\partial R^{ijk}}{\partial p^{lmn}} = \ldots$$
 
 Let us naïvely solve the linear system, by using Julia's `\` function from the `LinearAlgebra` package.
 
 ```julia
-# Number of iterations
-num_iters = 5
+function newton_solver!(R, p, num_iters = 3, α = 1.0)
+    # Array to store errors
+    ε = zeros(num_iters);
 
-# Newton step computation
-function newton_step(u, R, ∂R∂u)
-    i, j = size(R)
-    l, k = size(u)
-    jac = reshape(∂R∂u, (i*k, j*l))
-    reshape(jac \ -R[:], size(u)) 
-end
+    # Newton iteration loop
+    for i in 1:num_iters
+        # Compute residuals
+        R = compute_residuals!(R, p)
 
-# Newton method algorithm
-for i in 1:num_iters
-    R, ∂R∂T = compute_residual_and_grad(T_truth, βs, q₀, dx, dy)
-    ΔT = newton_step(T_truth, R, ∂R∂T)
-    ε[i] = maximum(abs.(ΔT))
-    # display(R)
-    println("Newton step error: $(ε[i])")
-    T_truth .+= ω * ΔT
+        # Compute Jacobian
+        ∂R∂p = compute_grad_fwd(R, p)
+
+        # Compute Newton step
+        Δp = ∂R∂p \ -R
+
+        # Update state with relaxation factor
+        p .= newton_update!(p, Δp, α)
+
+        # Error processing
+        ε[i] = maximum(abs.(Δp))
+        println("Newton step error: $(ε[i])")
+    end
+    R, p, ε
 end
 ```
 
-There are various numerical methods dedicated to solving linear systems, depending on the structure of the matrices. In computational fluid dynamics with structured grids, the matrix is usually regular, banded, and sparse. This is due to the adjacencies between elements being specified up to a given level of "depth", which is called a stencil. So certain algorithms speed up the computations by taking advantage of this structure.
+There are various numerical methods dedicated to solving linear systems, depending on the structure of the matrices. Special methods depending on the case can be applied, for example using Jacobian-vector products instead of constructing the matrices directly. In the case of computational fluid dynamics with structured grids, the matrix is usually regular, banded, and sparse. This is due to the adjacencies between elements being specified up to a given level of "depth", which is called a stencil. So certain algorithms speed up the computations by taking advantage of this structure.
 
 
 ## Optimisations
 
-The objective function for a gradient-based optimisation problem with an equality constraint (read holonomic, `bollu`) $\mathbf R(\mathbf x, \mathbf p) = \mathbf 0$ requires evaluation of its total derivative.
+The objective function for a gradient-based optimisation problem with an equality constraint (read holonomic, `bollu`) $\mathbf R(\mathbf x, \mathbf p(\mathbf x)) = \mathbf 0$ requires evaluation of its total derivative. The total derivative can be expanded it in two ways via the chain rule:
 
-$$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} + \frac{\partial \mathbf f}{\partial \mathbf p}\frac{d\mathbf p}{d\mathbf x} $$
+$$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} + \frac{\partial \mathbf f}{\partial \mathbf R}\frac{\partial\mathbf R}{\partial\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} + \frac{\partial \mathbf f}{\partial \mathbf p}\frac{d\mathbf p}{d\mathbf x} $$
 
 The equality constraint trivially satisfies the following identity:
 
 $$ \frac{d\mathbf R}{d\mathbf x} = \frac{\partial \mathbf R}{\partial \mathbf x} + \frac{\partial \mathbf R}{\partial \mathbf p}\frac{d\mathbf p}{d\mathbf x} = 0 $$
 
-So you can substitute this into the total derivative expression:
+So you can substitute this into the second form of the total derivative expression:
 
 $$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} + \frac{\partial \mathbf f}{\partial \mathbf p}\left[-\left(\frac{\partial \mathbf R}{\partial\mathbf p}\right)^{-1} \frac{\partial \mathbf R}{\partial \mathbf x}\right] $$
 
-So there are two ways to avoid the problem of computing the inverse of $\partial \mathbf R/\partial \mathbf P$, which are called the _direct_ and _adjoint_ methods.
+So there are two ways to avoid the problem of computing the inverse of $\partial \mathbf R/\partial \mathbf p$, which are called the _direct_ and _adjoint_ methods.
 
 ### Direct Method
 
 Let
 
-$$ \boldsymbol\psi = -\left(\frac{\partial \mathbf R}{\partial\mathbf p}\right)^{-1} \frac{\partial \mathbf R}{\partial \mathbf x} $$
+$$ \boldsymbol\psi = \frac{d \mathbf p}{d\mathbf x} = -\left(\frac{\partial \mathbf R}{\partial\mathbf p}\right)^{-1} \frac{\partial \mathbf R}{\partial \mathbf x} $$
 
 The direct method hence solves the following linear system by left multiplication of $\partial \mathbf R / \partial \mathbf p$:
-$$
-\begin{aligned}
-    \frac{\partial \mathbf R}{\partial \mathbf p}\boldsymbol \psi = -\frac{\partial \mathbf R}{\partial \mathbf x}, \quad \text{where} \quad \boldsymbol \psi = \frac{d \mathbf p}{d\mathbf x}
-\end{aligned}
-$$
+$$ \frac{\partial \mathbf R}{\partial \mathbf p}\boldsymbol \psi = -\frac{\partial \mathbf R}{\partial \mathbf x}$$
 
-Notice that this expression is almost identical to the Newton step, extended to total derivatives with respect to the design variables. The big Jacobian on the LHS is already computed from the Newton step, and only the RHS needs to be computed. If you have the factorisation of the Jacobian from the Newton step, it could be very efficient to simply reuse the factorisation and back-substitute to solve this equation.
+Notice that this expression is almost identical to the Newton step, extended to total derivatives with respect to the design variables. Essentially, the RHS is a matrix whose number of columns increases linearly with the number of design variables. This corresponds to numerous linear equations, one for each column of the RHS corresponding to a design variable. The big Jacobian on the LHS is already computed from the Newton step, and only the RHS needs to be computed. If you have the factorisation of the Jacobian from the Newton step, it could be very efficient to simply reuse the factorisation and back-substitute to solve the numerous equations if the RHS is not very expensive to compute.
 
 ```julia
 function solve_direct(x, u, ∂R∂x, ∂R∂u)
@@ -104,7 +104,7 @@ function solve_direct(x, u, ∂R∂x, ∂R∂u)
 end
 ```
 
-Hence the total derivative is:
+Hence the total derivative in this form is expressed as:
 
 $$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} + \frac{\partial \mathbf f}{\partial \mathbf p}\boldsymbol\psi $$
 
@@ -117,15 +117,11 @@ total_derivative_direct(∂f∂x, ψ, ∂f∂u)
 
 Let 
 
-$$ \boldsymbol\phi^T = \frac{\partial \mathbf f}{\partial \mathbf p}\left(\frac{\partial \mathbf R}{\partial\mathbf p}\right)^{-1} $$
+$$ \boldsymbol\phi^T = \left(\frac{\partial \mathbf f}{\partial \mathbf R}\right)^T = \frac{\partial \mathbf f}{\partial \mathbf p}\left(\frac{\partial \mathbf R}{\partial\mathbf p}\right)^{-1} $$
 
 The adjoint method hence solves the following linear system by right multiplication of $\partial \mathbf R / \partial \mathbf p$:
 
-$$
-\begin{aligned}
-    \left(\frac{\partial \mathbf R}{\partial \mathbf p}\right)^T \boldsymbol\phi = \left(\frac{\partial \mathbf f}{\partial \mathbf p}\right)^T, \quad \text{where}\quad \boldsymbol \phi = \left(\frac{\partial \mathbf f}{\partial \mathbf R}\right)^T
-\end{aligned}
-$$
+$$\left(\frac{\partial \mathbf R}{\partial \mathbf p}\right)^T \boldsymbol\phi = \left(\frac{\partial \mathbf f}{\partial \mathbf p}\right)^T $$
 
 The transposition operator $-^T\colon (\mathbb R^m \times \mathbb R^n) \to (\mathbb R^n \times \mathbb R^m)$ simply transposes the dimensions of a matrix or vector. Of course, here the linear system has to be square, so $m = n$.
 
@@ -135,28 +131,27 @@ In most cases, however, you would be dealing with some discretised version of th
 
 ```julia
 function solve_adjoint(u, ∂R∂u, dfdu) 
-    reshape(∂R∂u, (length(u[:]), length(u[:])))' \ -(dfdu)'[:]
+    reshape(∂R∂u, (length(u[:]), length(u[:])))' \ (dfdu)'[:]
 end
 ```
 
-Hence the total derivative is:
+Hence the total derivative in this form is expressed as:
 
 $$ \frac{d\mathbf f}{d\mathbf x} = \frac{\partial \mathbf f}{\partial \mathbf x} - \boldsymbol\phi^T\frac{\partial \mathbf R}{\partial \mathbf x} $$
 
 ```julia
-total_derivative_adjoint(∂f∂x, φ, ∂R∂x) 
-    = ∂f∂x + [ sum(permutedims(φ) * 
-                reshape(∂R∂x, (length(R[:]), length(∂f∂x)))[:,n]) 
-                for n in eachindex(∂f∂x) ]
+total_derivative_adjoint(∂f∂x, φ, ∂R∂x) = 
+    ∂f∂x + [ sum(permutedims(φ) * reshape(∂R∂x, (length(R[:]), length(∂f∂x)))[:,n]) 
+             for n in eachindex(∂f∂x) ]
 ```
 
 ### Concept
 
-So the main idea is that depending on the number of inputs and outputs, you choose the appropriate method which reduces the dimensionality of the linear system. 
+So the main idea is that depending on the numbers of inputs and outputs, you choose the appropriate method which reduces the dimensionality of the linear system. When the number of outputs is larger than the number of inputs, use the direct method, and conversely use the adjoint method. The complicated parts (read headaches) are actually the evaluations and constructions of the different Jacobians and their reshapings, all of which are needed regardless of whether the direct or adjoint method is used. You picks your linear system and you takes your computational cost.
 
-The complicated parts (read headaches) are actually the evaluations and constructions of the different Jacobians and their reshapings, all of which are needed regardless of whether the direct or adjoint method is used. You picks your linear system and you takes your computational cost.
+Notice that we didn't specify any restriction on the constraints. You could identically apply the same setup to a system of nonlinear equations:
 
-Notice that we didn't specify any restriction on the constraints. You could identically apply the same setup to $$\mathbf R(\mathbf x, \mathbf p_1, \mathbf p_2, \ldots, \mathbf p_n) = \begin{bmatrix} \mathbf R_1(\mathbf x, \mathbf p_1) \\\\ \mathbf R_2(\mathbf x, \mathbf p_2) \\\\ \vdots \\\\ \mathbf R_n(\mathbf x, \mathbf p_n) \end{bmatrix} = \mathbf 0$$
+$$\mathbf R(\mathbf x, \mathbf p_1, \mathbf p_2, \ldots, \mathbf p_n) = \begin{bmatrix} \mathbf R_1(\mathbf x, \mathbf p_1) \\\\ \mathbf R_2(\mathbf x, \mathbf p_2) \\\\ \vdots \\\\ \mathbf R_n(\mathbf x, \mathbf p_n) \end{bmatrix} = \mathbf 0$$
 
 This setup is called a _coupled_ system, and the entire system is solved simultaneously for robustness and efficiency, either using the direct or adjoint methods. The "off-diagonal" block terms correspond to connections between different residual equations, and usually make the system sparse as many variables are not connected between different residual equations in physical models. The complexity of such systems is much greater, and is better left for another post.
 
