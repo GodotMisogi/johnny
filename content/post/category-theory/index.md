@@ -1,7 +1,7 @@
 ---
 date: "2021-09-03T12:54:58+08:00"
 title: "Category Theory — Back to School"
-draft: true
+draft: false
 description: Category theory is a progressive scam for re-studying arithmetic, algebra, calculus, and category theory.
 slug: category-theory
 image: 
@@ -39,12 +39,12 @@ A natural transformation between the two functors $\alpha \colon \mathbf C(A,-) 
 
 _Lemma_. (Yoneda) The set of natural transformations $\alpha$ is in one-to-one correspondence with $\mathcal F(A)$. Similarly for contravariant $\mathcal G\colon \mathbf C \to \mathbf{Set}$.
 
-_Proof_. 
+_Proof_. The following commmutative diagram is evaluated on points.
 
 <!-- $$\begin{CD} \mathcal C(A, A) @>{\alpha_A}>> \mathcal C(A, B)\end{CD}$$ -->
 
 ```
-Hom(A, A) —Hom(A, f)→ Hom(A, B)S
+Hom(A, A) —Hom(A, f)→ Hom(A, B)
     |                     |
    α_A                   α_B
     ↓                     ↓
