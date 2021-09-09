@@ -25,6 +25,27 @@ Milewski provides a nice programmatic interpretation of functors as, to paraphra
 
 ## Arithmetic
 
+### Universal Properties
+
+The formal definition of a universal property is usually provided in terms of a comma category, or shape categories and diagram functors (shown later). Here we look at some special definitions which are "arithmetic" in nature.
+
+#### Products and Coproducts (Sums)
+
+A product is defined by the following diagram:
+
+**Example.** (Product) Cartesian product of two sets?
+
+A product is defined by the following diagram, which applies a complicated technique called _dualisation_ to the product diagram, viz. flipping the arrows:
+
+**Example.** (Coproduct) Disjoint union of two sets?
+
+In Haskell, the coproduct is represented as a sum type with the "divider" syntax `|`, for example with the `Maybe` and `Either` types:
+
+```haskell
+data Maybe a = Just a | Nothing
+data Either a b = Left a | Right b
+```
+
 ### Yoneda Lemma
 
 Every preschooler has learnt the Yoneda lemma in kindergarten. Here we recall the general concepts and proofs.
@@ -51,29 +72,9 @@ Hom(A, A) —Hom(A, f)→ Hom(A, B)
    C(A)   ----C(f)--→    C(B)
 ```
 
+#### Representable Functors
 
-**Example.**
-
-### Universal Properties
-
-The formal definition of a universal property is usually provided in terms of a comma category, or shape categories and diagram functors (shown later). Here we look at some special definitions which are "arithmetic" in nature.
-
-#### Products and Coproducts (Sums)
-
-A product is defined by the following diagram:
-
-**Example.** (Product) Cartesian product of two sets?
-
-A product is defined by the following diagram, which applies a complicated technique called _dualisation_ to the product diagram, viz. flipping the arrows:
-
-**Example.** (Coproduct) Disjoint union of two sets?
-
-In Haskell, the coproduct is represented as a sum type with the "divider" syntax `|`, for example with the `Maybe` and `Either` types:
-
-```haskell
-data Maybe a = Just a | Nothing
-data Either a b = Left a | Right b
-```
+**Example.** (Forgetful functor.)
 
 > **Hence we have been scammed to re-learn arithmetic.**
 
@@ -87,21 +88,22 @@ In algebra, a monoid is defined by an associative multiplication $\mu$ and a uni
 
 In the words of Saunders Mac Lane: "A monad is just a monoid in the category of endofunctors". This (intentionally obfuscating) definition is ubiquitous for scaring programmers, and perhaps anyone unfamiliar with category theory. Here we attack the problem directly using the definitions.
 
-**Example.** (List monad)
+**Example.** (List monad.)
 
-`List` is the canonical example of a monad as a polymorphic recursive sum type.
+`List` is the canonical example of a monad as a polymorphic recursive sum type. First we define its type. 
 ```haskell
 data List a = Nil | Cons a (List a)
 ```
 
-First we define the functor-mapping rules:
+Now we define it as a functor, with functor-mapping rules such that any morphism `f: a -> b` is mapped onto every element of the list.
 ```haskell
 instance Functor List where
+    fmap :: (a -> b) -> (List a -> List b)
     fmap f Nil         = Nil
     fmap f (Cons y ys) = Cons (f y) (fmap f ys) 
 ```
 
-And now we define the monoidal laws for appending two lists by recursion:
+Now we define the monoidal laws for appending two lists by recursion.
 ```haskell
 instance Monoid List where
     mappend :: List a -> List a -> List a
@@ -143,9 +145,11 @@ Two functors $\mathcal L\colon \mathbf C \to \mathbf D, \mathcal R \colon \mathb
 
 $$\mathbf D(\mathcal L~A, B) \cong \mathbf C(A, \mathcal R~B)$$
 
-Specifically, $\mathcal L$ is _left-adjoint_ to $\mathcal R$ and $\mathcal R$ is _right-adjoint_ to $\mathcal L$. The pair $(\mathcal L, \mathcal R)$ is called an _adjunction_.
+Specifically, $\mathcal L$ is _left-adjoint_ to $\mathcal R$ and $\mathcal R$ is _right-adjoint_ to $\mathcal L$. The pair $(\mathcal L, \mathcal R)$ is called an _adjunction_. Composing these functors with each other give endofunctors of the respective category depending on the order.
 
-A _unit_ is defined as a natural transformation $\eta \colon \Delta_I \to \mathcal{I}$ with $\mathcal L \circ \mathcal R \circ \mathcal L \to \mathcal I$ and a _counit_ is a natural transformation $\varepsilon\colon \mathcal I \to \mathcal R \circ \mathcal L \circ \mathcal R$.
+A *unit* is defined from an adjunction as a natural transformation $\eta\colon \mathcal I_{\mathbf D} \to \mathcal R \circ \mathcal L$.
+
+A _counit_ is a natural transformation $\varepsilon\colon \mathcal L \circ \mathcal R \to \mathcal I_{\mathbf C}$.
 
 **Example.** (Free-forgetful adjunction?)
 
@@ -153,7 +157,7 @@ A _unit_ is defined as a natural transformation $\eta \colon \Delta_I \to \mathc
 
 Algebras and coalgebras are special categories defined using monads, with definitions as maps $\mathcal T(a) \to a$ and $a \to \mathcal T(a)$ respectfully. Certain categories are defined by using the following diagrams for objects and morphisms:
 
-**Example.** (Fold catamorphism for list monad)
+**Example.** (Fold catamorphism for list monad.)
 
 ```haskell
 foldl :: (a -> a -> a) -> a -> List a -> a
