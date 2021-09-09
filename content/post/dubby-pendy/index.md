@@ -21,18 +21,18 @@ The following shows the double pendulum system:
 
 The Lagrangian of the system is:
 
-$$ \mathcal{L} = T - V $$
-$$ T = \frac{1}{2}m\_1 l\_1^2 \dot{\theta}\_1^2 + \frac{1}{2}m\_2\left[l\_1^2 \dot{\theta}\_1^2 + l\_2^2 \dot{\theta}\_2^2 + 2l\_1 l\_2 \dot{\theta}\_1 \dot{\theta}\_2 \cos(\theta\_1 - \theta\_2)\right]$$ 
-$$ V = -(m\_1 + m\_2)gl\_1\cos \theta\_1 - m\_2gl\_2\cos\theta\_2 $$
+$$ \mathcal{L} = T - V  \quad \mathrm{where} \quad \begin{aligned} T & = \frac{1}{2}m_1 l_1^2 \dot{\theta}_1^2 + \frac{1}{2}m_2\left[l_1^2 \dot{\theta}_1^2 + l_2^2 \dot{\theta}_2^2 + 2l_1 l_2 \dot{\theta}_1 \dot{\theta}_2 \cos(\theta_1 - \theta_2)\right] \\\\ V & = -(m_1 + m_2)gl_1\cos \theta_1 - m_2gl_2\cos\theta_2 \end{aligned} $$
 
-After a [very long derivation](http://scienceworld.wolfram.com/physics/DoublePendulum.html), Hamilton's equations can be obtained:
+After a [very long and painful derivation](http://scienceworld.wolfram.com/physics/DoublePendulum.html), Hamilton's equations can be obtained:
 
-$$ \dot{\theta\_1} = \frac{l\_2 p\_{\theta\_1} - l\_1 p\_{\theta\_2}\cos(\theta\_1 - \theta\_2)}{l\_1^2 l\_2[m\_1 + m\_2\sin^2(\theta\_1-\theta\_2)]} $$
-$$ \dot{\theta\_2} = \frac{l\_1 (m\_1 + m\_2)p\_{\theta\_1} - l\_2 m\_2 p\_{\theta\_1}\cos(\theta\_1 - \theta\_2)}{l\_1^2 l\_2[m\_1 + m\_2\sin^2(\theta\_1-\theta\_2)]} $$
-$$ \dot{p}\_{\theta\_1} = -(m\_1 + m\_2)gl\_1\sin\theta\_1 - C\_1 + C\_2$$
-$$ \dot{p}\_{\theta\_2} = -m\_2gl\_2\sin\theta\_2 + C\_1 - C\_2$$
-$$ C\_1 = \frac{p\_{\theta\_1}p\_{\theta\_2}\sin(\theta\_1-\theta\_2)}{l\_1 l\_2[m\_1 + m\_2\sin^2(\theta\_1-\theta\_2)]} $$
-$$ C\_2 = \frac{l\_2^2 m\_2 p\_{\theta\_1}^2 + l\_1^2(m\_1 + m\_2)p\_{\theta\_2}^2 - l\_1 l\_2 m\_2 p\_{\theta\_1} p\_{\theta\_2} \cos(\theta\_1 - \theta\_2)}{2l\_1^2 l\_2^2[m\_1 + m\_2\sin^2(\theta\_1-\theta\_2)]^2}\sin[2(\theta\_1 - \theta\_2)] $$
+$$ \begin{aligned} 
+        \dot{\theta_1} & = \frac{l_2 p_{\theta_1} - l_1 p_{\theta_2}\cos(\theta_1 - \theta_2)}{l_1^2 l_2[m_1 + m_2\sin^2(\theta_1-\theta_2)]} \\\\ 
+        \dot{\theta_2} & = \frac{l_1 (m_1 + m_2)p_{\theta_1} - l_2 m_2 p_{\theta_1}\cos(\theta_1 - \theta_2)}{l_1^2 l_2[m_1 + m_2\sin^2(\theta_1-\theta_2)]} \\\\ 
+        \dot{p}_{\theta_1} & = -(m_1 + m_2)gl_1\sin\theta_1 - C_1 + C_2 \\\\ 
+        \dot{p}_{\theta_2} & = -m_2gl_2\sin\theta_2 + C_1 - C_2 \\\\ 
+        C_1 & = \frac{p_{\theta_1}p_{\theta_2}\sin(\theta_1-\theta_2)}{l_1 l_2[m_1 + m_2\sin^2(\theta_1-\theta_2)]} \\\\ 
+        C_2 & = \frac{l_2^2 m_2 p_{\theta_1}^2 + l_1^2(m_1 + m_2)p_{\theta_2}^2 - l_1 l_2 m_2 p_{\theta_1} p_{\theta_2} \cos(\theta_1 - \theta_2)}{2l_1^2 l_2^2 [m_1 + m_2\sin^2(\theta_1-\theta_2)]^2}\sin[2(\theta_1 - \theta_2)]
+    \end{aligned} $$
 
 These are very formidable-looking equations, and it is almost impossible to determine the particle trajectories by solving these equations analytically! So how does one solve it for practical purposes? Numerical methods and programming. I used Lua to program the simulator, including the [LÖVE](https://love2d.org) framework for the graphics.
 
