@@ -18,7 +18,7 @@ Some notation:
 
 1. Categories will be notated using bold with a capital, e.g. $\textbf{Mon}$ for the category of monoids.
 2. Objects and morphisms of a category $\mathbf C$ will be denoted as $\mathrm{Obj}(\mathbf C),~\mathrm{Mor}(\mathbf C)$ respectively.
-3. Functor $\mathcal F$-mappings of objects $A \in \mathrm{Obj}(\mathbf C)$ will be denoted with curly brackets, $\mathcal F(A)$, and of morphisms $f \in \mathrm{Mor}(\mathbf C)$ with square brackets, $\mathcal F[f]$.
+3. Functor $\mathcal F$-mappings of objects $A \in \mathrm{Obj}(\mathbf C)$ will be denoted with parentheses, $\mathcal F(A)$, and of morphisms $f \in \mathrm{Mor}(\mathbf C)$ with square brackets, $\mathcal F[f]$.
 4. The category of functors between two categories will be notated in brackets, e.g. $[\mathbf{Grp},\mathbf{Set}]$ for the category of functors from the category of groups to the category of sets.
 
 Milewski provides a nice programmatic interpretation of functors as, to paraphrase, "contextual wrappers" around morphisms between objects. Haskell examples are useful for illustrative purposes, and have been presented whenever appropriate to elucidate this idea.

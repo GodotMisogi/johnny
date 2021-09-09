@@ -14,7 +14,7 @@ categories:
 
 ### Introduction
 
-The Lotka-Volterra equation governs coupled population dynamics between two species under a predator-prey relationship in a given environment. Here we will play with the populations of wabbits and foxes. Consider $x$ as the number of wabbits, and $y$ as the number of foxes. This is expressed in the form of the following autonomous system of ordinary differential equations. 
+The Lotka-Volterra equation governs coupled population dynamics between two species under a predator-prey relationship in a given environment. Here we will play with the populations of wabbits and foxes. Consider $x$ as the number of wabbits, and $y$ as the number of foxes. This is expressed in the form of the following autonomous system of ordinary differential equations, because populations are continuous variables.
 
 $$ \begin{aligned} 
         \dot x & = \alpha x - \eta yx, & \alpha, \eta > 0 \\\\ 
@@ -158,3 +158,31 @@ sol   = solve.(prob, Ref(GeneralMIRK4()), dt = 2e-1)
 </center>
 
 Here we can observe the incepient separation point at a specific value of $a \approx -0.0904$. Can this be figured out analytically?
+
+## Double Pendulum
+
+Refer to [my previous post on the double pendulum](../../post/dubby-pendy/) for a review of the theory and equations. 
+
+### Computation
+
+Here the expressions are complicated and would benefit from temporary variables in the function, which are not supported in the domain-specific-language of `ParametrizedFunctions.jl`, so a regular function is prepared instead of using the `@ode_def` macro.
+
+```julia
+## ODE definition
+function dubby_pendy!(dx, x, ps, t)
+    θ₁, θ₂, p₁, p₂     = x
+    l₁, l₂, m₁, m₂, g  = ps
+
+    C₀  = l₁ * l₂ * (m₁ + m₂ * sin(θ₁ - θ₂)^2)
+    C₁  = (p₁ * p₂ * sin(θ₁ - θ₂)) / C₀
+    C₂  = (m₂ * ((l₂ * p₁)^2 + (m₁ + m₂) * (l₁ * p₂)^2) 
+          - 2 * l₁ * l₂ * m₂ * p₁ * p₂ * cos(θ₁ - θ₂)) * sin(2(θ₁ - θ₂)) / (2C₀^2)
+
+    dx[1] = (l₂ * p₁ - l₁ * p₂ * cos(θ₁ - θ₂)) / (l₁ * C₀)
+    dx[2] = (l₁ * (m₁ + m₂) * p₂ - l₂ * m₂ * p₁ * cos(θ₁ - θ₂)) / (l₂ * m₂ * C₀)
+    dx[3] = -(m₁ + m₂) * g * l₁ * sin(θ₁) - C₁ + C₂
+    dx[4] = -m₂ * g * l₂ * sin(θ₂) + C₁ - C₂
+
+    nothing
+end 
+```
