@@ -27,7 +27,7 @@ After a [very long and painful derivation](http://scienceworld.wolfram.com/physi
 
 $$ \begin{aligned} 
         \dot{\theta_1} & = \frac{l_2 p_{\theta_1} - l_1 p_{\theta_2}\cos(\theta_1 - \theta_2)}{l_1^2 l_2[m_1 + m_2\sin^2(\theta_1-\theta_2)]} \\\\ 
-        \dot{\theta_2} & = \frac{l_1 (m_1 + m_2)p_{\theta_1} - l_2 m_2 p_{\theta_1}\cos(\theta_1 - \theta_2)}{l_1^2 l_2[m_1 + m_2\sin^2(\theta_1-\theta_2)]} \\\\ 
+        \dot{\theta_2} & = \frac{l_1 (m_1 + m_2)p_{\theta_1} - l_2 m_2 p_{\theta_1}\cos(\theta_1 - \theta_2)}{l_1 l_2^2 m_2[m_1 + m_2\sin^2(\theta_1-\theta_2)]} \\\\ 
         \dot{p}_{\theta_1} & = -(m_1 + m_2)gl_1\sin\theta_1 - C_1 + C_2 \\\\ 
         \dot{p}_{\theta_2} & = -m_2gl_2\sin\theta_2 + C_1 - C_2 \\\\ 
         C_1 & = \frac{p_{\theta_1}p_{\theta_2}\sin(\theta_1-\theta_2)}{l_1 l_2[m_1 + m_2\sin^2(\theta_1-\theta_2)]} \\\\ 

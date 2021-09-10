@@ -186,3 +186,8 @@ function dubby_pendy!(dx, x, ps, t)
     nothing
 end 
 ```
+<center>
+<video autoplay loop><source src="images/dubbypendy.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+</center>
