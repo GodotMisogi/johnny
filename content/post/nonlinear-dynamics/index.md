@@ -10,6 +10,8 @@ categories:
     - Programming
 ---
 
+*Note:* The code presented over here is available on my repository [`NonlinearDynamics`](https://github.com/GodotMisogi/NonlinearDynamics), with the additional code that was used to generate the plots shown here.
+
 ## Lotka-Volterra Equation
 
 ### Introduction
@@ -161,7 +163,15 @@ Here we can observe the incepient separation point at a specific value of $a \ap
 
 ## Double Pendulum
 
-Refer to [my previous post on the double pendulum](../../post/dubby-pendy/) for a review of the theory and equations. 
+Refer to [my previous post on the double pendulum](../../post/dubby-pendy/) for a review of the theory and equations. Julia's various libraries and their compositions allow me to set up the differential equations, choose the integration solver, and set up plots with layouts _very_ easily. This is much simpler than writing different differential equation solver algorithms and plotting tools manually for experimentation.
+
+The double pendulum is a famous example of a chaotic system, and is very sensitive to time-step sizes, initial conditions, and even the solver algorithm itself due to compounding numerical noise.
+
+### Stability and Fixed Points
+
+The Lagrangian of the system is:
+
+$$ \mathcal{L} = T - V  \quad \mathrm{where} \quad \begin{aligned} T & = \frac{1}{2}m_1 l_1^2 \dot{\theta}_1^2 + \frac{1}{2}m_2\left[l_1^2 \dot{\theta}_1^2 + l_2^2 \dot{\theta}_2^2 + 2l_1 l_2 \dot{\theta}_1 \dot{\theta}_2 \cos(\theta_1 - \theta_2)\right] \\\\ V & = -(m_1 + m_2)gl_1\cos \theta_1 - m_2gl_2\cos\theta_2 \end{aligned} $$
 
 ### Computation
 
@@ -186,8 +196,30 @@ function dubby_pendy!(dx, x, ps, t)
     nothing
 end 
 ```
+
+Let's set up the initial conditions and parameters and solve the problem. For the purposes of smooth plotting with a "nice" trajectory, I've picked an adaptive Runge-Kutta method of order 4 solver with a small timestep; these choices directly influence the solutions themselves due to the chaotic nature of the system.
+
+```julia
+## Inputs and parameters
+m1, m2 = 10.0, 12.0 # Masses
+l1, l2 = 4.0, 7.0   # Lengths
+g      = 9.81       # Gravitational acceleration
+
+ps    = [ l1, l2, m1, m2, g ]
+x0    = [ π/2, π, 1., -3. ]
+tspan = (0.0, 60.0)
+tstep = 1000
+dt    = maximum(tspan) / tstep
+
+## ODEProblem and solution
+run   = ODEFunction(dubby_pendy!, syms = [:θ₁, :θ₂, :p₁, :p₂])
+prob  = ODEProblem(run, x0, tspan, ps)
+sol   = solve(prob, RK4(), dt = dt)
+df    = DataFrame(sol)
+```
+
 <center>
-<video autoplay loop><source src="images/dubbypendy.webm" type="video/webm">
+<video autoplay loop><source src="images/dubbypendy.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 </center>
