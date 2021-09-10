@@ -1,0 +1,17 @@
+\documentclass{standalone}
+
+\usepackage{amsmath,amsthm}
+
+\DeclareMathOperator{\Hom}{Hom}
+
+\usepackage{tikz-cd}
+
+\begin{document}
+\begin{tikzcd}
+    \Hom(A, A) \arrow[r, "\Hom{[A,f]}"] \arrow[d, red]
+    & \Hom(A, B) \arrow[d, "\psi" red] \\
+    \mathcal F(A) \arrow[r, red, "\eta" blue]
+    & \mathcal F(D)
+\end{tikzcd}
+
+\end{document}

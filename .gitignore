@@ -1,0 +1,5 @@
+*.aux
+*.fdb_*
+*.fls
+*.log
+*.synctex*
