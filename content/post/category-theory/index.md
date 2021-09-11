@@ -1,7 +1,7 @@
 ---
 date: "2021-09-03T12:54:58+08:00"
 title: "Category Theory — Back to School (In Progress)"
-draft: false
+draft: true
 description: Category theory is a progressive scam for re-studying arithmetic, algebra, calculus, and category theory.
 slug: category-theory
 image: 
