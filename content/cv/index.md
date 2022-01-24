@@ -18,9 +18,9 @@ E-mail: `ajseth AT ust DOT hk`
 
 ### Peer-Reviewed Articles 
 
-1. **Arjit Seth** and Rhea P. Liem. Amphibious Aircraft Developments: Computational Studies of Hydrofoil Design for Improvements in Water-Takeoffs. Aerospace (**8**), 10, 2021. https://doi.org/10.3390/aerospace8010010
+1. Dajung Kim, **Arjit Seth** and Rhea P. Liem. "Data-enhanced dynamic flight simulations for flight performance analysis". Aerospace Science and Technology: 107357, 2021. https://doi.org/10.1016/j.ast.2022.107357
 
-2. Dajung Kim, **Arjit Seth** and Rhea P. Liem. Data-enhanced dynamic flight simulations for flight performance analysis. Under review after revised submission, 2021.
+2. **Arjit Seth** and Rhea P. Liem. "Amphibious Aircraft Developments: Computational Studies of Hydrofoil Design for Improvements in Water-Takeoffs". Aerospace (**8**), 10, 2021. https://doi.org/10.3390/aerospace8010010
 
 <!-- 3. Vinay Madhusudanan, G. Sudhakara, **Arjit Seth**. Descending Endomorphisms of Groups. Under preparation for submission. -->
 
