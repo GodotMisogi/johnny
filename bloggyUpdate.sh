@@ -1,6 +1,6 @@
 #!/bin/bash
 cd public
-(cd ..; hugo --theme=hugo-geo)
+(cd ..; hugo --theme=hugo-theme-stack)
 git add --all
 echo "Commit message?"
 read update
