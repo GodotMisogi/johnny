@@ -22,15 +22,13 @@ E-mail: `ajseth AT ust DOT hk`
 
 2. **Arjit Seth** and Rhea P. Liem. "Amphibious Aircraft Developments: Computational Studies of Hydrofoil Design for Improvements in Water-Takeoffs". Aerospace (**8**), 10, 2021. https://doi.org/10.3390/aerospace8010010
 
-<!-- 3. Vinay Madhusudanan, G. Sudhakara, **Arjit Seth**. Descending Endomorphisms of Groups. Under preparation for submission. -->
-
+3. Vinay Madhusudanan, **Arjit Seth**, G. Sudhakara. Descending Endomorphisms of Groups. (Submitted).
 
 ### Conference Proceedings
 
 1. James M. Shihua, **Arjit Seth**, Ye Li and Rhea P. Liem. "Experimental and Computational Analyses of Take-off Hydrodynamics of an Amphibian Aircraft Hull". In: AIAA AVIATION 2020 FORUM. June 2020.
-2. Vinay Madhusudanan, **Arjit Seth**, and G. Sudhakara. 2019. "Descending Endomorphisms of Groups". In: 4th Alterman Conference-cum-Workshop on Computational & Geometric Algebra, and Workshop on Kähler Calculus.
-3. **Arjit Seth** and Rhea P. Liem. 2019. "Hydrofoil Conceptual Design and Optimization Framework for Amphibious Aircraft". In: AIAA AVIATION 2019 FORUM, p. 3552.
-4. **Arjit Seth** and Rhea P. Liem. 2018. "Takeoff analysis of amphibious aircraft with implementation of a hydrofoil". In: Structures18 - The 2018 Structures Congress. Incheon, Korea.
+2. **Arjit Seth** and Rhea P. Liem. 2019. "Hydrofoil Conceptual Design and Optimization Framework for Amphibious Aircraft". In: AIAA AVIATION 2019 FORUM, p. 3552.
+3. **Arjit Seth** and Rhea P. Liem. 2018. "Takeoff analysis of amphibious aircraft with implementation of a hydrofoil". In: Structures18 - The 2018 Structures Congress. Incheon, Korea.
 
 ## Programming and Software Experience
 
