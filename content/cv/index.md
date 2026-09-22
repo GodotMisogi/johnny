@@ -22,7 +22,7 @@ E-mail: `arjitseth AT gmail DOT com`
 
 **Software Contributions:** [Oceananigans.jl](https://github.com/CliMA/Oceananigans.jl), [SciMLBenchmarks.jl](https://github.com/SciML/SciMLBenchmarks.jl), [AeroFuse.jl](https://github.com/HKUST-OCTAD-LAB/AeroFuse.jl)
 
-**Software:** OpenFOAM, MATLAB, ANSYS, CATIA, SolidWorks, AVL, XFOIL, OpenMDAO, ADflow, DAFoam
+**Software:** OpenFOAM, ANSYS Fluent and Mechanical, CATIA, SolidWorks, MATLAB, AVL, XFOIL, OpenMDAO, ADflow, DAFoam
 
 ## Professional Experience
 
@@ -30,7 +30,7 @@ E-mail: `arjitseth AT gmail DOT com`
 >
 > **Duration**: Jun. 2026 -- Aug. 2026
 
-**Scientific Computing for Oceanography:** Development of MOKA.jl, a Julia package for performing oceanographic simulations on unstructured grids with GPU acceleration.
+**Scientific Computing for Oceanography:** Development of UnstructuredOceans.jl, a Julia package for performing oceanographic simulations on unstructured grids with GPU acceleration.
 
 > **Graduate Research Assistant**, The Oden Institute for Computational Engineering and Sciences, The University of Texas at Austin, Austin, Texas, USA.
 >
@@ -53,7 +53,7 @@ E-mail: `arjitseth AT gmail DOT com`
 
 > **Software Developer**, OCTAD Lab, Hong Kong University of Science and Technology, Clear Water Bay, Hong Kong.
 >
-> **Advisor**: [**Prof. Rhea Liem**](https://www.mae.ust.hk/en/people/faculty/detail/liem-rhea)
+> **Supervisor**: [**Prof. Rhea Liem**](https://www.mae.ust.hk/en/people/faculty/detail/liem-rhea)
 >
 > **Duration**: Sep. 2020 -- Jul. 2023
 

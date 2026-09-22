@@ -19,7 +19,7 @@ categories:
 
 Boundary layer quantities are extracted differentiably from the flow field, validated against reference CFD and experiment, then fed into semi-empirical wall-pressure-spectrum models that predict trailing-edge noise.
 
-![Flow field around the airfoil](flow-fields.png)
+![Flow field around the airfoil](fields.svg)
 
 ![Boundary layer profile evaluation against reference data](boundary-layer.svg)
 
