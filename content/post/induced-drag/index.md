@@ -3,12 +3,14 @@ date: "2016-12-26T01:55:24+05:30"
 title: "Variational Calculus — Induced Drag Over a Wing"
 draft: false
 slug: induced-drag
-description: A desperate attempt to come up with something original in aerodynamics using studies from physics, only having found it to be already discovered in the 1960s.
+description: A desperate attempt to come up with something original in aerodynamics using studies from physics, only to find it had already been discovered in the 1960s.
 image: AircraftStream.svg
 categories: 
     - Aerodynamics
     - Mathematics
 ---
+
+>**This is not AI-generated.**
 
 While reading through John D. Anderson Jr.'s derivation of minimum induced drag, I thought of a cool application of the calculus of variations in one of the equations to deduce the required condition.
 
@@ -16,7 +18,7 @@ The equation that determines the downwash at a point is:
 
 $$w(y\_0) = -\frac{1}{4\pi }\int^{b/2}\_{-b/2} \frac{(\mathrm{d}\Gamma/\mathrm{d}y)}{y\_0 - y}\mathrm{d}y = \int^{b/2}\_{-b/2} \mathcal{L}(\Gamma,\Gamma',y)~\mathrm{d}y$$ 
 
-This effectively implies that the downwash can be expressed as a *functional* of $\Gamma$, i.e. $w\left[\Gamma(y)\right]$, and one can find the functional derivative to find the extremal point. There also exists a constraint on this system, the total lift across the span must be constant:
+This effectively implies that the downwash can be expressed as a *functional* of $\Gamma$, i.e. $w\left[\Gamma(y)\right]$, and one can find the functional derivative to find the extremal point. The system is also subject to a constraint — the total lift across the span must be constant:
 
 $$ L = \rho\_{\infty} V\_{\infty}\int^{b/2}\_{-b/2} \Gamma(y)~\mathrm{d}y = \int^{b/2}\_{-b/2} \mathcal{G}(\Gamma,\Gamma',y)~\mathrm{d}y$$
 

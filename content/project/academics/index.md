@@ -12,7 +12,7 @@ categories:
 
 I've been studying some physics for a while and decided to write solution manuals for reference in case I forget the approach to a problem later. They're lazily written, hence some solutions might be incomplete, incorrect or have illogical statements. Here's what I've compiled so far:
 
-* [Tom Lancaster et. al. - Quantum Field Theory for the Gifted Amateur](https://raw.githubusercontent.com/GodotMisogi/physics-notes/master/Quantum%20Field%20Theory%20for%20the%20Gifted%20Amateur%20-%20T.%20Lancaster%20%26%20S.%20J.%20Blundell/Lancaster%20Solutions.pdf)
+* [Tom Lancaster et al. - Quantum Field Theory for the Gifted Amateur](https://raw.githubusercontent.com/GodotMisogi/physics-notes/master/Quantum%20Field%20Theory%20for%20the%20Gifted%20Amateur%20-%20T.%20Lancaster%20%26%20S.%20J.%20Blundell/Lancaster%20Solutions.pdf)
 * [Bernard F. Schutz - A First Course in General Relativity](https://raw.githubusercontent.com/GodotMisogi/physics-notes/master/A%20First%20Course%20in%20General%20Relativity%20-%20B.%20F.%20Schutz/Schutz%20Solutions.pdf)
 * [Ramamurti Shankar - Principles of Quantum Mechanics](https://raw.githubusercontent.com/GodotMisogi/physics-notes/master/Principles%20of%20Quantum%20Mechanics%20-%20R.%20Shankar/Shankar%20Solutions.pdf)
 * [T. Padmanabhan - Gravitation: Foundations and Frontiers](https://raw.githubusercontent.com/GodotMisogi/physics-notes/master/Gravitation%2C%20Foundations%20and%20Frontiers%20-%20T.%20Padmanabhan/Gravitation.pdf)

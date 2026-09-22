@@ -10,7 +10,7 @@ image: recruitment-2017.png
 index: true
 ---
 
-I never really saw myself ever getting involved in any kind of designing activities, as I don't feel I'm artistic enough or have the required `a e s t h e t i c` abilities. However, I was given the responsibility to design a couple of posters, presentations and brochures for my team AeroMIT, our university's aeromodelling team. I created a couple of items which I think are all right
+I never really saw myself ever getting involved in any kind of designing activities, as I don't feel I'm artistic enough or have the required `a e s t h e t i c` abilities. However, I was given the responsibility to design a couple of posters, presentations and brochures for my team AeroMIT, our university's aeromodelling team. I created a couple of items, which I think are all right.
 
 >**Recruitment Poster 2017** 
 

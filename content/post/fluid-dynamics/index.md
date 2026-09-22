@@ -11,6 +11,8 @@ categories:
     - Aerodynamics
 ---
 
+>**This is not AI-generated.**
+
 #### References
 
 1. Batchelor, G. K. _An Introduction to Fluid Dynamics._ Cambridge University Press, 1992.
@@ -35,7 +37,7 @@ Similarly, the total 'emittance' of $\vec f$ over a closed surface $S$ is relate
 
 $$ \iint_{\mathcal S} \vec f \cdot d\vec {\mathcal S} = \iiint_{\mathcal V}\nabla \cdot \vec f \ d\mathcal V $$
 
-_Note:_ Gauss' and Stokes' theorems are properties of integrals, and are not particularly related to vector spaces as such. They are independent of tensor rank and dimensionality (consider the higher-dimensional tensor $f^{ijk}$ instead of just the vector $f^i$, nothing changes except the equations become identities on the components with the free indices).
+_Note:_ Gauss' and Stokes' theorems are properties of integrals, and are not particularly related to vector spaces as such. They are independent of tensor rank and dimensionality (consider the higher-dimensional tensor $f^{ijk}$ instead of just the vector $f^i$; nothing changes except that the equations become identities on the components with the free indices).
 
 The **material/Lagrangian/etc... derivative** $D/Dt$ is an operator expressing the chain rule on any tensor field that signifies the time rate of change of the tensor if it is dependent on space-time macroscopic velocity field variations. In a flat spacetime:
 
@@ -49,7 +51,7 @@ $$ \frac{DN}{Dt} = \iiint_{\mathcal V} \frac{\partial \eta}{\partial t}\ d\mathc
 
 The surface integral can usually be converted into a differential form over the volume via Gauss' theorem.
 
-#### Fluid  Dynamics
+#### Fluid Dynamics
 
 A **fluid** is defined as a continuum of particles such that its microscopic properties average into macroscopic properties that approximate its behaviour as a single element, a behaviour characterised by negligibly resistive non-retention of shape when deformed. This continuum approximation is applicable when analysing flows over length scales much larger (say a ratio of $10^{3}$ at least?) than the molecular mean free path of the fluid.
 
@@ -71,7 +73,7 @@ $$ \nabla \cdot \vec V = 0 $$
 
 $$ \rho \frac{D\vec V}{Dt} = -\nabla p + \rho \vec g + \nabla \cdot \hat \tau + \rho\vec f$$
 
-The energy equation reduces to Bernoulli's equation (mentioned later), which can be derived from the momentum equation above, hence it need not be considered. 
+The energy equation reduces to Bernoulli's equation (mentioned later), which can be derived from the momentum equation above, so it need not be considered. 
 
 For a Newtonian fluid, the stresses are considered to be linearly proportional to the velocity gradient near a wall, with a constant $\mu$ called **viscosity**:
 
@@ -95,7 +97,7 @@ Assume that the external gravitational field is conservative, and hence is expre
 
 $$ \frac{D\Gamma}{Dt} = \oint_C \nabla\left(\frac{-p}{\rho}\right) \cdot d\vec l + \frac{1}{\rho}\oint_C \vec g \cdot d\vec l = 0 $$
 
-The **vorticity** $\omega$ is defined as the curl of the velocity field $\vec V$, specifically: $ \omega \equiv \nabla \times \vec V $. Assume the flow is irrotational, i.e. $\omega = 0$, and there are no body forces, because the assumptions aren't enough. Using Stokes' theorem, $\Gamma = 0$. This describes a _conservative_ vector field, which can be expressed in the form of a scalar potential $\vec V = \nabla \phi$, when inserted into the continuity equation gives **Laplace's equation**:
+The **vorticity** $\omega$ is defined as the curl of the velocity field $\vec V$, specifically: $ \omega \equiv \nabla \times \vec V $. Assume the flow is irrotational, i.e. $\omega = 0$, and there are no body forces, because the assumptions aren't enough. Using Stokes' theorem, $\Gamma = 0$. This describes a _conservative_ vector field, which can be expressed in the form of a scalar potential $\vec V = \nabla \phi$. Inserted into the continuity equation, this gives **Laplace's equation**:
 
 $$ \nabla^2 \phi = 0 $$
 
@@ -103,11 +105,11 @@ As the real and imaginary parts of an analytic function of a complex variable $z
 
 $$ \vec V = (u(x,y), v(x,y)), \quad u = \frac{\partial \phi}{\partial x} = \frac{\partial \psi}{\partial y},\quad v = \frac{\partial \phi}{\partial y} = -\frac{\partial \psi}{\partial x} $$
 
-where $\psi$ is called a **stream function**, mainly used in two-dimensional flows. This leads to the construction of a **complex potential** $\Psi(z) = \phi + i \psi $. The derivative of this with respect to $z$ gives you the **complex velocity** $u - iv$. The stream function can also be constructed by the following definition of a **streamline** in three dimensions, a line which satsfies the equations:
+where $\psi$ is called a **stream function**, mainly used in two-dimensional flows. This leads to the construction of a **complex potential** $\Psi(z) = \phi + i \psi $. The derivative of this with respect to $z$ gives you the **complex velocity** $u - iv$. The stream function can also be constructed by the following definition of a **streamline** in three dimensions, a line which satisfies the equations:
 
 $$ \vec V \times d\vec l = 0 $$ 
 
-In two dimensions, say the $x$-$y$ plane, which physically relates the changes in velocity with respect to changes in space:
+In two dimensions, say the $x$-$y$ plane, this becomes the following, which physically relates changes in velocity to changes in space:
 
 $$ \frac{dy}{dx} = \frac{v(x,y)}{u(x,y)} \iff u\ dy - v\ dx = 0$$
 
@@ -125,9 +127,28 @@ The corresponding derivatives in non-dimensional terms can be obtained via the c
 
 $$ \frac{V}{L}\left(\frac{\partial u^{i*}}{\partial x^{i*}}\right) = 0 $$
 
+<!-- OUTLINE (author to write): finish the non-dimensionalisation — this section scales the
+     continuity equation and then stops; carry it through the momentum equation and read off the
+     dimensionless groups. (Reminder: in the rendered math use the post's \_ subscript escaping.)
+
+  1. Substitute the starred variables into the incompressible momentum equation
+         ρ DV/Dt = −∇p + ρg + ∇·τ + ρf
+     and divide through by ρV²/L. Show each term picks up a dimensionless prefactor.
+  2. Collect the groups (state each with its physical meaning):
+       - Reynolds   Re = ρVL/μ = VL/ν   (inertia / viscous) — multiplies the ∇·τ term as 1/Re.
+       - Euler      Eu = p₀/(ρV²)         (pressure / inertia) — on the ∇p* term.
+       - Froude     Fr = V/√(gL)          (inertia / gravity) — on the body-force/gravity term.
+       - Strouhal   St = L/(VT)           (unsteady term), if T is kept independent.
+  3. Write the final non-dimensional Navier–Stokes:
+         ∇·u* = 0,
+         St ∂u*/∂t* + (u*·∇)u* = −Eu ∇p* + (1/Re) ∇²u* + (1/Fr²) ĝ.
+  4. One-line punchline: two flows are dynamically similar when these groups match — the basis
+     for wind-tunnel testing and why Re dominates the boundary-layer story later in the post.
+-->
+
 #### Aside: Mathematical Generality
 
-Electromagnetics and fluid dynamics are usually about almost exclusively solving partial differential equations, either analytically or numerically. The Laplace equation also governs the basic laws of electrostatics, which can be derived from Maxwell's equations. So let's look at some basic solutions first for the **Poisson equation** with a source $\rho$, a more general form of Laplace's equation first in $N$ dimensions:
+Electromagnetics and fluid dynamics are usually about almost exclusively solving partial differential equations, either analytically or numerically. The Laplace equation also governs the basic laws of electrostatics, which can be derived from Maxwell's equations. So let's look at some basic solutions first for the **Poisson equation** with a source $\rho$, a more general form of Laplace's equation, in $N$ dimensions:
 
 $$ \nabla_N^2 \phi(\vec x) = \rho(\vec x) $$
 
@@ -146,9 +167,49 @@ Laplace's equation is spherically symmetric in $N$ dimensions (evident from the 
 
 $$ G(\vec x, \vec x_0) = \frac{1}{(2\pi)^N} \int_0^{2\pi} \int_{0}^{\infty} \frac{e^{-ik_r r\cos\theta}}{|r|^2}r\ dr d\theta $$
 
+<!-- OUTLINE (author to write): actually evaluate the Green function — the derivation sets up
+     the N-spherical integral and stops. Give the two cases the rest of the post uses, then the
+     general form. Let R = |x − x0|. (Rendered math: use the \_ subscript escaping.)
+
+  N = 2 (logarithmic potential — the 2-D source/vortex kernel used in Potential Flows below):
+    - The integral has an IR divergence, so the additive constant is arbitrary (fix a reference
+      length). The regularised result is
+          G₂(x, x0) = (1/2π) ln R    (up to an additive constant),
+      i.e. ∇²[(1/2π) ln R] = δ(x − x0). This is exactly the "source" potential φ = (m/2π) ln r.
+
+  N = 3 (Newtonian/Coulomb potential):
+          G₃(x, x0) = −1/(4π R),
+      recovering the electrostatic/gravitational 1/R law and matching the K–P source term.
+
+  General N (state, don't grind): with Sₙ the surface area of the unit (N−1)-sphere,
+          G_N(x, x0) = −Γ(N/2) / [ 2 π^{N/2} (N−2) ] · R^{-(N−2)},   N ≥ 3,
+      and the N = 2 log case is the (N → 2) limit. One sentence: the singularity strength grows
+      with dimension, and only N = 2 is scale-free (hence the arbitrary constant).
+
+  Segue sentence into Potential Flows: the N = 2 log kernel IS the source/vortex building block
+  superposed below.
+-->
+
 #### Potential Flows
 
-So a majority of basic (and unrealistic!) fluid flows can be generated by solving Laplace's equation for $\psi$ (the streamlines) using certain boundary conditions and declarations of $u, v$, which is somewhat of an inverse problem. The incompressible Euler equation is then used to evaluate the pressure. Sometimes coordinate transformations would be required to integrate the PDEs more easily, but they might introduce scale factors. Note that the cases analysed are 2D, but can be generalised readily. As von Neumann said, analysis under so many assumptions makes this turns this exercise into the study of 'dry water'.
+So a majority of basic (and unrealistic!) fluid flows can be generated by solving Laplace's equation for $\psi$ (the streamlines) using certain boundary conditions and declarations of $u, v$, which is somewhat of an inverse problem. The incompressible Euler equation is then used to evaluate the pressure. Sometimes coordinate transformations would be required to integrate the PDEs more easily, but they might introduce scale factors. Note that the cases analysed are 2D, but can be generalised readily. As von Neumann said, analysis under so many assumptions turns this exercise into the study of 'dry water'.
+
+<!-- OUTLINE (author to write): new subsection "##### Elementary Solutions" — the building-block
+     catalogue the post references but never gives. Present as a table (φ, ψ, complex potential
+     Ψ(z) = φ + iψ) using z = x + iy = r e^{iθ}. These are the N = 2 Green-function kernel and
+     its derivatives/rotations from the Aside above. (Rendered math: \_ subscript escaping.)
+
+     | Flow            | φ (potential)        | ψ (stream fn)        | Ψ(z) = φ + iψ            |
+     | uniform stream  | U r cosθ = U x       | U r sinθ = U y       | U z                      |
+     | source (str. m) | (m/2π) ln r          | (m/2π) θ             | (m/2π) ln z              |
+     | vortex (Γ)      | (Γ/2π) θ             | −(Γ/2π) ln r         | −i(Γ/2π) ln z            |
+     | doublet (κ)     | (κ/2π) cosθ / r      | −(κ/2π) sinθ / r     | (κ/2π) / z               |
+
+  - Note the source↔vortex duality (swap φ ↔ ψ), and that the doublet is the dipole limit of a
+    source+sink pair (streamwise derivative of the source — ties to the vortex/doublet remark you
+    already make elsewhere). Complex velocity is dΨ/dz = u − iv.
+  - This sets up the worked example (cylinder = uniform + doublet) added at the end of the post.
+-->
 
 Laplace's equation is linear, so any superposition of different solutions will give you a new function describing a more general flow. A common point of analysis in potential flows is the **stagnation point**, at which $u(x,y) = v(x,y) = 0$. This is equivalent to finding the extrema of the solutions to the potential or stream functions, and the minima correspond to stagnation points. The streamline corresponding to the stagnation point is where the velocity vanishes, called a **dividing streamline**. It can be considered as a boundary with no normal velocity component of a specific shape, which corresponds to the solution of a flow around this boundary. This is a Neumann boundary condition:
 
@@ -157,3 +218,37 @@ $$ \nabla \phi \cdot \hat n = 0 $$
 Usually in aerodynamic flows, the **pressure coefficient** is an important quantity to measure local pressure $p$ at some point compared to the freestream pressure $p_{\infty}$, using the Bernoulli equation in an external flow with freestream speed $V_{\infty}$:
 
 $$ C_p \equiv \frac{p - p_{\infty}}{\frac{1}{2}\rho V_{\infty}^2} = 1 - \left(\frac{V}{V_{\infty}}\right)^2 $$
+
+<!-- OUTLINE (author to write): worked example "#### Flow Past a Circular Cylinder" — the payoff
+     that turns the catalogue above into a picture. Superpose, read off the physics, then plot.
+     (Rendered math: \_ subscript escaping.)
+
+  Setup & derivation:
+  1. Superpose a uniform stream + a doublet of strength κ = 2π U a²:
+         Ψ(z) = U ( z + a²/z )   ⇒   ψ = U sinθ ( r − a²/r ).
+     ψ = 0 on r = a ⇒ the circle is a dividing streamline (the cylinder surface), radius a.
+  2. Surface speed: V_θ = −(1/r)∂ψ/∂r |_{r=a} = −2U sinθ. Stagnation points where V_θ = 0 ⇒
+         θ = 0, π  (fore and aft). Peak speed 2U at the shoulders θ = ±π/2.
+  3. Surface pressure from Bernoulli / the Cp formula above:
+         Cp(θ) = 1 − (V/U)² = 1 − 4 sin²θ.
+     Fore–aft and top–bottom symmetric ⇒ ∮ p n dS = 0 ⇒ ZERO drag AND zero lift:
+     d'Alembert's paradox. Say plainly why (no wake, inviscid, irrotational).
+  4. Add circulation (a vortex −Γ/2π ln z): Ψ = U(z + a²/z) − iΓ/2π ln z. Stagnation points move;
+     integrating pressure gives lift L' = ρ U Γ (Kutta–Joukowski), still zero drag. This is the
+     bridge to the induced-drag / panel-methods posts — one or two sentences is enough.
+
+  Worked plots + code  →  scripts/fluid-dynamics/cylinder_flow.py  (matplotlib → SVG, like the
+  cfd-python / meshing-airfoil figures; NEW dir content/post/fluid-dynamics/images/):
+  - Figure 1: streamlines (streamplot of the velocity field) with the cylinder + stagnation
+    points marked; optionally a second panel with circulation to show the stagnation shift.
+  - Figure 2: surface Cp(θ) = 1 − 4 sin²θ vs θ.
+  - Embed as plain markdown images (NO shortcodes needed for SVG):
+        ![Streamlines past a cylinder](images/cylinder-streamlines.svg)
+        ![Surface pressure coefficient](images/cylinder-cp.svg)
+-->
+
+<!-- OUTLINE (author to write): short "#### Conclusion" — this post currently just stops after
+     Cp. One paragraph: from conservation laws → potential theory → the elementary solutions →
+     a real (if 'dry') flow past a cylinder, with d'Alembert's paradox as the honest caveat that
+     motivates viscosity (forward-pointer to the boundary-layer / panel-methods posts). Then drop
+     "(In Progress)" from the title in the front matter. -->

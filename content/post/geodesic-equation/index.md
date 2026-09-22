@@ -10,7 +10,9 @@ categories:
     - Mathematics
 ---
 
-Bernard F. Schutz's [A First Course in General Relativity](http://www.cambridge.org/us/academic/subjects/physics/cosmology-relativity-and-gravitation/first-course-general-relativity-2nd-edition?format=HB&isbn=9780521887052) provides a nice introduction to the difficult subject in my opinion. In Chapter 6, he mentions that one should derive the Euler-Lagrange equations to minimise the spacetime interval of a particle's trajectory, obtaining the geodesic equation:
+>**This is not AI-generated.**
+
+Bernard F. Schutz's [A First Course in General Relativity](http://www.cambridge.org/us/academic/subjects/physics/cosmology-relativity-and-gravitation/first-course-general-relativity-2nd-edition?format=HB&isbn=9780521887052) provides a nice introduction to the difficult subject, in my opinion. In Chapter 6, he mentions that one should derive the Euler-Lagrange equations to minimise the spacetime interval of a particle's trajectory, obtaining the geodesic equation:
 
 $$ \frac{\mathrm{d}}{\mathrm{d}\lambda}\left(\frac{\mathrm{d}x^{\gamma}}{\mathrm{d}\lambda}\right) + \Gamma^{\gamma}\_{~\alpha\beta}\frac{\mathrm{d}x^{\alpha}}{\mathrm{d}\lambda}\frac{\mathrm{d}x^{\beta}}{\mathrm{d}\lambda} = 0 $$
 
@@ -22,9 +24,9 @@ $$ \frac{\mathrm{d}}{\mathrm{d}\lambda}\left(\frac{\mathrm{d}x^{\gamma}}{\mathrm
 
 Image source: https://upload.wikimedia.org/wikipedia/commons/6/6d/Parallel_transport.png
 
-If one starts from point A on the equator of a sphere and moves to the North pole, the tangent vector along the curve will look like the one shown in the figure, perpendicular to the equatorial line. Continuing this path from the North pole, if one wishes to reach a different point B on the equator, the vector field described will have undergone a 90 degrees rotation, so the vector points along the equatorial line.
+If one starts from point A on the equator of a sphere and moves to the North pole, the tangent vector along the curve will look like the one shown in the figure, perpendicular to the equatorial line. Continuing this path from the North pole, if one wishes to reach a different point B on the equator, the vector field described will have undergone a 90-degree rotation, so the vector points along the equatorial line.
 
-This can be easily visualised as walking to the North pole from A with your arm outstretched forward (representing the tangent vector), which is perpendicular to the equator. Once you reach, you need to go to point B, so your body rotates, but your arm is fixed because of parallel transport, so you're now walking with your arm outstretched to the left. Once you reach point B, you realise that your arm is along the equatorial line. Therefore parallel transport isn't preserved because of the curvature of the sphere.
+This can be easily visualised as walking to the North pole from A with your arm outstretched forward (representing the tangent vector), which is perpendicular to the equator. Once you arrive, you need to go to point B, so your body rotates, but your arm is fixed because of parallel transport, so you're now walking with your arm outstretched to the left. Once you reach point B, you realise that your arm is along the equatorial line. Therefore, parallel transport isn't preserved because of the curvature of the sphere.
 
 Since this is a property that directly results from the intrinsic curvature of the sphere, one can deduce that there is no definition of globally parallel vector fields. 
 
@@ -38,7 +40,7 @@ There is a large historical development for this formulation with plenty of lite
 
 $$ \vec{U}\cdot\vec{V} = g\_{\alpha\beta}U^{\alpha}V^{\beta} = g\_{00}U^{0}V^{0} + g\_{10}U^{1}V^{0} + g\_{01}U^{0}V^{1} + ...$$
 
-With summations over the set of values that the repeated indices $\alpha$ and $\beta$ take and $ g\_{\alpha\beta}(\vec x)$ is the metric tensor defined by the space under evaluation. In the case of special relativity, the metric tensor is represented as the matrix $ g\_{\alpha\beta} = \mathrm{diag}(-1,1,1,1) $ in one convention, a flat space-time.
+Here, summations are implied over the set of values that the repeated indices $\alpha$ and $\beta$ take, and $ g\_{\alpha\beta}(\vec x)$ is the metric tensor defined by the space under evaluation. In the case of special relativity, the metric tensor is represented as the matrix $ g\_{\alpha\beta} = \mathrm{diag}(-1,1,1,1) $ in one convention, a flat space-time.
 
 The length of the tangent vector between two points can be described by its magnitude. This functional that must be minimised is called the proper length, and can be expressed as follows:
 

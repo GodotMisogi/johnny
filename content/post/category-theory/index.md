@@ -10,9 +10,11 @@ categories:
     - Programming
 ---
 
+>**This is not AI-generated.**
+
 ## Introduction
 
-I studied category theory with `Vyn` from Bartosz Milewski's book/blog _Category Theory For Programmers_ in 2020, after a brief introduction from my course in _Advanced Algebra_ at HKUST. Eventually we realised it's just a scam to study mathematical concepts starting from primary school to itself. I list the concepts from memory which I usually find difficult to recall here, with attempted proofs without reference. The concepts are presented in the temporal sequence of standard mathematical education.
+I studied category theory with `Vyn` using Bartosz Milewski's book/blog _Category Theory For Programmers_ in 2020, after a brief introduction from my course in _Advanced Algebra_ at HKUST. Eventually we realised it's just a scam for re-studying mathematical concepts, from primary school all the way up to itself. Here I list the concepts, from memory, that I usually find difficult to recall, with attempted proofs and no reference. The concepts are presented in the temporal sequence of standard mathematical education.
 
 Some notation:
 
@@ -35,7 +37,7 @@ A product is defined by the following diagram:
 
 **Example.** (Product) Cartesian product of two sets?
 
-A product is defined by the following diagram, which applies a complicated technique called _dualisation_ to the product diagram, viz. flipping the arrows:
+A coproduct is defined by the following diagram, which applies a complicated technique called _dualisation_ to the product diagram, viz. flipping the arrows:
 
 **Example.** (Coproduct) Disjoint union of two sets?
 
@@ -60,7 +62,7 @@ A natural transformation between the two functors $\alpha \colon \mathbf C(A,-) 
 
 _Lemma_. (Yoneda) The set of natural transformations $\alpha$ is in one-to-one correspondence with $\mathcal F(A)$. Similarly for contravariant $\mathcal G\colon \mathbf C \to \mathbf{Set}$.
 
-_Proof_. The following commmutative diagram is evaluated on points.
+_Proof_. The following commutative diagram is evaluated on points.
 
 <!-- $$\begin{CD} \mathcal C(A, A) @>{\alpha_A}>> \mathcal C(A, B)\end{CD}$$ -->
 
@@ -145,7 +147,7 @@ Two functors $\mathcal L\colon \mathbf C \to \mathbf D, \mathcal R \colon \mathb
 
 $$\mathbf D(\mathcal L~A, B) \cong \mathbf C(A, \mathcal R~B)$$
 
-Specifically, $\mathcal L$ is _left-adjoint_ to $\mathcal R$ and $\mathcal R$ is _right-adjoint_ to $\mathcal L$. The pair $(\mathcal L, \mathcal R)$ is called an _adjunction_. Composing these functors with each other give endofunctors of the respective category depending on the order.
+Specifically, $\mathcal L$ is _left-adjoint_ to $\mathcal R$ and $\mathcal R$ is _right-adjoint_ to $\mathcal L$. The pair $(\mathcal L, \mathcal R)$ is called an _adjunction_. Composing these functors with each other gives endofunctors of the respective category depending on the order.
 
 A *unit* is defined from an adjunction as a natural transformation $\eta\colon \mathcal I_{\mathbf D} \to \mathcal R \circ \mathcal L$.
 
@@ -155,7 +157,7 @@ A _counit_ is a natural transformation $\varepsilon\colon \mathcal L \circ \math
 
 ### Algebras and Coalgebras
 
-Algebras and coalgebras are special categories defined using monads, with definitions as maps $\mathcal T(a) \to a$ and $a \to \mathcal T(a)$ respectfully. Certain categories are defined by using the following diagrams for objects and morphisms:
+Algebras and coalgebras are special categories defined using monads, with definitions as maps $\mathcal T(a) \to a$ and $a \to \mathcal T(a)$ respectively. Certain categories are defined by using the following diagrams for objects and morphisms:
 
 **Example.** (Fold catamorphism for list monad.)
 

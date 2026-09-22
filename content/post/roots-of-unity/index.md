@@ -10,7 +10,9 @@ categories:
     - Mathematics
 ---
 
-During my second year of the International Baccalaureate: Diploma Programme, we were assigned the task of making a portfolio for a problem statement in Mathematics HL. While I don't have the problem statement anymore, I'll outline the major points of the task:
+>**This is not AI-generated.**
+
+During my second year of the International Baccalaureate Diploma Programme, we were assigned the task of making a portfolio for a problem statement in Mathematics HL. While I don't have the problem statement anymore, I'll outline the major points of the task:
 
 * Find the solutions to $z^n - 1 = 0,~ z \in \mathbb{C}$.
 * Plot these solutions on the Argand plane.
@@ -18,7 +20,7 @@ During my second year of the International Baccalaureate: Diploma Programme, we 
 * Draw a tree diagram starting from the trivial solution $z = 1$ to every other root.
 * Investigate the exercise, devise a conjecture and prove it.
   
-When I first read through this exercise, I didn't really expect anything interesting to show up. Well, I was horribly wrong; something really cool showed up which made me learn about a lot of little things in complex analysis as a result. I'll start by solving the above points sequentially -- 
+When I first read through this exercise, I didn't really expect anything interesting to show up. Well, I was horribly wrong; something really cool showed up that made me learn a lot of little things in complex analysis along the way. I'll start by solving the above points sequentially -- 
 
 + The solutions to $z^n - 1 = 0$ are obtained most easily through Euler's form:
     $$ z\_k = \exp\left(\frac{2k\pi i}{n}\right),~~k = 0,...,n-1 $$
@@ -37,9 +39,9 @@ When I first read through this exercise, I didn't really expect anything interes
     
 + A conjecture based on trial and error is:
     $$ \prod\_{k=1}^{n-1}|z\_k - z\_0| = \prod\_{k=1}^{n-1}|1-z\_k| = n$$ 
-    This states that the product of the distances between each root from a selected root is equal to the number of roots. To prove this, notice that:
+    This states that the product of the distances from a selected root to every other root is equal to the number of roots. To prove this, notice that:
     $$\sum^{n-1}\_{i = 0} z^i = \prod\_{k=1}^{n-1}(z-z\_k) = \frac{z^n - 1}{z-1}$$ 
     For the equalities to be sensible at $z=1$, one must perform analytic continuation: 
     $$\sum^{n-1}\_{i = 0} 1^i = \prod\_{k=1}^{n-1}|1-z\_k| = \lim\_{z\rightarrow 1} \frac{z^n - 1}{z-1}$$
-    The first equality proves the conjecture. The last equality is evaluated using L'Hôpital's rule, also  proving the conjecture:
+    The first equality proves the conjecture. The last equality is evaluated using L'Hôpital's rule, also proving the conjecture:
     $$ \lim\_{z\rightarrow 1} \frac{z^n - 1}{z-1} = \lim\_{z\rightarrow 1} nz^{n-1} = n $$

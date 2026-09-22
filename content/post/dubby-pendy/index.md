@@ -11,7 +11,7 @@ categories:
     - Programming
 ---
 
-Learning about Lagrangian and Hamiltonian mechanics introduced me to an entirely new way of solving physics problems. The first time I'd read about this topic was in [The Principle of Least Action](http://www.feynmanlectures.caltech.edu/II_19.html) chapter in [Vol. 2 of The Feynman Lectures on Physics](http://www.feynmanlectures.caltech.edu/II_toc.html). I was introduced to a different perspective of viewing the physical world, perhaps a more general one than Newton's laws.
+Learning about Lagrangian and Hamiltonian mechanics introduced me to an entirely new way of solving physics problems. The first time I'd read about this topic was in [The Principle of Least Action](http://www.feynmanlectures.caltech.edu/II_19.html) chapter of [Vol. 2 of The Feynman Lectures on Physics](http://www.feynmanlectures.caltech.edu/II_toc.html). I was introduced to a different perspective of viewing the physical world, perhaps a more general one than Newton's laws.
 
 A famous example of a system whose equations of motion can be more easily attained using Lagrangian or Hamiltonian mechanics is the double pendulum. I saw a [Wolfram Science animation](http://scienceworld.wolfram.com/physics/DoublePendulum.html) of the system, but it didn't have the right `a e s t h e t i c` for me, and I wanted to write one of my own to investigate the system for various initial conditions and its chaotic behaviour.
 
@@ -34,7 +34,7 @@ $$ \begin{aligned}
         C_2 & = \frac{l_2^2 m_2 p_{\theta_1}^2 + l_1^2(m_1 + m_2)p_{\theta_2}^2 - l_1 l_2 m_2 p_{\theta_1} p_{\theta_2} \cos(\theta_1 - \theta_2)}{2l_1^2 l_2^2 [m_1 + m_2\sin^2(\theta_1-\theta_2)]^2}\sin[2(\theta_1 - \theta_2)]
     \end{aligned} $$
 
-These are very formidable-looking equations, and it is almost impossible to determine the particle trajectories by solving these equations analytically! So how does one solve it for practical purposes? Numerical methods and programming. I used Lua to program the simulator, including the [LÖVE](https://love2d.org) framework for the graphics.
+These are very formidable-looking equations, and it is almost impossible to determine the particle trajectories analytically! So how does one solve it for practical purposes? Numerical methods and programming. I used Lua to program the simulator, including the [LÖVE](https://love2d.org) framework for the graphics.
 
 Since the only data structure in Lua is a table, I decided to see how I could make use of that property for this program. Lua doesn't have functions to perform scalar multiplication or addition between tables, so I wrote some:
 ~~~lua
@@ -54,9 +54,9 @@ function scalarMultiply(scalar, table)
     return output
 end
 ~~~
-So now I can store values, such as the initial conditions and parameters of the system in a table and perform basic arithmetic operations between tables to change values. Now to implement the physics of the problem. 
+So now I can store values, such as the initial conditions and parameters of the system, in a table and perform basic arithmetic operations between tables to change values. Now to implement the physics of the problem. 
 
-First, I defined a generator that randomly generates initial values (within a given range) of the masses of the bobs, the lengths of the rods, their angles with respect to the vertical, their initial angular velocities and calculated the momenta of the bobs. This is fed into a table called `data`:
+First, I defined a generator that randomly generates initial values (within a given range) of the masses of the bobs, the lengths of the rods, their angles with respect to the vertical, their initial angular velocities, and calculates the momenta of the bobs. This is fed into a table called `data`:
 ~~~lua
 function Generator()
     
@@ -106,7 +106,7 @@ function Hamiltonian(phase, data)
     return update
 end
 ~~~
-All the required information with regard to the physics are now processed. To solve the differential equations, I implemented the Runge-Kutta method of order 4, performing operations on the tables using `directSum` and `scalarMultiply`. These operations take place in `Solver`, which takes the time input `dt` from LÖVE in `love.update()`.
+All the required information regarding the physics is now processed. To solve the differential equations, I implemented the Runge-Kutta method of order 4, performing operations on the tables using `directSum` and `scalarMultiply`. These operations take place in `Solver`, which takes the time input `dt` from LÖVE in `love.update()`.
 ~~~lua
 function Solver(dt)
 
