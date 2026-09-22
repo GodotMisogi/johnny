@@ -69,7 +69,7 @@ E-mail: `arjitseth AT gmail DOT com`
   * Developed a Python package to conduct flight performance analyses, validating simulations against real-world data provided by Cathay Pacific Airlines.
   * Predicted fuel burn and flight times of regional flights in Hong Kong with 94% accuracy to inform airline operations.
 
-## Publications (~110 citations)
+## Publications (~120 citations)
 
 ### Peer-Reviewed Articles
 
@@ -84,7 +84,7 @@ E-mail: `arjitseth AT gmail DOT com`
 
 ### Conference Proceedings
 
-1. **Arjit Seth** and Tan Bui-Thanh. "Estimating and Updating Digital Twin Models via Scientific Machine Learning". In: International Conference on Scientific Computing and Machine Learning 2025. (Peer-reviewed) In press. 2025.
+1. **Arjit Seth** et al. "Portable, High-Performance and Differentiable Ocean Simulations with Unstructured Grids in Julia". In: The International Conference for High Performance Computing, Networking, Storage, and Analysis. (Peer-reviewed) Accepted. 2026.
 2. Dajung Kim, **Arjit Seth**, and Rhea P. Liem. "Geometric Programming for Airfoil Shape Optimization With Geometric Constraints". In: AIAA SCITECH 2025 Forum. https://doi.org/10.2514/6.2025-0653
 3. **Arjit Seth** and Tan Bui-Thanh. "An efficient and accurate deep learning approach to weather prediction". In: EGU General Assembly 2024. 2024. https://doi.org/10.5194/egusphere-egu24-11884
 4. Vinay Madhusudanan, **Arjit Seth**, and G. Sudhakara. "Descending Endomorphisms of Some Families of Groups". In: Proceedings of Applied Linear Algebra, Probability and Statistics (ALAPS), Springer. In press. 2022.
