@@ -4,17 +4,20 @@ title: "About Me"
 draft: false
 ---
 
-Hello! I'm Arjit Seth, a research assistant at the Department of Mechanical and Aerospace Engineering at the Hong Kong University of Science and Technology.
+Hello! I'm Arjit Seth, a Ph.D. researcher at the Oden Institute for Computational Engineering and Sciences and the Department of Aerospace Engineering and Engineering Mechanics at The University of Texas at Austin.
 
 My major interests, which inspired me to start this blog, are physics, mathematics, aerodynamics and music. I enjoy writing music, solving puzzles, figuring out odd time signatures in music, reading manga/watching anime, attempting amateur design and a lot more!
 
-My current exploits which I'm probably going to blog about:
+My current exploits, which I'm probably going to blog about:
 
+* Scientific machine learning and physical oceanography for earth-system models.
 * Developing aircraft design analyses and optimisations.
 * Programming physics and aerodynamics simulations in various languages.
 * Learning various fields of mathematics, such as category theory, group theory, differential geometry, Stone's representation theorem, etc.
 * Learning quantum mechanics, quantum field theory and general relativity.
 * Developing music production skills for various genres.
+
+A summary of my research is on the [home page](/) and the [projects](/project) section; full details are in my [curriculum vitae](/cv).
 
 <!-- A more comprehensive overview is available in my [curriculum vitae](ArjitSethCV.pdf). -->
 
